@@ -8,6 +8,11 @@
 <br/>
 <span style="color:gray; font-size:0.4em;">19-07-2018</span>
 
+Note:
+
+- Version of kotlin is important, all result could change in next / previous version
+- Find the presentation and source [here](https://github.com/Mercandj/presentation)
+
 ---
 
 ### <span style="color: #00B8D4; text-transform: none;">Presentation</span> <span style="text-transform: none;">goals</span>
