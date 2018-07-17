@@ -146,6 +146,57 @@ public final class TaskKt {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Class</span> <span style="text-transform: none; font-size:0.8em;">and constructor</span>
+
+```kotlin
+class MyClass constructor(private val myProperty: Int, simpleParameter: Float) {
+    private var anotherVal: Double = 0.0
+	
+    constructor(myProperty: Int, simpleParameter: Float, anotherSimpleParameter: Double)
+            : this(myProperty, simpleParameter) {
+        Log.i("MyClass", "secondary constructor")
+        this.anotherVal = anotherSimpleParameter
+    }
+
+    init {
+        Log.i("MyClass", "init")
+    }
+}
+```
+
+Note:
+
+- `constructor` keyword can be omitted because there is no visibility modifier and annotation
+- `simpleParameter` is only usable in the init method and in property initializer
+- `myProperty` is a class property because of keyword `val`/`var`
+- Content of `init` will be call before secondary constructor content
+- `init` method correponds to the primary constructor content
+- Secondary constructor must call primary constructor
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Class</span> <span style="text-transform: none; font-size:0.8em;">and constructor</span>
+
+```java
+public final class MyClass {
+   private double anotherVal;
+   private final int myProperty;
+
+   public MyClass(int myProperty, float simpleParameter) {
+      this.myProperty = myProperty;
+      Log.i("MyClass", "init");
+   }
+
+   public MyClass(int myProperty, float simpleParameter, double anotherSimpleParameter) {
+      this(myProperty, simpleParameter);
+      Log.i("MyClass", "secondary constructor");
+      this.anotherVal = anotherSimpleParameter;
+   }
+}
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">in constructor</span>
 <br/>
 
