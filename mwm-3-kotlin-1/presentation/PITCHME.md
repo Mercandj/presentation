@@ -831,6 +831,20 @@ Generate same code as the java one
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
+
+![Logo](mwm-3-kotlin-1/presentation/logo-6-destructuring.png)
+
+```java
+public final void destructuring() {
+   Destructuring.Pojo var3 = this.create();
+   String var1 = var3.component1();
+   List videosIds = var3.component2();
+}
+```
+
+---
+
 ### Demo
 
 ---
