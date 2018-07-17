@@ -259,6 +259,205 @@ fun exampleOutput() {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range</span>
+
+No additionally cost for these functions.
+
+```kotlin
+fun basicRange(){
+    for(i in 1..10){
+        Log.i(TAG, "i : $i")
+    }
+}
+
+fun downToRange(){
+    for(i in 10 downTo 1){
+        Log.i(TAG, "i : $i")
+    }
+}
+
+// Equivalent to the downTo example
+fun reversedRange(){
+    for (i in (1..10).reversed()) {
+        Log.i(TAG, "i : $i")
+    }
+}
+
+// Exclude the upper value
+fun untilRange(){
+    for(i in 0 until 10){
+        Log.i(TAG, "i : $i")
+    }
+}
+```
+
+Equivalent in java :
+
+```java
+public final void basicRange() {
+	int i = 1;
+	for(byte var2 = 10; i <= var2; ++i) {
+		Log.i("RangeTester", "i : " + i);
+	}
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range with a cost</span>
+
+```kotlin
+fun stepRange(){
+    for(i in 0..10 step 2){
+        Log.i(TAG, "i : $i")
+    }
+}
+```
+
+Equivalent in java :
+
+```java
+public final void stepRange() {
+    byte var4 = 0;
+    IntProgression var10000 = RangesKt.step((IntProgression)(new IntRange(var4, 10)), 2);
+    int i = var10000.getFirst();
+    int var2 = var10000.getLast();
+    int var3 = var10000.getStep();
+    if (var3 > 0) {
+        if (i > var2) {
+            return;
+        }
+    } else if (i < var2) {
+        return;
+    }
+    while(true) {
+        Log.i("RangeTester", "i : " + i);
+        if (i == var2) {
+           return;
+        }
+        i += var3;
+    }
+}
+```
+
+/!\ Instantiation of 2 temporaries objects : `IntProgression` and `IntRange`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range with a cost</span>
+
+```kotlin
+fun oneMorelLevelRange(){
+    val customRange = 1..10
+    for(i in customRange){
+        Log.i(TAG, "i : $i")
+    }
+}
+```
+
+Equivalent in java :
+
+```java
+public final void oneMorelLevelRange() {
+    byte var2 = 1;
+    IntRange customRange = new IntRange(var2, 10);
+    int i = customRange.getFirst();
+    int var3 = customRange.getLast();
+    if (i <= var3) {
+        while(true) {
+			Log.i("RangeTester", "i : " + i);
+			if (i == var3) {
+               break;
+            }
+            ++i;
+        }
+    }
+}
+```
+
+/!\ Temporary `IntRange`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with forEach</span>
+
+```kotlin
+fun testForEachOnRange() {
+    (1..10).forEach {
+        Log.i(TAG, "i : $it")
+    }
+}
+```
+
+```java
+public final void testForEachOnRange() {
+	byte var1 = 1;
+	Iterable $receiver$iv = (Iterable)(new IntRange(var1, 10));
+	Iterator var2 = $receiver$iv.iterator();
+
+	while(var2.hasNext()) {
+		int element$iv = ((IntIterator)var2).nextInt();
+		Log.i("", "i : " + element$iv);
+	}
+}
+```
+
+/!\ Temporary `IntRange` is allocated.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with forEach</span>
+
+`forEach` should only be used with `Iterable`, not `range`.
+
+```kotlin
+fun testForEachOnIterator() {
+    list.forEach {
+        Log.i(TAG, "i : $it")
+    }
+}
+```
+
+```java
+public final void testForEachOnIterator1() {
+	Iterable $receiver$iv = (Iterable)list;
+	Iterator var2 = $receiver$iv.iterator();
+
+	while(var2.hasNext()) {
+			Object element$iv = var2.next();
+			int it = ((Number)element$iv).intValue();
+			Log.i("", "i : " + it);
+	}
+}
+```
+
+No additionnaly cost. 
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">wit indices</span>
+
+Can loop on list indices, without additionnal cost.
+
+```kotlin
+fun testForWithIndices() {
+    for(i in list.indices){
+        Log.i(TAG, "i : " + list[i])
+    }
+}
+```
+
+```java
+public final void testForWithIndices() {
+    int i = 0;
+    for(int var2 = ((Collection)list).size(); i < var2; ++i) {
+        Log.i("", "i : " + (Integer)list.get(i));
+    }
+}
+```
+
+---
+
 ### Demo
 
 ---
