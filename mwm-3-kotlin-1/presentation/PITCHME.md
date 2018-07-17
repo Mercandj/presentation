@@ -235,8 +235,9 @@ public final class VariableShadowingDemo {
 }
 ```
 
-### Demo
+---
 
+### Demo
 
 ---
 
