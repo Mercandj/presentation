@@ -239,6 +239,85 @@ fun exampleOutput() {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with forEach</span>
+
+```kotlin
+fun testForEachOnRange() {
+    (1..10).forEach {
+        Log.i(TAG, "i : $it")
+    }
+}
+```
+
+```java
+public final void testForEachOnRange() {
+	byte var1 = 1;
+	Iterable $receiver$iv = (Iterable)(new IntRange(var1, 10));
+	Iterator var2 = $receiver$iv.iterator();
+
+	while(var2.hasNext()) {
+		int element$iv = ((IntIterator)var2).nextInt();
+		Log.i("", "i : " + element$iv);
+	}
+}
+```
+
+/!\ Temporary `IntRange` is allocated.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with forEach</span>
+
+`forEach` should only be used with `Iterable`, not `range`.
+
+```kotlin
+fun testForEachOnIterator() {
+    list.forEach {
+        Log.i(TAG, "i : $it")
+    }
+}
+```
+
+```java
+public final void testForEachOnIterator1() {
+	Iterable $receiver$iv = (Iterable)list;
+	Iterator var2 = $receiver$iv.iterator();
+
+	while(var2.hasNext()) {
+			Object element$iv = var2.next();
+			int it = ((Number)element$iv).intValue();
+			Log.i("", "i : " + it);
+	}
+}
+```
+
+No additionnaly cost. 
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">wit indices</span>
+
+Can loop on list indices, without additionnal cost.
+
+```kotlin
+fun testForWithIndices() {
+    for(i in list.indices){
+        Log.i(TAG, "i : " + list[i])
+    }
+}
+```
+
+```java
+public final void testForWithIndices() {
+    int i = 0;
+    for(int var2 = ((Collection)list).size(); i < var2; ++i) {
+        Log.i("", "i : " + (Integer)list.get(i));
+    }
+}
+```
+
+---
+
 ### Demo
 
 ---
