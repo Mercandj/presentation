@@ -607,7 +607,7 @@ public final int basicWhen(@NotNull String str) {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.6em;">When</span> <span style="text-transform: none; font-size:0.6em;">basic with else</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;">basic with else</span>
 
 ```kotlin
 fun basicWhenWithElse(str: String) = when (str) {
@@ -623,26 +623,22 @@ public final int basicWhenWithElse(@NotNull String str) {
    Intrinsics.checkParameterIsNotNull(str, "str");
    byte var10000;
    switch(str.hashCode()) {
-   case -1354586272:
-      if (str.equals("coucou")) {
-         var10000 = 3;
-         return var10000;
-      }
-      break;
-   case 0:
-      if (str.equals("")) {
-         var10000 = 1;
-         return var10000;
-      }
-      break;
-   case 99:
-      if (str.equals("c")) {
-         var10000 = 2;
-         return var10000;
-      }
+      case -1354586272:
+         if (str.equals("coucou")) {
+            var10000 = 3; return var10000;
+         }
+         break;
+      case 0:
+         if (str.equals("")) {
+            var10000 = 1; return var10000;
+         }
+         break;
+      case 99:
+         if (str.equals("c")) {
+            var10000 = 2; return var10000;
+         }
    }
-   var10000 = 0;
-   return var10000;
+   var10000 = 0; return var10000;
 }
 ```
 
@@ -688,7 +684,7 @@ public final boolean hasPrefix(@NotNull Object x) {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.6em;">When</span> <span style="text-transform: none; font-size:0.6em;"> with range</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;"> with range</span>
 
 ```kotlin
 fun whenWithRange(integer: Int) = when (integer) {
@@ -708,14 +704,12 @@ public final int whenWithRange(int integer) {
    } else if (integer != 2 && integer != 3 && integer != 4) {
      if (6 <= integer) {
         if (10 >= integer) {
-           var10000 = 3;
-           return var10000;
+           var10000 = 3; return var10000;
         }
      }
      if (30 <= integer) {
         if (50 >= integer) {
-           var10000 = 0;
-           return var10000;
+           var10000 = 0; return var10000;
         }
      }
      var10000 = 4;
