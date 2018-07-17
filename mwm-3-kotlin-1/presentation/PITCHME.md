@@ -21,11 +21,17 @@ Note:
 In the Android developer context:
 
 <span style="color:gray; font-size:0.5em;">
-    - Why use this langage
-    - Where use this langage
+    - Why use this language
+    - Where use this language
     - What is the cost/overhead
     - Decompile basic Kotlin to Java
 </span>
+
+Note:
+
+- Presentation in 3 parts
+- How MWM use / will use this language
+- We suppose that the person who are listening are Android developers and know Java
 
 ---
 
@@ -37,6 +43,12 @@ In the Android developer context:
 * JetBrains
 * ...
 
+Note:
+
+- Typed (include nullity in type)
+- Relatively light
+- Jetbrains <3
+
 ---
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">cons</span>
@@ -45,6 +57,12 @@ In the Android developer context:
 * Team skills
 * New languages
 * Versions
+
+Note:
+
+- Not all devs are up-to-date with Kotlin
+- New -> not mature
+- Versions of Kotlin in libs / apps??
 
 ---
 
@@ -55,6 +73,11 @@ In the Android developer context:
 </p>
 
 <span style="color:gray; font-size:0.4em;">Kotlin 1.2.51 (demo app) - com.getkeepsafe.dexcount</span>
+
+Note:
+
+- We count the method of the last Kotlin version
+- Proportion in an empty app that have the support lib
 
 ---
 
