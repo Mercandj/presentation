@@ -417,7 +417,7 @@ fun basicRange() {
 }
 
 ```
-<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
+
 
 ```java
 public final void basicRange() {
@@ -427,7 +427,6 @@ public final void basicRange() {
 	}
 }
 ```
-<span style="color:gray; font-size:0.6em;">RangeTester.java</span>
 
 ---
 
@@ -456,7 +455,6 @@ fun untilRange() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
 
 
 ---
@@ -470,7 +468,6 @@ fun stepRange() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
 
 <br/>
 /!\ Instantiation of 2 temporaries objects : `IntProgression` and `IntRange`.
@@ -502,7 +499,6 @@ public final void stepRange() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">RangeTester.java</span>
 
 ---
 
@@ -516,7 +512,6 @@ fun oneMorelLevelRange() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
 
 ```java
 public final void oneMorelLevelRange() {
@@ -535,7 +530,6 @@ public final void oneMorelLevelRange() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">RangeTester.java</span>
 
 <br/>
 /!\ Temporary `IntRange` is allocated.
@@ -551,7 +545,6 @@ fun testForEachOnRange() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">ForDemo.kt</span>
 
 ```java
 public final void testForEachOnRange() {
@@ -564,7 +557,6 @@ public final void testForEachOnRange() {
 	}
 }
 ```
-<span style="color:gray; font-size:0.6em;">ForDemo.java</span>
 
 <br/>
 /!\ Temporary `IntRange` is allocated.
@@ -582,7 +574,6 @@ fun testForEachOnIterator() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">ForDemo.kt</span>
 
 ```java
 public final void testForEachOnIterator1() {
@@ -595,7 +586,6 @@ public final void testForEachOnIterator1() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">ForDemo.java</span>
 
 <br/>
 No additional cost. 
@@ -613,7 +603,6 @@ fun testForWithIndices() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">ForDemo.kt</span>
 
 ```java
 public final void testForWithIndices() {
@@ -623,7 +612,6 @@ public final void testForWithIndices() {
     }
 }
 ```
-<span style="color:gray; font-size:0.6em;">ForDemo.java</span>
 
 ---
 
