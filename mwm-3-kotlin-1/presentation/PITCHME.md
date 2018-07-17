@@ -569,6 +569,169 @@ class Dog() : Animal(){
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;">basic</span>
+
+```kotlin
+fun basicWhen(str: String): Int {
+    when (str) {
+        "" -> return 1
+        "c" -> return 2
+        "coucou" -> return 3
+    }
+    return 0
+}
+```
+
+```java
+public final int basicWhen(@NotNull String str) {
+   Intrinsics.checkParameterIsNotNull(str, "str");
+   switch(str.hashCode()) {
+   case -1354586272:
+      if (str.equals("coucou")) {
+         return 3;
+      }
+      break;
+   case 0:
+      if (str.equals("")) {
+         return 1;
+      }
+      break;
+   case 99:
+      if (str.equals("c")) {
+         return 2;
+      }
+   }
+   return 0;
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;">basic with else</span>
+
+```kotlin
+fun basicWhenWithElse(str: String) = when (str) {
+    "" -> 1
+    "c" -> 2
+    "coucou" -> 3
+    else -> 0
+}
+```
+
+```java
+public final int basicWhenWithElse(@NotNull String str) {
+   Intrinsics.checkParameterIsNotNull(str, "str");
+   byte var10000;
+   switch(str.hashCode()) {
+   case -1354586272:
+      if (str.equals("coucou")) {
+         var10000 = 3;
+         return var10000;
+      }
+      break;
+   case 0:
+      if (str.equals("")) {
+         var10000 = 1;
+         return var10000;
+      }
+      break;
+   case 99:
+      if (str.equals("c")) {
+         var10000 = 2;
+         return var10000;
+      }
+   }
+   var10000 = 0;
+   return var10000;
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;"> with computation</span>
+
+```kotlin
+fun whenWithComputation(integer: Int) = when (integer) {
+    1 -> 1
+    1 + integer -> 2
+    2 + integer -> 3
+    else -> 0
+}
+```
+
+```java
+public final int whenWithComputation(int integer) {
+   return integer == 1 ? 1 : 
+      (integer == 1 + integer ? 2 : 
+         (integer == 2 + integer ? 3 : 0));
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;"> with is</span>
+
+```kotlin
+fun whenWithIs(x: Any) = when (x) {
+    is String -> x.startsWith("prefix")
+    else -> false
+}
+```
+
+```java
+public final boolean hasPrefix(@NotNull Object x) {
+   Intrinsics.checkParameterIsNotNull(x, "x");
+   return x instanceof String ? StringsKt.startsWith$default((String)x, "prefix", false, 2, (Object)null) : false;
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;"> with range</span>
+
+```kotlin
+fun whenWithRange(integer: Int) = when (integer) {
+    1 -> 1
+    2, 3, 4 -> 2
+    5 -> 3
+    in 6..10 -> 4
+    !in 30..50 -> 5
+    else -> 0
+}
+```
+
+```java
+public final int whenWithRange(int integer) {
+   byte var10000;
+   if (integer == 1) {
+      var10000 = 1;
+   } else if (integer != 2 && integer != 3 && integer != 4) {
+      if (integer == 5) {
+         var10000 = 3;
+      } else {
+         if (6 <= integer) {
+            if (10 >= integer) {
+               var10000 = 4;
+               return var10000;
+            }
+         }
+         if (30 <= integer) {
+            if (50 >= integer) {
+               var10000 = 0;
+               return var10000;
+            }
+         }
+         var10000 = 5;
+      }
+   } else {
+      var10000 = 2;
+   }
+   return var10000;
+}
+```
+
+---
+
 ### Demo
 
 ---
