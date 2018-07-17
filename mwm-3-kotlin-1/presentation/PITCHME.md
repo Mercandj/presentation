@@ -208,7 +208,7 @@ public final boolean isStringEmpty(@Nullable String str) {
    if (str == null) {
       Intrinsics.throwNpe();
    }
-   CharSequence var2 = (CharSequence)str;
+   CharSequence var2 = (CharSequence) str;
    return var2.length() == 0;
 }
 ```
@@ -392,7 +392,7 @@ fun stepRange() {
 }
 ```
 <span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
-
+<br/>
 /!\ Instantiation of 2 temporaries objects : `IntProgression` and `IntRange`.
 
 ---
@@ -456,7 +456,7 @@ public final void oneMorelLevelRange() {
 }
 ```
 <span style="color:gray; font-size:0.6em;">RangeTester.java</span>
-
+<br/>
 /!\ Temporary `IntRange` is allocated.
 
 ---
@@ -484,7 +484,7 @@ public final void testForEachOnRange() {
 }
 ```
 <span style="color:gray; font-size:0.6em;">ForDemo.java</span>
-
+<br/>
 /!\ Temporary `IntRange` is allocated.
 
 ---
@@ -514,7 +514,7 @@ public final void testForEachOnIterator1() {
 }
 ```
 <span style="color:gray; font-size:0.6em;">ForDemo.java</span>
-
+<br/>
 No additional cost. 
 
 ---
@@ -560,6 +560,7 @@ class Dog() : Animal(){
 
 `open` keyword requires to be able to extend from class/method.
 <br/>
+
 `override` language keyword required to override a method.
 
 ---
