@@ -11,7 +11,9 @@
 .reveal p {
     margin: 7px 0 !important;
     line-height: 0.7 !important;
+    font-size: 0.7em !important;
 }
 
 .reveal pre code {
 	max-height: 600px;
+}
