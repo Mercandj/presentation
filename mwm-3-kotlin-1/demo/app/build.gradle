@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+// Count methods
+// https://github.com/KeepSafe/dexcount-gradle-plugin
+apply plugin: 'com.getkeepsafe.dexcount'
+
 android {
     compileSdkVersion 27
     defaultConfig {

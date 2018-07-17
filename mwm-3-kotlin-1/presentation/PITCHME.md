@@ -26,7 +26,7 @@ In the Android developer context:
 
 * Strongly typed
 * More concise and readable than Java
-* "Lightweight" 8k methods
+* "Lightweight"
 * JetBrains
 * ...
 
@@ -41,15 +41,58 @@ In the Android developer context:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin</span> <span style="text-transform: none; font-size:0.8em;">methods</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-2-decompiler.png)
+![Logo](mwm-3-kotlin-1/presentation/logo-2-kotlin-methods-1-2-51.png)
+
+<span style="color:gray; font-size:0.4em;">Kotlin 1.2.51 (demo app)</span>
+<span style="color:gray; font-size:0.4em;">com.getkeepsafe.dexcount</span>
+
+---
+
+
+```
+6102     791      kotlin
+3        2        kotlin._Assertions
+12       20       kotlin.annotation
+2763     119      kotlin.collections
+112      28       kotlin.comparisons
+31       2        kotlin.concurrent
+149      40       kotlin.coroutines
+149      40       kotlin.coroutines.experimental
+33       10       kotlin.coroutines.experimental.intrinsics
+10       4        kotlin.coroutines.experimental.jvm
+10       4        kotlin.coroutines.experimental.jvm.internal
+8        0        kotlin.experimental
+36       10       kotlin.internal
+12       5        kotlin.internal.contracts
+2        0        kotlin.internal.jdk7
+276      52       kotlin.io
+2        0        kotlin.jdk7
+601      108      kotlin.jvm
+23       0        kotlin.jvm.functions
+557      108      kotlin.jvm.internal
+2        0        kotlin.jvm.internal.unsafe
+117      9        kotlin.math
+20       7        kotlin.properties
+294      36       kotlin.ranges
+141      17       kotlin.reflect
+455      117      kotlin.sequences
+3        0        kotlin.system
+836      183      kotlin.text
+```
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
 
 ![Logo](mwm-3-kotlin-1/presentation/logo-3-decompiler.png)
+
+---
+
+### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
+
+![Logo](mwm-3-kotlin-1/presentation/logo-4-decompiler.png)
 
 ---
 
