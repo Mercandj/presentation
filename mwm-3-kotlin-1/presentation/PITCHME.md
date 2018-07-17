@@ -98,7 +98,7 @@ In the Android developer context:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Hello</span> <span style="text-transform: none; font-size:0.8em;">in World</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Hello</span> <span style="text-transform: none; font-size:0.8em;"> World</span>
 <br/>
 
 ```kotlin
