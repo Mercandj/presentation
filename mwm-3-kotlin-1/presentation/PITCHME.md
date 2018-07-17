@@ -303,7 +303,7 @@ public final class VariableShadowingDemo {
    }
 
    public VariableShadowingDemo() {
-      this((String)null, 1, (DefaultConstructorMarker)null);
+      this((String) null, 1, (DefaultConstructorMarker) null);
    }
 }
 ```
@@ -331,8 +331,8 @@ fun exampleOutput() {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range</span>
 
 ```kotlin
-fun basicRange(){
-    for(i in 1..10){
+fun basicRange() {
+    for (i in 1..10) {
         Log.i(TAG, "i : $i")
     }
 }
@@ -372,7 +372,7 @@ fun reversedRange() {
 
 // Exclude the upper value
 fun untilRange() {
-    for(i in 0 until 10){
+    for (i in 0 until 10) {
         Log.i(TAG, "i : $i")
     }
 }
@@ -386,7 +386,7 @@ fun untilRange() {
 
 ```kotlin
 fun stepRange() {
-    for(i in 0..10 step 2) {
+    for (i in 0..10 step 2) {
         Log.i(TAG, "i : $i")
     }
 }
@@ -402,7 +402,7 @@ fun stepRange() {
 ```java
 public final void stepRange() {
     byte var4 = 0;
-    IntProgression var10000 = RangesKt.step((IntProgression)(new IntRange(var4, 10)), 2);
+    IntProgression var10000 = RangesKt.step((IntProgression) (new IntRange(var4, 10)), 2);
     int i = var10000.getFirst();
     int var2 = var10000.getLast();
     int var3 = var10000.getStep();
@@ -475,11 +475,10 @@ fun testForEachOnRange() {
 ```java
 public final void testForEachOnRange() {
 	byte var1 = 1;
-	Iterable $receiver$iv = (Iterable)(new IntRange(var1, 10));
+	Iterable $receiver$iv = (Iterable) (new IntRange(var1, 10));
 	Iterator var2 = $receiver$iv.iterator();
-
 	while (var2.hasNext()) {
-		int element$iv = ((IntIterator)var2).nextInt();
+		int element$iv = ((IntIterator) var2).nextInt();
 		Log.i("", "i : " + element$iv);
 	}
 }
@@ -505,25 +504,24 @@ fun testForEachOnIterator() {
 
 ```java
 public final void testForEachOnIterator1() {
-	Iterable $receiver$iv = (Iterable)list;
-	Iterator var2 = $receiver$iv.iterator();
-
-	while (var2.hasNext()) {
-			Object element$iv = var2.next();
-			int it = ((Number)element$iv).intValue();
-			Log.i("", "i : " + it);
-	}
+    Iterable $receiver$iv = (Iterable) list;
+    Iterator var2 = $receiver$iv.iterator();
+    while (var2.hasNext()) {
+        Object element$iv = var2.next();
+        int it = ((Number) element$iv).intValue();
+        Log.i("", "i : " + it);
+    }
 }
 ```
 <span style="color:gray; font-size:0.6em;">ForDemo.java</span>
 
-No additionnaly cost. 
+No additional cost. 
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with indices</span>
 
-Can loop on list indices without additionnal cost.
+Can loop on list indices without additional cost.
 
 ```kotlin
 fun testForWithIndices() {
@@ -554,13 +552,14 @@ In Kotlin, classes and methods are `final` by default.
 open class Animal(){
 	open fun myOpenedFunction() {}
 }
+
 class Dog() : Animal(){
 	override fun myOpenedFunction() {}
 }
 ```
 
 `open` keyword requires to be able to extend from class/method.
-
+<br/>
 `override` language keyword required to override a method.
 
 ---
