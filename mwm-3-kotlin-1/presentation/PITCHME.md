@@ -155,6 +155,85 @@ private static void throwParameterIsNullException(String paramName) {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
+
+```kotlin
+class VariableShadowingDemo(
+        private val str: String = "str-constructor"
+) {
+
+    fun exampleOfVariableShadowing(
+            str: String = "str-parameter"
+    ): List<String> {
+        val list = ArrayList<String>()
+        list.add(str)
+        list.add(this.str)
+        val str = "str-local-variable"
+        list.add(str)
+        list.add(this.str)
+        return list
+    }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
+
+Output:
+
+
+```kotlin
+@Test
+fun exampleOutput() {
+    val list = VariableShadowingDemo().exampleOfVariableShadowing()
+    Assert.assertEquals("str-parameter", list[0])
+    Assert.assertEquals("str-constructor", list[1])
+    Assert.assertEquals("str-local-variable", list[2])
+    Assert.assertEquals("str-constructor", list[3])
+}
+```
+
+---
+
+```java
+public final class VariableShadowingDemo {
+   private final String str;
+
+   @NotNull
+   public final List exampleOfVariableShadowing(@NotNull String str) {
+      Intrinsics.checkParameterIsNotNull(str, "str");
+      ArrayList list = new ArrayList();
+      list.add(str);
+      list.add(this.str);
+      String str = "str-local-variable";
+      list.add(str);
+      list.add(this.str);
+      return (List)list;
+   }
+
+   @NotNull
+   public static List exampleOfVariableShadowing$default(VariableShadowingDemo var0, String var1, int var2, Object var3) {
+      if ((var2 & 1) != 0) { var1 = "str-parameter"; }
+      return var0.exampleOfVariableShadowing(var1);
+   }
+
+   public VariableShadowingDemo(@NotNull String str) {
+      Intrinsics.checkParameterIsNotNull(str, "str");
+      super();
+      this.str = str;
+   }
+
+   public VariableShadowingDemo(String var1, int var2, DefaultConstructorMarker var3) {
+      if ((var2 & 1) != 0) { var1 = "str-constructor"; }
+      this(var1);
+   }
+
+   public VariableShadowingDemo() {
+      this((String)null, 1, (DefaultConstructorMarker)null);
+   }
+}
+```
 
 ### Demo
 
