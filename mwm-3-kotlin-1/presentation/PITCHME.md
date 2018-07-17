@@ -326,8 +326,6 @@ fun exampleOutput() {
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range</span>
 
-No additionally cost for these functions.
-
 ```kotlin
 fun basicRange(){
     for(i in 1..10){
@@ -335,6 +333,26 @@ fun basicRange(){
     }
 }
 
+```
+<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
+
+```java
+public final void basicRange() {
+	int i = 1;
+	for(byte var2 = 10; i <= var2; ++i) {
+		Log.i("RangeTester", "i : " + i);
+	}
+}
+```
+<span style="color:gray; font-size:0.6em;">RangeTester.java</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range</span>
+
+No additionally cost for these functions.
+
+```kotlin
 fun downToRange(){
     for(i in 10 downTo 1){
         Log.i(TAG, "i : $i")
@@ -355,17 +373,8 @@ fun untilRange(){
     }
 }
 ```
+<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
 
-Equivalent in java :
-
-```java
-public final void basicRange() {
-	int i = 1;
-	for(byte var2 = 10; i <= var2; ++i) {
-		Log.i("RangeTester", "i : " + i);
-	}
-}
-```
 
 ---
 
@@ -378,8 +387,13 @@ fun stepRange(){
     }
 }
 ```
+<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
 
-Equivalent in java :
+/!\ Instantiation of 2 temporaries objects : `IntProgression` and `IntRange`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range with a cost</span>
 
 ```java
 public final void stepRange() {
@@ -404,8 +418,7 @@ public final void stepRange() {
     }
 }
 ```
-
-/!\ Instantiation of 2 temporaries objects : `IntProgression` and `IntRange`.
+<span style="color:gray; font-size:0.6em;">RangeTester.java</span>
 
 ---
 
@@ -419,8 +432,7 @@ fun oneMorelLevelRange(){
     }
 }
 ```
-
-Equivalent in java :
+<span style="color:gray; font-size:0.6em;">RangeTester.kt</span>
 
 ```java
 public final void oneMorelLevelRange() {
@@ -439,8 +451,9 @@ public final void oneMorelLevelRange() {
     }
 }
 ```
+<span style="color:gray; font-size:0.6em;">RangeTester.java</span>
 
-/!\ Temporary `IntRange`.
+/!\ Temporary `IntRange` is allocated.
 
 ---
 
@@ -453,6 +466,7 @@ fun testForEachOnRange() {
     }
 }
 ```
+<span style="color:gray; font-size:0.6em;">ForDemo.kt</span>
 
 ```java
 public final void testForEachOnRange() {
@@ -466,6 +480,7 @@ public final void testForEachOnRange() {
 	}
 }
 ```
+<span style="color:gray; font-size:0.6em;">ForDemo.java</span>
 
 /!\ Temporary `IntRange` is allocated.
 
@@ -473,7 +488,7 @@ public final void testForEachOnRange() {
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with forEach</span>
 
-`forEach` should only be used with `Iterable`, not `range`.
+`forEach` should only be used with `Iterable`, not `Range`.
 
 ```kotlin
 fun testForEachOnIterator() {
@@ -482,6 +497,7 @@ fun testForEachOnIterator() {
     }
 }
 ```
+<span style="color:gray; font-size:0.6em;">ForDemo.kt</span>
 
 ```java
 public final void testForEachOnIterator1() {
@@ -495,6 +511,7 @@ public final void testForEachOnIterator1() {
 	}
 }
 ```
+<span style="color:gray; font-size:0.6em;">ForDemo.java</span>
 
 No additionnaly cost. 
 
@@ -502,7 +519,7 @@ No additionnaly cost.
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">wit indices</span>
 
-Can loop on list indices, without additionnal cost.
+Can loop on list indices without additionnal cost.
 
 ```kotlin
 fun testForWithIndices() {
@@ -511,6 +528,7 @@ fun testForWithIndices() {
     }
 }
 ```
+<span style="color:gray; font-size:0.6em;">ForDemo.kt</span>
 
 ```java
 public final void testForWithIndices() {
@@ -520,6 +538,7 @@ public final void testForWithIndices() {
     }
 }
 ```
+<span style="color:gray; font-size:0.6em;">ForDemo.java</span>
 
 ---
 
