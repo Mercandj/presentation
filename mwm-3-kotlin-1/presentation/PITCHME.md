@@ -126,10 +126,6 @@ class NullityDemo(
 )
 ```
 
-<span style="color:gray; font-size:0.6em;">NullityDemo.kt</span>
-<br/>
-<br/>
-
 ```java
 public final class NullityDemo {
    public NullityDemo(@NotNull String nonNullString, @Nullable String nullableString) {
@@ -138,8 +134,6 @@ public final class NullityDemo {
    }
 }
 ```
-
-<span style="color:gray; font-size:0.6em;">NullityDemo.java</span>
 
 ---
 
