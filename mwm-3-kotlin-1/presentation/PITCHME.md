@@ -789,6 +789,48 @@ public final int whenWithRange(int integer) {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Anonymous</span> <span style="text-transform: none; font-size:0.8em;"> from interface</span>
+
+```kotlin
+fun useManager() {
+    executeManager(object : Manager {
+        override fun execute() {}
+    })
+}
+
+private fun executeManager(manager: Manager) {}
+
+interface Manager {
+    fun execute()
+}
+```
+
+Generate same code as the java one
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Anonymous</span> <span style="text-transform: none; font-size:0.8em;"> from class</span>
+
+```kotlin
+fun useManagerImpl() {
+    executeManagerImpl(object : ManagerImpl() {
+        override fun execute() {
+
+        }
+    })
+}
+
+private fun executeManagerImpl(managerImpl: ManagerImpl) {}
+
+open class ManagerImpl {
+    open fun execute() {}
+}
+```
+
+Generate same code as the java one
+
+---
+
 ### Demo
 
 ---
