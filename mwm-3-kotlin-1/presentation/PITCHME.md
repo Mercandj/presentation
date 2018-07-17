@@ -559,8 +559,8 @@ class Dog() : Animal(){
 ```
 
 `open` keyword requires to be able to extend from class/method.
-<br/>
 
+<br/>
 `override` language keyword required to override a method.
 
 ---
