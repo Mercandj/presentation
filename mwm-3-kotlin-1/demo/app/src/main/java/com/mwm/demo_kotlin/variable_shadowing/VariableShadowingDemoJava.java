@@ -7,7 +7,7 @@ public class VariableShadowingDemoJava {
     private final String str = "";
 
     public List<String> exampleOfVariableShadowing(String str) {
-        String str = "";
+        //String str = "";
         return new ArrayList<>();
     }
 }
