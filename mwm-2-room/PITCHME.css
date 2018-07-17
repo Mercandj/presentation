@@ -1,0 +1,9 @@
+.lang-kotlin {
+    font-size: 0.82em !important;
+    line-height: 25px !important;
+}
+
+.reveal p {
+    margin: 7px 0 !important;
+    line-height: 0.7 !important;
+}
