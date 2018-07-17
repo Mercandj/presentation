@@ -98,6 +98,24 @@ In the Android developer context:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Hello</span> <span style="text-transform: none; font-size:0.8em;">in World</span>
+<br/>
+
+```kotlin
+fun start(): String = "Hello World"
+```
+
+```java
+public final class TaskKt {
+   @NotNull
+   public static final String start() {
+      return "Hello World";
+   }
+}
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">in constructor</span>
 <br/>
 
