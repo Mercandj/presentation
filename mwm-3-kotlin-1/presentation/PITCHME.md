@@ -585,21 +585,21 @@ fun basicWhen(str: String): Int {
 ```java
 public final int basicWhen(@NotNull String str) {
    Intrinsics.checkParameterIsNotNull(str, "str");
-   switch(str.hashCode()) {
-   case -1354586272:
-      if (str.equals("coucou")) {
-         return 3;
-      }
-      break;
-   case 0:
-      if (str.equals("")) {
-         return 1;
-      }
-      break;
-   case 99:
-      if (str.equals("c")) {
-         return 2;
-      }
+   switch (str.hashCode()) {
+      case -1354586272:
+         if (str.equals("coucou")) {
+            return 3;
+         }
+         break;
+      case 0:
+         if (str.equals("")) {
+            return 1;
+         }
+         break;
+      case 99:
+         if (str.equals("c")) {
+            return 2;
+         }
    }
    return 0;
 }
@@ -622,7 +622,7 @@ fun basicWhenWithElse(str: String) = when (str) {
 public final int basicWhenWithElse(@NotNull String str) {
    Intrinsics.checkParameterIsNotNull(str, "str");
    byte var10000;
-   switch(str.hashCode()) {
+   switch (str.hashCode()) {
       case -1354586272:
          if (str.equals("coucou")) {
             var10000 = 3; return var10000;
