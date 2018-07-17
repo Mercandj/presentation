@@ -115,3 +115,12 @@ private static void throwParameterIsNullException(String paramName) {
 
 ### Demo
 
+
+---
+
+
+### Speakers
+
+- <span style="color:gray; font-size:0.5em;">Frédéric Torcheux. Github: </span> <span style="color: #00B8D4; font-size:0.5em;">bowserf</span>
+- <span style="color:gray; font-size:0.5em;">Jonathan Mercandalli. Github: </span> <span style="color: #00B8D4; font-size:0.5em;">Mercandj</span>
+
