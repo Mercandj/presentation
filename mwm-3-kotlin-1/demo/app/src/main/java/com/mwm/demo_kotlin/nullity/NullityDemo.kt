@@ -9,4 +9,12 @@ class NullityDemo(
     init {
         Log.d("", nonNullString)
     }
+
+    fun isStringEmptySafe(str: String?): Boolean {
+        return str?.length == 0
+    }
+
+    fun isStringEmpty(str: String?): Boolean {
+        return str!!.isEmpty()
+    }
 }

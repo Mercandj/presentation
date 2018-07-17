@@ -4,6 +4,8 @@
 
 <span style="color:gray; font-size:0.5em;">Github </span> <span style="color: #00B8D4; font-size:0.5em;">Mercandj/presentation</span>
 <br/>
+<span style="color:gray; font-size:0.4em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.4em;">1.2.51</span>
+<br/>
 <span style="color:gray; font-size:0.4em;">19-07-2018</span>
 
 ---
@@ -164,6 +166,75 @@ private static void throwParameterIsNullException(String paramName) {
                                          "method " + className + "." + methodName +
                                          ", parameter " + paramName);
     throw sanitizeStackTrace(exception);
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">?.</span>
+
+```kotlin
+fun isStringEmpty(str: String?): Boolean {
+    return str?.length == 0
+}
+```
+
+```java
+public final boolean isStringEmpty(@Nullable String str) {
+   boolean var10000;
+   if (str != null) {
+      if (str.length() == 0) {
+         var10000 = true;
+         return var10000;
+      }
+   }
+   var10000 = false;
+   return var10000;
+}
+```
+
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">?.</span>
+
+```kotlin
+fun isStringEmptySafe(str: String?): Boolean {
+    return str?.length == 0
+}
+```
+
+```java
+public final boolean isStringEmptySafe(@Nullable String str) {
+   boolean var10000;
+   if (str != null) {
+      if (str.length() == 0) {
+         var10000 = true;
+         return var10000;
+      }
+   }
+   var10000 = false;
+   return var10000;
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">!!.</span>
+
+```kotlin
+fun isStringEmpty(str: String?): Boolean {
+    return str!!.isEmpty()
+}
+```
+
+```java
+public final boolean isStringEmpty(@Nullable String str) {
+   if (str == null) {
+      Intrinsics.throwNpe();
+   }
+   CharSequence var2 = (CharSequence)str;
+   return var2.length() == 0;
 }
 ```
 
