@@ -215,6 +215,35 @@ public final boolean isStringEmpty(@Nullable String str) {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">!!.</span>
+
+
+```java
+public static void throwNpe() {
+    throw sanitizeStackTrace(new KotlinNullPointerException());
+}
+
+private static <T extends Throwable> T sanitizeStackTrace(T throwable) {
+    return sanitizeStackTrace(throwable, Intrinsics.class.getName());
+}
+
+static <T extends Throwable> T sanitizeStackTrace(T throwable, String classNameToDrop) {
+    StackTraceElement[] stackTrace = throwable.getStackTrace();
+    int size = stackTrace.length;
+    int lastIntrinsic = -1;
+    for (int i = 0; i < size; i++) {
+        if (classNameToDrop.equals(stackTrace[i].getClassName())) {
+            lastIntrinsic = i;
+        }
+    }
+    List<StackTraceElement> list = Arrays.asList(stackTrace).subList(lastIntrinsic + 1, size);
+    throwable.setStackTrace(list.toArray(new StackTraceElement[list.size()]));
+    return throwable;
+}
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
 
 ![Logo](mwm-3-kotlin-1/presentation/logo-5-variable-shadowing.png)
