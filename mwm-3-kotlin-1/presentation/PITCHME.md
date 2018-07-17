@@ -41,9 +41,11 @@ In the Android developer context:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.6em;">Kotlin</span> <span style="text-transform: none; font-size:0.6em;">methods</span>
+### <span style="color: #00B8D4; text-transform: none;">Kotlin</span> <span style="text-transform: none;">methods</span>
 
+<p style="height:11em;">
 ![Logo](mwm-3-kotlin-1/presentation/logo-2-kotlin-methods-1-2-51.png)
+</p>
 
 <span style="color:gray; font-size:0.4em;">Kotlin 1.2.51 (demo app) - com.getkeepsafe.dexcount</span>
 
