@@ -174,31 +174,6 @@ private static void throwParameterIsNullException(String paramName) {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">?.</span>
 
 ```kotlin
-fun isStringEmpty(str: String?): Boolean {
-    return str?.length == 0
-}
-```
-
-```java
-public final boolean isStringEmpty(@Nullable String str) {
-   boolean var10000;
-   if (str != null) {
-      if (str.length() == 0) {
-         var10000 = true;
-         return var10000;
-      }
-   }
-   var10000 = false;
-   return var10000;
-}
-```
-
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">?.</span>
-
-```kotlin
 fun isStringEmptySafe(str: String?): Boolean {
     return str?.length == 0
 }
@@ -339,7 +314,7 @@ fun basicRange(){
 ```java
 public final void basicRange() {
 	int i = 1;
-	for(byte var2 = 10; i <= var2; ++i) {
+	for (byte var2 = 10; i <= var2; ++i) {
 		Log.i("RangeTester", "i : " + i);
 	}
 }
@@ -353,21 +328,21 @@ public final void basicRange() {
 No additionally cost for these functions.
 
 ```kotlin
-fun downToRange(){
-    for(i in 10 downTo 1){
+fun downToRange() {
+    for(i in 10 downTo 1) {
         Log.i(TAG, "i : $i")
     }
 }
 
 // Equivalent to the downTo example
-fun reversedRange(){
+fun reversedRange() {
     for (i in (1..10).reversed()) {
         Log.i(TAG, "i : $i")
     }
 }
 
 // Exclude the upper value
-fun untilRange(){
+fun untilRange() {
     for(i in 0 until 10){
         Log.i(TAG, "i : $i")
     }
@@ -381,8 +356,8 @@ fun untilRange(){
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range with a cost</span>
 
 ```kotlin
-fun stepRange(){
-    for(i in 0..10 step 2){
+fun stepRange() {
+    for(i in 0..10 step 2) {
         Log.i(TAG, "i : $i")
     }
 }
@@ -409,7 +384,7 @@ public final void stepRange() {
     } else if (i < var2) {
         return;
     }
-    while(true) {
+    while (true) {
         Log.i("RangeTester", "i : " + i);
         if (i == var2) {
            return;
@@ -425,9 +400,9 @@ public final void stepRange() {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range with a cost</span>
 
 ```kotlin
-fun oneMorelLevelRange(){
+fun oneMorelLevelRange() {
     val customRange = 1..10
-    for(i in customRange){
+    for (i in customRange) {
         Log.i(TAG, "i : $i")
     }
 }
@@ -474,7 +449,7 @@ public final void testForEachOnRange() {
 	Iterable $receiver$iv = (Iterable)(new IntRange(var1, 10));
 	Iterator var2 = $receiver$iv.iterator();
 
-	while(var2.hasNext()) {
+	while (var2.hasNext()) {
 		int element$iv = ((IntIterator)var2).nextInt();
 		Log.i("", "i : " + element$iv);
 	}
@@ -504,7 +479,7 @@ public final void testForEachOnIterator1() {
 	Iterable $receiver$iv = (Iterable)list;
 	Iterator var2 = $receiver$iv.iterator();
 
-	while(var2.hasNext()) {
+	while (var2.hasNext()) {
 			Object element$iv = var2.next();
 			int it = ((Number)element$iv).intValue();
 			Log.i("", "i : " + it);
@@ -523,7 +498,7 @@ Can loop on list indices without additionnal cost.
 
 ```kotlin
 fun testForWithIndices() {
-    for(i in list.indices){
+    for (i in list.indices) {
         Log.i(TAG, "i : " + list[i])
     }
 }
@@ -533,7 +508,7 @@ fun testForWithIndices() {
 ```java
 public final void testForWithIndices() {
     int i = 0;
-    for(int var2 = ((Collection)list).size(); i < var2; ++i) {
+    for (int var2 = ((Collection)list).size(); i < var2; ++i) {
         Log.i("", "i : " + (Integer)list.get(i));
     }
 }
