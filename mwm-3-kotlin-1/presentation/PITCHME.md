@@ -521,7 +521,7 @@ No additionnaly cost.
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">wit indices</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with indices</span>
 
 Can loop on list indices without additionnal cost.
 
@@ -543,6 +543,25 @@ public final void testForWithIndices() {
 }
 ```
 <span style="color:gray; font-size:0.6em;">ForDemo.java</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extend</span> <span style="text-transform: none; font-size:0.8em;">from a parent</span>
+
+In Kotlin, class and methods are `final` by default.
+
+`open` keyword required to be able to extend from class/method :
+
+```kotlin
+open class Animal(){
+	open fun myOpenedFunction() {}
+}
+class Dog() : Animal(){
+	override fun myOpenedFunction() {}
+}
+```
+
+`override` language keyword required to override a method.
 
 ---
 
