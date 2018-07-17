@@ -1,14 +1,18 @@
 .lang-kotlin {
-    font-size: 0.7em !important;
-    line-height: 22px !important;
+    font-size: 0.64em !important;
+    line-height: 19px !important;
 }
 
 .lang-java {
-    font-size: 0.7em !important;
-    line-height: 22px !important;
+    font-size: 0.64em !important;
+    line-height: 19px !important;
 }
 
 .reveal p {
     margin: 7px 0 !important;
     line-height: 0.7 !important;
+}
+
+.reveal pre code {
+	max-height: 600px;
 }

@@ -157,6 +157,8 @@ private static void throwParameterIsNullException(String paramName) {
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
 
+![Logo](mwm-3-kotlin-1/presentation/logo-5-variable-shadowing.png)
+
 ```kotlin
 class VariableShadowingDemo(
         private val str: String = "str-constructor"
@@ -173,24 +175,6 @@ class VariableShadowingDemo(
         list.add(this.str)
         return list
     }
-}
-```
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
-
-Output:
-
-
-```kotlin
-@Test
-fun exampleOutput() {
-    val list = VariableShadowingDemo().exampleOfVariableShadowing()
-    Assert.assertEquals("str-parameter", list[0])
-    Assert.assertEquals("str-constructor", list[1])
-    Assert.assertEquals("str-local-variable", list[2])
-    Assert.assertEquals("str-constructor", list[3])
 }
 ```
 
@@ -232,6 +216,24 @@ public final class VariableShadowingDemo {
    public VariableShadowingDemo() {
       this((String)null, 1, (DefaultConstructorMarker)null);
    }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
+
+Output:
+
+
+```kotlin
+@Test
+fun exampleOutput() {
+    val list = VariableShadowingDemo().exampleOfVariableShadowing()
+    Assert.assertEquals("str-parameter", list[0])
+    Assert.assertEquals("str-constructor", list[1])
+    Assert.assertEquals("str-local-variable", list[2])
+    Assert.assertEquals("str-constructor", list[3])
 }
 ```
 
