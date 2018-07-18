@@ -2,11 +2,15 @@
 
 #### <span style="text-transform: none">Koltin - 1</span>
 
-<span style="color:gray; font-size:0.5em;">Github </span> <span style="color: #00B8D4; font-size:0.5em;">Mercandj/presentation</span>
+<span style="color:gray; font-size:0.6em;">Github </span> <span style="color: #00B8D4; font-size:0.5em;">Mercandj/presentation</span>
 <br/>
-<span style="color:gray; font-size:0.4em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.4em;">1.2.51</span>
+<span style="color:gray; font-size:0.5em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.4em;">1.2.51</span>
 <br/>
-<span style="color:gray; font-size:0.4em;">18-07-2018</span>
+<span style="color:gray; font-size:0.5em;">18-07-2018</span>
+
+- <span style="color:gray; font-size:0.4em;">Frédéric Torcheux. Github: </span> <span style="color: #00B8D4;">bowserf</span>
+- <span style="color:gray; font-size:0.4em;">Jonathan Mercandalli. Github: </span> <span style="color: #00B8D4;">Mercandj</span>
+
 
 Note:
 
@@ -1764,8 +1768,5 @@ Note:
 
 ---
 
-### Speakers
-
-- <span style="color:gray;">Frédéric Torcheux. Github: </span> <span style="color: #00B8D4;">bowserf</span>
-- <span style="color:gray;">Jonathan Mercandalli. Github: </span> <span style="color: #00B8D4;">Mercandj</span>
+### End
 
