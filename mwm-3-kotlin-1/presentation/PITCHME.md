@@ -469,6 +469,69 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Named</span> <span style="text-transform: none; font-size:0.8em;">arguments</span>
+
+```kotlin
+class EventManager {
+    fun sendEvent(eventType: String, abtest: String){
+        val message = "{\"eventType\": \"$eventType\"," +
+                " \"abtest\": \"$abtest\"}"
+        Log.i("EventManager", message)
+    }
+}
+
+val eventManager = EventManager()
+eventManager.sendEvent(abtest = "variation_a", eventType = "transaction")
+```
+
+```java
+EventManager eventManager = new EventManager();
+String var5 = "transaction";
+String var6 = "variation_a";
+eventManager.sendEvent(var5, var6);
+```
+
+Note:
+
+- Positional arguments should be placed before named argumments.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Default</span> <span style="text-transform: none; font-size:0.8em;">parameter in function</span>
+
+```kotlin
+class EventManager {
+    fun sendEvent(eventType: String? = null, abtest: String){
+        val message = "{\"eventType\": \"$eventType\", \"abtest\": \"$abtest\"}"
+        Log.i("EventManager", message)
+    }
+}
+```
+
+```java
+public final class EventManager {
+   public final void sendEvent(@Nullable String eventType, @NotNull String abtest) {
+      Intrinsics.checkParameterIsNotNull(abtest, "abtest");
+      String message = "{\"eventType\": \"" + eventType + "\"," + " \"abtest\": \"" + abtest + "\"}";
+      Log.i("EventManager", message);
+   }
+   public static void sendEvent$default(EventManager var0, String var1, String var2, int var3, Object var4) {
+      if ((var3 & 1) != 0) {
+         var1 = (String)null;
+      }
+      var0.sendEvent(var1, var2);
+   }
+}
+```
+
+Note:
+
+- A static method in java is generated if a function has default parameter.
+- Override a method with a default parameter will use the same parameter as the one in the base method. It should be omitted from the signature of the overriding method.
+- A default parameter can be use before non default parameter in the prototytpe if they are named.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">on a range</span>
 
 ```kotlin
