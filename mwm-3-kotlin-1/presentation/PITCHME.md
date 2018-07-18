@@ -217,7 +217,6 @@ Note:
 - Create missing Java class
 - Will throw
 
-
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lateinit</span> <span style="text-transform: none; font-size:0.8em;"> Var</span>
@@ -285,7 +284,6 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lateinit</span> <span style="text-transform: none; font-size:0.8em;"> Var</span>
 
-
 ```java
 final class ValVarTester$init$1 extends MutablePropertyReference0 {
    ValVarTester$init$1(ValVarTester var1) {
@@ -313,6 +311,28 @@ final class ValVarTester$init$1 extends MutablePropertyReference0 {
 Note:
 
 - Extra class created, I don't know why
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lateinit</span> <span style="text-transform: none; font-size:0.8em;"> Var in Activity</span>
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var textView: TextView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        textView = findViewById(R.id.activity_main_text_view)
+    }
+}
+```
+
+Note:
+
+- Good because crash on multiple affectation
+- Good because instead of `TextView?` that require `!!.` or `?.` only `.`.
 
 ---
 
