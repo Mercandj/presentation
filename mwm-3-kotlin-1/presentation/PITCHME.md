@@ -160,9 +160,11 @@ Note:
 
 ---
 
-Let's code
+### Let's code
 
 Note:
+
+After this slide, only code decompiled
 
 - Kotlin similar to Java
 - Type after the **argument**
