@@ -1642,7 +1642,15 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Interoperability</span> <span style="text-transform: none; font-size:0.8em;">with Java</span>
+### Java Interoperability
+
+Note:
+
+- Pretty easy to call Kotlin code from Java but there are some fine details.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Static</span> <span style="text-transform: none; font-size:0.8em;">methods and fields</span>
 
 ```kotlin
 class Interoperability {
@@ -1690,7 +1698,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Interoperability</span> <span style="text-transform: none; font-size:0.8em;">with Java</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Static</span> <span style="text-transform: none; font-size:0.8em;">methods and fields</span>
 
 ```java
 Interoperability.myStaticFunctionInJava(); // works fine
@@ -1698,6 +1706,37 @@ Interoperability.myNotStaticFunctionInJava(); // error
 Interoperability.Companion.myNotStaticFunctionInJava(); // works, a call through the singleton instance
 Interoperability.Companion.myStaticFunctionInJava(); // works too
 ```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Throw</span> <span style="text-transform: none; font-size:0.8em;">exception</span>
+
+```kotlin
+class ThrowException {
+    fun myMethodThrowException(){
+        throw IOException("I throw an exception which can't be catch by java")
+    }
+    @Throws(IOException::class)
+    fun myMethodThrowExceptionCatchableFromJava(){
+        throw IOException("I throw an exception which works with Java")
+    }
+}
+```
+```java
+public final class ThrowException {
+   public final void myMethodThrowException() {
+      throw (Throwable)(new IOException("I throw an exception which can't be catch by java"));
+   }
+
+   public final void myMethodThrowExceptionCatchableFromJava() throws IOException {
+      throw (Throwable)(new IOException("I throw an exception which works with Java"));
+   }
+}
+```
+
+Note:
+
+- Can't catch exception for `myMethodThrowException` method in Java because methods doesn't indicate that this exception can be throw.
 
 ---
 
