@@ -184,6 +184,138 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Val</span> <span style="text-transform: none; font-size:0.8em;"> Var</span>
+
+```kotlin
+fun valVar(): Int {
+    val immutableInt1 = 1
+    val immutableInt2: Int = 2
+    var mutableInt1 = 3
+    mutableInt1 = 4
+    var mutableInt2: Int = 5
+    var mutableInt3: Int? = null
+    return immutableInt1 + immutableInt2 + mutableInt1 + 
+       mutableInt2 + mutableInt3!! // Will throw
+}
+```
+
+```java
+public final int valVar() {
+   int immutableInt1 = 1; int immutableInt2 = 2;
+   int mutableInt1 = true; int mutableInt1 = 4;
+   int mutableInt2 = 5; Integer mutableInt3 = (Integer) null;
+   int var10000 = immutableInt1 + immutableInt2 + mutableInt1 + mutableInt2;
+   Intrinsics.throwNpe();
+   return var10000 + mutableInt3;
+}
+```
+
+Note:
+
+- IDE advice here to replace `var`
+- Tips: We had to do computation to avoid boolean simplification
+- Create missing Java class
+- Will throw
+
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lateinit</span> <span style="text-transform: none; font-size:0.8em;"> Var</span>
+
+```kotlin
+class ValVarTester {
+    private lateinit var lateField: String
+
+    fun init() {
+        if (!::lateField.isInitialized) {
+            lateField = "42"
+        }
+    }
+    
+    fun get(): String { return lateField }
+}
+```
+
+```java
+public final void init() {
+   if (lateField == null) { lateField = "42"; }
+}
+
+@NotNull
+public final String get() {
+   String var10000 = lateField;
+   if (lateField == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("lateField");
+   }
+   return var10000;
+}
+```
+
+Note:
+
+- Lazy init
+- Throw
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lateinit</span> <span style="text-transform: none; font-size:0.8em;"> Var</span>
+
+```java
+// $FF: synthetic method
+@NotNull
+public static final String access$getLateField$p(ValVarTester $this) {
+   String var10001 = lateField;
+   if (lateField == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("lateField");
+   }
+   return var10001;
+}
+
+// $FF: synthetic method
+public static final void access$setLateField$p(ValVarTester $this, @NotNull String var1) {
+   lateField = var1;
+}
+```
+
+Note:
+
+- Added in the class too
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lateinit</span> <span style="text-transform: none; font-size:0.8em;"> Var</span>
+
+
+```java
+final class ValVarTester$init$1 extends MutablePropertyReference0 {
+   ValVarTester$init$1(ValVarTester var1) {
+      super(var1);
+   }
+   public String getName() {
+      return "lateField";
+   }
+   public String getSignature() {
+      return "getLateField()Ljava/lang/String;";
+   }
+   public KDeclarationContainer getOwner() {
+      return Reflection.getOrCreateKotlinClass(ValVarTester.class);
+   }
+   @Nullable
+   public Object get() {
+      return ValVarTester.access$getLateField$p((ValVarTester) this.receiver);
+   }
+   public void set(@Nullable Object value) {
+      ValVarTester.access$setLateField$p((ValVarTester) this.receiver, (String) value);
+   }
+}
+```
+
+Note:
+
+- Extra class created, I don't know why
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Class</span> <span style="text-transform: none; font-size:0.8em;">and constructor</span>
 
 ```kotlin
