@@ -473,7 +473,7 @@ Note:
 
 ```kotlin
 class EventManager {
-    fun sendEvent(eventType: String, abtest: String){
+    fun sendEvent(eventType: String, abtest: String) {
         val message = "{\"eventType\": \"$eventType\"," +
                 " \"abtest\": \"$abtest\"}"
         Log.i("EventManager", message)
@@ -501,7 +501,7 @@ Note:
 
 ```kotlin
 class EventManager {
-    fun sendEvent(eventType: String? = null, abtest: String){
+    fun sendEvent(eventType: String? = null, abtest: String) {
         val message = "{\"eventType\": \"$eventType\", \"abtest\": \"$abtest\"}"
         Log.i("EventManager", message)
     }
@@ -517,7 +517,7 @@ public final class EventManager {
    }
    public static void sendEvent$default(EventManager var0, String var1, String var2, int var3, Object var4) {
       if ((var3 & 1) != 0) {
-         var1 = (String)null;
+         var1 = (String) null;
       }
       var0.sendEvent(var1, var2);
    }
@@ -939,9 +939,7 @@ Generate same code as the java one
 ```kotlin
 fun useManagerImpl() {
     executeManagerImpl(object : ManagerImpl() {
-        override fun execute() {
-
-        }
+        override fun execute() {}
     })
 }
 
