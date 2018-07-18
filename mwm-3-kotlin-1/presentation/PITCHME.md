@@ -835,11 +835,33 @@ Generate same code as the java one
 
 ![Logo](mwm-3-kotlin-1/presentation/logo-6-destructuring.png)
 
+`.val` autocompletion
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
+
+```kotlin
+fun destructuring(): String {
+    val (id, videosIds) = create()
+    if (videosIds.isEmpty()) {
+        throw IllegalStateException()
+    }
+    return id
+}
+```
+
 ```java
-public final void destructuring() {
+@NotNull
+public final String destructuring() {
    Destructuring.Pojo var3 = this.create();
-   String var1 = var3.component1();
+   String id = var3.component1();
    List videosIds = var3.component2();
+   if (videosIds.isEmpty()) {
+      throw (Throwable) (new IllegalStateException());
+   } else {
+      return id;
+   }
 }
 ```
 
