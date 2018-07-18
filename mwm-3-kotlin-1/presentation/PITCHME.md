@@ -1642,6 +1642,65 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Interoperability</span> <span style="text-transform: none; font-size:0.8em;">with Java</span>
+
+```kotlin
+class Interoperability {
+    companion object {
+        @JvmField val myVar = 5
+        @JvmStatic fun myStaticFunctionInJava() {
+            Log.i("OtherActivity", "My static function in java in Interoperability")
+        }
+        fun myNotStaticFunctionInJava() {
+            Log.i("OtherActivity", "My not static function in java in Interoperability")
+        }
+    }
+}
+```
+```java
+public final class Interoperability {
+   @JvmField
+   public static final int myVar = 5;
+   public static final Interoperability.Companion Companion = new Interoperability.Companion((DefaultConstructorMarker)null);
+   @JvmStatic
+   public static final void myStaticFunctionInJava() {
+      Companion.myStaticFunctionInJava();
+   }
+   public static final class Companion {
+      @JvmStatic
+      public final void myStaticFunctionInJava() {
+         Log.i("OtherActivity", "My static function in java in Interoperability");
+      }
+      public final void myNotStaticFunctionInJava() {
+         Log.i("OtherActivity", "My not static function in java in Interoperability");
+      }
+      private Companion() {}
+      public Companion(DefaultConstructorMarker $constructor_marker) { this(); }
+   }
+}
+```
+
+Note:
+
+- `myVar` is private by default, event if we put `public` in front of the variable declaration.
+- Need to use `@JvmField` to set it `public`.
+- Can also use `const` or `lateinit`.
+- `@JvmStatic` above a function allow to directly call this method without passing by companion object.
+- Call `Interoperability.myStaticFunctionInJava()` instead of `Interoperability.Companion.myStaticFunctionInJava()`
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Interoperability</span> <span style="text-transform: none; font-size:0.8em;">with Java</span>
+
+```java
+Interoperability.myStaticFunctionInJava(); // works fine
+Interoperability.myNotStaticFunctionInJava(); // error
+Interoperability.Companion.myNotStaticFunctionInJava(); // works, a call through the singleton instance
+Interoperability.Companion.myStaticFunctionInJava(); // works too
+```
+
+---
+
 
 ### Speakers
 
