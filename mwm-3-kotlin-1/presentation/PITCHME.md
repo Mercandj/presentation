@@ -1642,6 +1642,29 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Any</span> <span style="text-transform: none; font-size:0.8em;">with list</span>
+
+```kotlin
+fun anyList(): List<Any> {
+    val list = ArrayList<Any>(1)
+    list.add("Coucou")
+    return list
+}
+```
+```java
+@NotNull
+public final List anyList() {
+   ArrayList list = new ArrayList(1);
+   list.add("Coucou");
+   return (List)list;
+}
+```
+
+Note:
+
+- Any replace Java `Object`
+
+---
 
 ### Speakers
 
