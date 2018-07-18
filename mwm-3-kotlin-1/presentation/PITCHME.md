@@ -127,6 +127,13 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">learning</span>
+
+- IntelliJ IDEA + EduTools plugin + Kotlin Koans course
+- Ctrl + Alt + Shift + K
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
 
 ![Logo](mwm-3-kotlin-1/presentation/logo-4-decompiler.png)
