@@ -1,6 +1,6 @@
 ![Logo](mwm-3-kotlin-1/presentation/logo-1.png)
 
-#### <span style="text-transform: none">Koltin - 1</span>
+#### <span style="text-transform: none">Kotlin - 1</span>
 
 <span style="color:gray; font-size:0.6em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.6em;">1.2.51</span>
 <br/>
