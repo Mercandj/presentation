@@ -6,7 +6,7 @@
 <br/>
 <span style="color:gray; font-size:0.4em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.4em;">1.2.51</span>
 <br/>
-<span style="color:gray; font-size:0.4em;">19-07-2018</span>
+<span style="color:gray; font-size:0.4em;">18-07-2018</span>
 
 Note:
 
