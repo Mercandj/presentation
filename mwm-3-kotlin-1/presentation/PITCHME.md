@@ -312,8 +312,8 @@ public final boolean isStringEmptySafe(@Nullable String str) {
 
 Note:
 
-- Add extrat `if`
-- Add extrat variable
+- Add extra `if`
+- Add extra variable
 
 ---
 
@@ -844,6 +844,11 @@ public final int basicWhen(@NotNull String str) {
 }
 ```
 
+Note:
+
+- No extra cost
+- Reorder conditions: check big string first
+
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;">basic with else</span>
@@ -880,6 +885,10 @@ public final int basicWhenWithElse(@NotNull String str) {
    var10000 = 0; return var10000;
 }
 ```
+
+Note:
+
+- Extra local variable
 
 ---
 
