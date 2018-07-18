@@ -1400,6 +1400,10 @@ Java_com_mwm_demo_1kotlin_jni_BridgeJni_getString(
 }
 ```
 
+Note:
+
+- Like Java, package with `_` should have `1` before
+
 ---
 
 
