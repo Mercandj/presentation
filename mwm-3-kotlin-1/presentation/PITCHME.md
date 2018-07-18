@@ -447,8 +447,8 @@ public final class SamplePack {
 ```
 
 Note:
-- The primary constructor needs to have at least one parameter
-- All primary constructor parameters need to be marked as val or var;
+- The primary constructor needs to have at least one parameter.
+- All primary constructor parameters need to be marked as val or var.
 
 ---
 
@@ -476,10 +476,10 @@ public boolean equals(Object var1) {
 
 Note:
 
-- Compiler only use porperties defines in the primary constructor to generate functions.
+- Compiler only use properties define in the primary constructor to generate functions.
+
 
 ---
-
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Named</span> <span style="text-transform: none; font-size:0.8em;">arguments</span>
 
 ```kotlin
@@ -730,7 +730,7 @@ No additional cost.
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Loop</span> <span style="text-transform: none; font-size:0.8em;">with indices</span>
 
-Can loop on list indices without additional cost.
+Can loop on list of indices without additional cost.
 
 ```kotlin
 fun testForWithIndices() {
@@ -765,10 +765,10 @@ class Dog() : Animal(){
 }
 ```
 
-`open` keyword requires to be able to extend from class/method.
+`open` keyword is required to be able to extend from class/method.
 
 <br/>
-`override` language keyword required to override a method.
+`override` language keyword is required to override a method.
 
 ---
 
@@ -1025,6 +1025,60 @@ public final class DateUtils {
    static {
       DateUtils var0 = new DateUtils();
       INSTANCE = var0;
+   }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Companion object</span> <span style="text-transform: none; font-size:0.8em;">of class</span>
+
+```kotlin
+class OtherActivity : Activity() {
+    
+    companion object {
+        private const val TAG = "OtherActivity"
+        fun startActivity(context: Context){
+            val intent = Intent(context, OtherActivity::class.java)
+            if(context !is Activity){
+                intent.flags = FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK
+            }
+            context.startActivity(intent)
+        }
+    }
+}
+```
+
+Note
+
+- In Kotlin, we don't have to write the companion object name.
+- `startActivity` method is called by calling `OtherActivity.Companion.startActivity` from Java.
+- `Companion` is the default name in case companion object doesn't have one.
+- We can write `companion object Fabric` and call method with `OtherActivity.Fabric.startActivity` in Java.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Companion object</span> <span style="text-transform: none; font-size:0.8em;">of class</span>
+
+```java
+public final class OtherActivity extends Activity {
+   private static final String TAG = "OtherActivity";
+   public static final OtherActivity.Companion Companion = new OtherActivity.Companion((DefaultConstructorMarker)null);
+   public static final class Companion {
+      public final void startActivity(@NotNull Context context) {
+         Intrinsics.checkParameterIsNotNull(context, "context");
+         Intent intent = new Intent(context, OtherActivity.Companion.getClass());
+         if (!(context instanceof Activity)) {
+            intent.setFlags(0);
+         }
+         context.startActivity(intent);
+      }
+
+      private Companion() {}
+
+      public Companion(DefaultConstructorMarker $constructor_marker) {
+         this();
+      }
    }
 }
 ```
