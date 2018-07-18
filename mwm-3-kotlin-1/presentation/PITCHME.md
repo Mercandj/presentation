@@ -76,8 +76,9 @@ Note:
 
 Note:
 
-- We count the method of the last Kotlin version
+- We count the method of the last Kotlin version 1.2.51
 - Proportion in an empty app that have the support lib
+- Demo app available in Mercandj/presentation
 
 ---
 
@@ -114,17 +115,27 @@ Note:
 836   183  kotlin.text
 ```
 
+Note:
+
+- Collections 1/3 of all methods
+
 ---
 
-### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
+### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">size</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-3-decompiler.png)
+![Logo](mwm-3-kotlin-1/presentation/logo-3-kotlin-size.png)
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
 
 ![Logo](mwm-3-kotlin-1/presentation/logo-4-decompiler.png)
+
+---
+
+### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
+
+![Logo](mwm-3-kotlin-1/presentation/logo-5-decompiler.png)
 
 ---
 
@@ -325,7 +336,7 @@ static <T extends Throwable> T sanitizeStackTrace(T throwable, String classNameT
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-5-variable-shadowing.png)
+![Logo](mwm-3-kotlin-1/presentation/logo-6-variable-shadowing.png)
 
 ```kotlin
 class VariableShadowingDemo(
@@ -956,7 +967,7 @@ Generate same code as the java one
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-6-destructuring.png)
+![Logo](mwm-3-kotlin-1/presentation/logo-7-destructuring.png)
 
 `.val` autocompletion
 
