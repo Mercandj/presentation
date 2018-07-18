@@ -132,17 +132,30 @@ Note:
 - IntelliJ + EduTools plugin + Koans course
 - Ctrl + Alt + Shift + K
 
+Note:
+
+- Learn with build in courses
+- Convert Java to Kotlin
+
 ---
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
 
 ![Logo](mwm-3-kotlin-1/presentation/logo-4-decompiler.png)
 
+Note:
+
+- Open decompiler Kotlin -> Java
+
 ---
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
 
 ![Logo](mwm-3-kotlin-1/presentation/logo-5-decompiler.png)
+
+Note:
+
+- Steps from Kotlin to Java
 
 ---
 
@@ -161,6 +174,12 @@ public final class TaskKt {
    }
 }
 ```
+
+Note:
+
+- Simple decompile
+- Java Top / Kotlin bottom
+- Create missing Java class
 
 ---
 
@@ -289,6 +308,11 @@ public final boolean isStringEmptySafe(@Nullable String str) {
    return var10000;
 }
 ```
+
+Note:
+
+- Add extrat `if`
+- Add extrat variable
 
 ---
 
