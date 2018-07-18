@@ -1380,61 +1380,6 @@ public final class OtherActivity extends Activity {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin</span> <span style="text-transform: none; font-size:0.8em;">Jni</span>
-
-```kotlin
-class BridgeJni {
-    companion object {
-        @JvmStatic
-        external fun getString(): String
-
-        init { System.loadLibrary("cpp-api") }
-    }
-}
-```
-
-```java
-public final class BridgeJni {
-   public static final BridgeJni.Companion Companion = new BridgeJni.Companion(
-           (DefaultConstructorMarker) null);
-   static { System.loadLibrary("cpp-api"); }
-
-   @JvmStatic @NotNull
-   public static final native String getString();
-
-   public static final class Companion {
-      @JvmStatic @NotNull
-      public final String getString() { return BridgeJni.getString(); }
-
-      private Companion() {}
-
-      public Companion(DefaultConstructorMarker $constructor_marker) { this(); }
-   }
-}
-```
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin</span> <span style="text-transform: none; font-size:0.8em;">Jni</span>
-
-```cpp
-#include <jni.h>
-
-extern "C"
-JNIEXPORT jstring JNICALL
-Java_com_mwm_demo_1kotlin_jni_BridgeJni_getString(
-        JNIEnv *env,
-        jclass /* this */) {
-    return env->NewStringUTF("Hello");
-}
-```
-
-Note:
-
-- Like Java, package with `_` should have `1` before
-
----
-
 ### Scope functions
 
 Note:
@@ -1761,6 +1706,64 @@ public final class ThrowException {
 Note:
 
 - Can't catch exception for `myMethodThrowException` method in Java because methods doesn't indicate that this exception can be throw.
+
+---
+
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin</span> <span style="text-transform: none; font-size:0.8em;">Jni</span>
+
+```kotlin
+class BridgeJni {
+    companion object {
+        @JvmStatic
+        external fun getString(): String
+
+        init { System.loadLibrary("cpp-api") }
+    }
+}
+```
+
+```java
+public final class BridgeJni {
+   public static final BridgeJni.Companion Companion = new BridgeJni.Companion(
+           (DefaultConstructorMarker) null);
+   static { System.loadLibrary("cpp-api"); }
+
+   @JvmStatic @NotNull
+   public static final native String getString();
+
+   public static final class Companion {
+      @JvmStatic @NotNull
+      public final String getString() { return BridgeJni.getString(); }
+
+      private Companion() {}
+
+      public Companion(DefaultConstructorMarker $constructor_marker) { this(); }
+   }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin</span> <span style="text-transform: none; font-size:0.8em;">Jni</span>
+
+```cpp
+#include <jni.h>
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_mwm_demo_1kotlin_jni_BridgeJni_getString(
+        JNIEnv *env,
+        jclass /* this */) {
+    return env->NewStringUTF("Hello");
+}
+```
+
+Note:
+
+- Like Java, package with `_` should have `1` before
 
 ---
 
