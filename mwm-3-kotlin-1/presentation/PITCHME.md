@@ -1415,6 +1415,6 @@ Java_com_mwm_demo_1kotlin_jni_BridgeJni_getString(
 
 ### Speakers
 
-- <span style="color:gray;">Frédéric Torcheux. Github: </span> <span style="color: #00B8D4; font-size:0.5em;">bowserf</span>
-- <span style="color:gray;">Jonathan Mercandalli. Github: </span> <span style="color: #00B8D4; font-size:0.5em;">Mercandj</span>
+- <span style="color:gray;">Frédéric Torcheux. Github: </span> <span style="color: #00B8D4;">bowserf</span>
+- <span style="color:gray;">Jonathan Mercandalli. Github: </span> <span style="color: #00B8D4;">Mercandj</span>
 
