@@ -1057,19 +1057,13 @@ public final int basicWhen(@NotNull String str) {
    Intrinsics.checkParameterIsNotNull(str, "str");
    switch (str.hashCode()) {
       case -1354586272:
-         if (str.equals("coucou")) {
-            return 3;
-         }
+         if (str.equals("coucou")) { return 3; }
          break;
       case 0:
-         if (str.equals("")) {
-            return 1;
-         }
+         if (str.equals("")) { return 1; }
          break;
       case 99:
-         if (str.equals("c")) {
-            return 2;
-         }
+         if (str.equals("c")) { return 2; }
    }
    return 0;
 }
@@ -1182,14 +1176,10 @@ public final int whenWithRange(int integer) {
       var10000 = 1;
    } else if (integer != 2 && integer != 3 && integer != 4) {
      if (6 <= integer) {
-        if (10 >= integer) {
-           var10000 = 3; return var10000;
-        }
+        if (10 >= integer) { var10000 = 3; return var10000; }
      }
      if (30 <= integer) {
-        if (50 >= integer) {
-           var10000 = 0; return var10000;
-        }
+        if (50 >= integer) { var10000 = 0; return var10000; }
      }
      var10000 = 4;
    } else {
@@ -1316,7 +1306,7 @@ class OtherActivity : Activity() {
         private const val TAG = "OtherActivity"
         fun startActivity(context: Context){
             val intent = Intent(context, OtherActivity::class.java)
-            if(context !is Activity){
+            if (context !is Activity){
                 intent.flags = FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK
             }
             context.startActivity(intent)
@@ -1325,7 +1315,7 @@ class OtherActivity : Activity() {
 }
 ```
 
-Note
+Note:
 
 - In Kotlin, we don't have to write the companion object name.
 - `startActivity` method is called by calling `OtherActivity.Companion.startActivity` from Java.
