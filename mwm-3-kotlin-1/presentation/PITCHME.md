@@ -129,7 +129,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">learning</span>
 
-- IntelliJ IDEA + EduTools plugin + Kotlin Koans course
+- IntelliJ + EduTools plugin + Koans course
 - Ctrl + Alt + Shift + K
 
 ---
