@@ -1700,8 +1700,7 @@ public final class Interoperability {
    public static final Interoperability.Companion Companion = new Interoperability.Companion((DefaultConstructorMarker)null);
    @JvmStatic public static final void myStaticFunctionInJava() { Companion.myStaticFunctionInJava(); }
    public static final class Companion {
-      @JvmStatic
-      public final void myStaticFunctionInJava() {
+      @JvmStatic public final void myStaticFunctionInJava() {
          Log.i("OtherActivity", "My static function in java in Interoperability");
       }
       public final void myNotStaticFunctionInJava() {
