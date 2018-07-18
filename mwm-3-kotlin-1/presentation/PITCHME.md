@@ -1402,6 +1402,218 @@ Java_com_mwm_demo_1kotlin_jni_BridgeJni_getString(
 
 ---
 
+### Scope functions
+
+Note:
+
+- There are just some fine details between each scope functions.
+- Functions which help to structure the code by creating blocks of logics.
+- `apply` and `also` return the caller.
+- `run` and `let` return the block result.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span> <span style="text-transform: none; font-size:0.8em;">scope function</span>
+
+```kotlin
+private var a = 5
+fun testRun() {
+    run {
+        val a = 10
+        Log.i("ScopeDemo", "a : $a")
+        Log.i("ScopeDemo", "this:a : " + this.a)
+    }
+}
+```
+
+```java
+private int a;
+public final void testRun() {
+    ScopeDemo $receiver = (ScopeDemo)this;
+    int a = 10;
+    Log.i("ScopeDemo", "a : " + a);
+    Log.i("ScopeDemo", "this:a : " + $receiver.a);
+}
+```
+
+Note:
+
+- Create a small scope with `run`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span> <span style="text-transform: none; font-size:0.8em;">scope function</span>
+
+```kotlin
+inline fun <T, R> T.run(block: T.() -> R): R
+```
+```kotlin
+private var view = View(context)
+fun testViewRun(){
+    view.run {
+        alpha = 0.5f
+        isEnabled = true
+    }
+}
+```
+
+```java
+private View view;
+public final void testViewRun() {
+    View var1 = this.view;
+    var1.setAlpha(0.5F);
+    var1.setEnabled(true);
+}
+```
+
+Note:
+
+- The caller `view` is accessible with `this`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span> <span style="text-transform: none; font-size:0.8em;">scope function</span>
+
+```kotlin
+fun testRunReturn() : Notification{
+    return Notification.Builder(context).run {
+		setContentTitle("Title")
+		setContentText("Message")
+		build()
+	}
+}
+```
+
+```java
+@NotNull
+public final Notification testRunReturn() {
+    Builder var1 = new Builder(this.context);
+    var1.setContentTitle((CharSequence)"Title");
+    var1.setContentText((CharSequence)"Message");
+    Notification var10000 = var1.build();
+    Intrinsics.checkExpressionValueIsNotNull(var10000, "build()");
+    Intrinsics.checkExpressionValueIsNotNull(var10000, "");
+    return var10000;
+}
+```
+
+Note:
+
+- Return the block result.
+- The caller `Notification.Builder` is accessible with `this`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Let</span> <span style="text-transform: none; font-size:0.8em;">scope function</span>
+
+```kotlin
+inline fun <T, R> T.let(block: (T) -> R): R
+```
+```kotlin
+fun testLetReturn() : Notification?{
+    return notifbuilder?.let {
+        it.setContentTitle("Title")
+        it.setContentText("Message")
+        it.build()
+    }
+}
+```
+```java
+@Nullable
+public final Notification testLet1Return() {
+    Builder var10000 = this.notifbuilder;
+    Notification var4;
+    if (this.notifbuilder != null) {
+        Builder var1 = var10000;
+        var1.setContentTitle((CharSequence)"Title");
+        var1.setContentText((CharSequence)"Message");
+        var4 = var1.build();
+    } else {
+        var4 = null;
+    }
+    return var4;
+}
+```
+
+Note:
+
+- `let` allows on a nullable variable to create a scope where the variable is not null.
+- Return the block result.
+- The caller `notifbuilder` is accessible with `it`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Apply and also</span> <span style="text-transform: none; font-size:0.8em;">scope function</span>
+
+```kotlin
+inline fun <T> T.apply(block: T.() -> Unit): T
+inline fun <T> T.also(block: (T) -> Unit): T
+```
+```kotlin
+fun testApply(){
+    val paint = Paint().apply {
+        color = Color.MAGENTA
+        style = Paint.Style.STROKE
+    }
+}
+fun testAlso(){
+    val paint = Paint().also {
+        it.color = Color.MAGENTA
+        it.style = Paint.Style.STROKE
+    }
+}
+```
+```java
+// both methods generate same java code
+public final void testApply() {
+    Paint var2 = new Paint();
+    var2.setColor(-65281);
+    var2.setStyle(Style.STROKE);
+}
+```
+
+Note:
+
+- `apply` and `also` return the caller.
+- The caller `Paint` is accessible with `this` for `apply`.
+- The caller `Paint` is accessible with `it` for `also`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">With</span> <span style="text-transform: none; font-size:0.8em;">scope function</span>
+
+```kotlin
+inline fun <T, R> with(receiver: T, block: T.() -> R): R
+```
+```kotlin
+fun testWith(){
+    with(view){
+        this.alpha = 0.5f
+        isEnabled = true
+    }
+}
+```
+```java
+public final void testWith() {
+    View var1 = this.view;
+    var1.setAlpha(0.5F);
+    var1.setEnabled(true);
+}
+```
+
+Note:
+
+- `with` is not an extension function.
+- The caller `view` is accessible with `this`.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Scope</span> <span style="text-transform: none; font-size:0.8em;">function summary</span>
+
+![Logo](mwm-3-kotlin-1/presentation/scope_function.png)
+
+---
+
 
 ### Speakers
 
