@@ -156,7 +156,18 @@ Note:
 Note:
 
 - Steps from Kotlin to Java
-- Kotlin cursor select bytecode (correspondance)
+- Kotlin cursor select bytecode (correspondence)
+
+---
+
+Let's code
+
+Note:
+
+- Kotlin similar to Java
+- Type after the **argument**
+- Type **return** at the end of the signature
+- Strongly type/nullity
 
 ---
 
@@ -166,13 +177,24 @@ Note:
 ```kotlin
 fun start(): String = "Hello World"
 ```
-
 ```java
-public final class TaskKt {
+public final class HelloWoldKt {
    @NotNull
    public static final String start() {
       return "Hello World";
    }
+}
+```
+
+```kotlin
+fun printTwice(message: String) {
+    Log.d("jm/debug", "$message " + message)
+}
+```
+```java   
+public static final void printTwice(@NotNull String message) {
+   Intrinsics.checkParameterIsNotNull(message, "message");
+   Log.d("jm/debug", message + ' ' + message);
 }
 ```
 
@@ -1529,8 +1551,8 @@ public final Notification testLet1Return() {
     Notification var4;
     if (this.notifbuilder != null) {
         Builder var1 = var10000;
-        var1.setContentTitle((CharSequence)"Title");
-        var1.setContentText((CharSequence)"Message");
+        var1.setContentTitle((CharSequence) "Title");
+        var1.setContentText((CharSequence) "Message");
         var4 = var1.build();
     } else {
         var4 = null;
