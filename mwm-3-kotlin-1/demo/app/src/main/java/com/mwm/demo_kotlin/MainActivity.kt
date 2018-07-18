@@ -10,6 +10,7 @@ import com.mwm.demo_kotlin.`object`.OtherActivity
 import com.mwm.demo_kotlin.default_parameter.EventManager
 import com.mwm.demo_kotlin.inheritance.Labrador
 import com.mwm.demo_kotlin.jni.BridgeJni
+import com.mwm.demo_lib.DemoLibrary
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             OtherActivity.startActivity(this)
         }
 
-        val jniString = BridgeJni.getString()
-        Log.d("MainActivity", jniString)
+        Log.d("MainActivity", BridgeJni.getString())
+        Log.d("MainActivity", DemoLibrary.getString())
     }
 }

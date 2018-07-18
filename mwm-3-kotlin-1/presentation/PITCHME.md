@@ -1671,6 +1671,7 @@ Note:
 
 ---
 
+<<<<<<< HEAD
 ### Java Interoperability
 
 Note:
@@ -1762,6 +1763,16 @@ public final class ThrowException {
 Note:
 
 - Can't catch exception for `myMethodThrowException` method in Java because methods doesn't indicate that this exception can be throw.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin</span> <span style="text-transform: none; font-size:0.8em;">Lib & Modules</span>
+
+![Logo](mwm-3-kotlin-1/presentation/logo-8-lib.png)
+
+Note:
+
+- Not a problem to ship lib build with a different kotlin version (only classes in aar)
 
 ---
 
