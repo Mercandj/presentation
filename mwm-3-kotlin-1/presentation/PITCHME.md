@@ -1695,13 +1695,9 @@ class Interoperability {
 ```
 ```java
 public final class Interoperability {
-   @JvmField
-   public static final int myVar = 5;
+   @JvmField public static final int myVar = 5;
    public static final Interoperability.Companion Companion = new Interoperability.Companion((DefaultConstructorMarker)null);
-   @JvmStatic
-   public static final void myStaticFunctionInJava() {
-      Companion.myStaticFunctionInJava();
-   }
+   @JvmStatic public static final void myStaticFunctionInJava() { Companion.myStaticFunctionInJava(); }
    public static final class Companion {
       @JvmStatic
       public final void myStaticFunctionInJava() {
