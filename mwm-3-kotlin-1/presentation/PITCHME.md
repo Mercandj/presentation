@@ -367,6 +367,85 @@ public final class MyClass {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Custom</span> <span style="text-transform: none; font-size:0.8em;">View</span>
+
+```kotlin
+class CustomView @JvmOverloads constructor(
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
+
+    private val textView: TextView
+
+    init {
+        View.inflate(context, R.layout.view_custom, this)
+        textView = findViewById(R.id.view_custom_text_view)
+    }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Custom</span> <span style="text-transform: none; font-size:0.8em;">View</span>
+
+```java
+public final class CustomView extends FrameLayout {
+   private final TextView textView;
+   private HashMap _$_findViewCache;
+
+   @JvmOverloads
+   public CustomView(@NotNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+      Intrinsics.checkParameterIsNotNull(context, "context");
+      super(context, attrs, defStyleAttr);
+      View.inflate(context, 2131296294, (ViewGroup) this);
+      View var10001 = this.findViewById(2131165323);
+      Intrinsics.checkExpressionValueIsNotNull(var10001, "findViewById(R.id.view_custom_text_view)");
+      this.textView = (TextView) var10001;
+   }
+
+   // $FF: synthetic method
+   @JvmOverloads
+   public CustomView(Context var1, AttributeSet var2, int var3, int var4, DefaultConstructorMarker var5) {
+      if ((var4 & 2) != 0) {
+         var2 = (AttributeSet) null;
+      }
+      if ((var4 & 4) != 0) {
+         var3 = 0;
+      }
+      this(var1, var2, var3);
+   }
+
+   @JvmOverloads
+   public CustomView(@NotNull Context context, @Nullable AttributeSet attrs) {
+      this(context, attrs, 0, 4, (DefaultConstructorMarker) null);
+   }
+
+   @JvmOverloads
+   public CustomView(@NotNull Context context) {
+      this(context, (AttributeSet) null, 0, 6, (DefaultConstructorMarker) null);
+   }
+
+   public View _$_findCachedViewById(int var1) {
+      if (this._$_findViewCache == null) {
+         this._$_findViewCache = new HashMap();
+      }
+      View var2 = (View)this._$_findViewCache.get(var1);
+      if (var2 == null) {
+         var2 = this.findViewById(var1);
+         this._$_findViewCache.put(var1, var2);
+      }
+      return var2;
+   }
+
+   public void _$_clearFindViewByIdCache() {
+      if (this._$_findViewCache != null) {
+         this._$_findViewCache.clear();
+      }
+   }
+}
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;">in constructor</span>
 <br/>
 
