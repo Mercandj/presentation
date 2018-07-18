@@ -1023,11 +1023,11 @@ public final void testForWithIndices() {
 In Kotlin, classes and methods are `final` by default.
 
 ```kotlin
-open class Animal(){
+open class Animal() {
 	open fun myOpenedFunction() {}
 }
 
-class Dog() : Animal(){
+class Dog() : Animal() {
 	override fun myOpenedFunction() {}
 }
 ```
@@ -1304,9 +1304,9 @@ class OtherActivity : Activity() {
     
     companion object {
         private const val TAG = "OtherActivity"
-        fun startActivity(context: Context){
+        fun startActivity(context: Context) {
             val intent = Intent(context, OtherActivity::class.java)
-            if (context !is Activity){
+            if (context !is Activity) {
                 intent.flags = FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TASK
             }
             context.startActivity(intent)
@@ -1453,7 +1453,7 @@ inline fun <T, R> T.run(block: T.() -> R): R
 ```
 ```kotlin
 private var view = View(context)
-fun testViewRun(){
+fun testViewRun() {
     view.run {
         alpha = 0.5f
         isEnabled = true
@@ -1554,13 +1554,13 @@ inline fun <T> T.apply(block: T.() -> Unit): T
 inline fun <T> T.also(block: (T) -> Unit): T
 ```
 ```kotlin
-fun testApply(){
+fun testApply() {
     val paint = Paint().apply {
         color = Color.MAGENTA
         style = Paint.Style.STROKE
     }
 }
-fun testAlso(){
+fun testAlso() {
     val paint = Paint().also {
         it.color = Color.MAGENTA
         it.style = Paint.Style.STROKE
@@ -1590,8 +1590,8 @@ Note:
 inline fun <T, R> with(receiver: T, block: T.() -> R): R
 ```
 ```kotlin
-fun testWith(){
-    with(view){
+fun testWith() {
+    with (view) {
         this.alpha = 0.5f
         isEnabled = true
     }
