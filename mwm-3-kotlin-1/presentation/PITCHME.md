@@ -156,6 +156,7 @@ Note:
 Note:
 
 - Steps from Kotlin to Java
+- Kotlin cursor select bytecode (correspondance)
 
 ---
 
@@ -387,6 +388,10 @@ class VariableShadowingDemo(
     }
 }
 ```
+
+Note:
+
+- Not possible in Java
 
 ---
 
