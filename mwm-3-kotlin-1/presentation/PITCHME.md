@@ -1105,6 +1105,45 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;">"basic"</span>
+
+```kotlin
+fun basicWhen(str: String): Int {
+    when (str) {
+        "" -> return 1
+        "c" -> return 2
+        "coucou" -> return 3
+        "cou" + "cou" -> return 3
+    }
+    return 0
+}
+```
+
+```java
+public final int basicWhen(@NotNull String str) {
+   Intrinsics.checkParameterIsNotNull(str, "str");
+   switch (str.hashCode()) {
+      case -1354586272:
+         if (str.equals("coucou")) { return 3; }
+         if (str.equals("coucou")) { return 4; }
+         break;
+      case 0:
+         if (str.equals("")) { return 1; }
+         break;
+      case 99:
+         if (str.equals("c")) { return 2; }
+   }
+   return 0;
+}
+```
+
+Note:
+
+- No extra cost
+- Reorder conditions: check big string first
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;">basic with else</span>
 
 ```kotlin
