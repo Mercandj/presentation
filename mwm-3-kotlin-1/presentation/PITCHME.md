@@ -185,7 +185,7 @@ After this slide, only code decompiled
 fun start(): String = "Hello World"
 ```
 ```java
-public final class HelloWoldKt {
+public final class HelloWorldKt {
    @NotNull
    public static final String start() {
       return "Hello World";
