@@ -1401,26 +1401,21 @@ class Dog() : Animal() {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Singleton</span> <span style="text-transform: none; font-size:0.8em;">with object</span>
 
 ```kotlin
-object DateUtils {
-    fun getCurrentDate(): Date {
-        return Calendar.getInstance().time
+object ColorUtils {
+    fun getRedColor(): Int {
+        return Color.RED
     }
 }
 ```
 
 ```java
-public final class DateUtils {
-   public static final DateUtils INSTANCE;
-   @NotNull
-   public final Date getCurrentDate() {
-      Calendar var10000 = Calendar.getInstance();
-      Intrinsics.checkExpressionValueIsNotNull(var10000, "Calendar.getInstance()");
-      Date var1 = var10000.getTime();
-      Intrinsics.checkExpressionValueIsNotNull(var1, "Calendar.getInstance().time");
-      return var1;
+public final class ColorUtils {
+   public static final ColorUtils INSTANCE;
+   public final int getRedColor() {
+      return Color.RED;
    }
    static {
-      DateUtils var0 = new DateUtils();
+      ColorUtils var0 = new ColorUtils();
       INSTANCE = var0;
    }
 }
