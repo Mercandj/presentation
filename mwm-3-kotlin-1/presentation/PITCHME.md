@@ -1047,27 +1047,6 @@ public final void testForWithIndices() {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extend</span> <span style="text-transform: none; font-size:0.8em;">from a parent</span>
-
-In Kotlin, classes and methods are `final` by default.
-
-```kotlin
-open class Animal() {
-	open fun myOpenedFunction() {}
-}
-
-class Dog() : Animal() {
-	override fun myOpenedFunction() {}
-}
-```
-
-`open` keyword is required to be able to extend from class/method.
-
-<br/>
-`override` language keyword is required to override a method.
-
----
-
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">When</span> <span style="text-transform: none; font-size:0.8em;">basic</span>
 
 ```kotlin
@@ -1332,6 +1311,27 @@ public final String destructuring() {
    }
 }
 ```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extend</span> <span style="text-transform: none; font-size:0.8em;">from a parent</span>
+
+In Kotlin, classes and methods are `final` by default.
+
+```kotlin
+open class Animal() {
+	open fun myOpenedFunction() {}
+}
+
+class Dog() : Animal() {
+	override fun myOpenedFunction() {}
+}
+```
+
+`open` keyword is required to be able to extend from class/method.
+
+<br/>
+`override` language keyword is required to override a method.
 
 ---
 
