@@ -1280,6 +1280,9 @@ Generate same code as the java one
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
 
+<br/>
+<br/>
+
 ```kotlin
 val (name, age, vip) = createJohn()
 ```
