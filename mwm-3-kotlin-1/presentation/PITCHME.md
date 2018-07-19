@@ -1113,7 +1113,7 @@ fun basicWhen(str: String): Int {
         "" -> return 1
         "c" -> return 2
         "coucou" -> return 3
-        "cou" + "cou" -> return 3
+        "cou" + "cou" -> return 4
     }
     return 0
 }
