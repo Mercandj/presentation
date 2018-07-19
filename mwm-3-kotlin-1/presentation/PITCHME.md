@@ -1139,8 +1139,8 @@ public final int basicWhen(@NotNull String str) {
 
 Note:
 
-- No extra cost
-- Reorder conditions: check big string first
+- Computation possible
+- Strange example
 
 ---
 
