@@ -1280,37 +1280,97 @@ Generate same code as the java one
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-7-destructuring.png)
+```kotlin
+val (name, age, vip) = createJohn()
+```
 
-`.val` autocompletion
+Note:
+
+- Usage
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
 
 ```kotlin
-fun destructuring(): String {
-    val (id, videosIds) = create()
-    if (videosIds.isEmpty()) {
-        throw IllegalStateException()
-    }
-    return id
+fun getJohnToString(): String {
+    val (name, age, vip) = createJohn()
+    return "$name $age $vip"
+}
+
+private fun createJohn() = User("john", 25, true)
+
+data class User(
+        val name: String,
+        val age: Int,
+        val vip: Boolean
+)
+```
+
+Note:
+
+- Usage with more details
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
+
+![Logo](mwm-3-kotlin-1/presentation/logo-7-destructuring.png)
+
+`.val` autocompletion
+
+Note:
+
+- Tips 1/2
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
+
+```kotlin
+fun extractJohnName(): String {
+    val (name, _, _) = createJohn()
+    return name
+}
+
+private fun createJohn() = User("john", 25, true)
+
+data class User(
+        val name: String,
+        val age: Int,
+        val vip: Boolean
+)
+```
+
+Note:
+
+- Tips 2/2
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
+
+```kotlin
+fun getJohnToString(): String {
+    val (name, age, vip) = createJohn()
+    return "$name $age $vip"
 }
 ```
 
 ```java
 @NotNull
-public final String destructuring() {
-   Destructuring.Pojo var3 = this.create();
-   String id = var3.component1();
-   List videosIds = var3.component2();
-   if (videosIds.isEmpty()) {
-      throw (Throwable) (new IllegalStateException());
-   } else {
-      return id;
-   }
+public final String getJohnToString() {
+   Destructuring.User var4 = this.createJohn();
+   String name = var4.component1();
+   int age = var4.component2();
+   boolean vip = var4.component3();
+   return name + ' ' + age + ' ' + vip;
 }
 ```
+
+Note:
+
+- How does it work
 
 ---
 
