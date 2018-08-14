@@ -319,6 +319,18 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
 
 ```kotlin
+private val homeView: HomeView by bind(R.id.activity_home_home_view)
+```
+
+Note:
+
+-  
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+```kotlin
 class HomeActivity : AppCompatActivity(),
         HomeActivityContract.Screen {
 
