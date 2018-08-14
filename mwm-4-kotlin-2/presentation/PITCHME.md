@@ -94,7 +94,55 @@ class HomeActivity : AppCompatActivity(),
 
 Note:
 
--  
+- lazy is thread safe by default to avoid that the lambda gets computed more than once
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```java
+/**
+ * Represents a value with lazy initialization.
+ *
+ * To create an instance of [Lazy] use the [lazy] function.
+ */
+public interface Lazy<out T> {
+    /**
+     * Gets the lazily initialized value of the current Lazy instance.
+     * Once the value was initialized it must not change during the rest of lifetime of this Lazy instance.
+     */
+    public val value: T
+
+    /**
+     * Returns `true` if a value for this Lazy instance has been already initialized, and `false` otherwise.
+     * Once this function has returned `true` it stays `true` for the rest of lifetime of this Lazy instance.
+     */
+    public fun isInitialized(): Boolean
+}
+
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```java
+public final class HomeActivity extends AppCompatActivity {
+   static final KProperty[] $$delegatedProperties = new KProperty[]{(KProperty)Reflection.property1(new PropertyReference1Impl(Reflection.getOrCreateKotlinClass(HomeActivity.class), "themeManager", "getThemeManager()Lcom/mwm/demo/theme/ThemeManager;"))};
+   private final Lazy themeManager$delegate;
+
+   private final ThemeManager getThemeManager() {
+      Lazy var1 = this.themeManager$delegate;
+      KProperty var3 = $$delegatedProperties[0];
+      return (ThemeManager) var1.getValue();
+   }
+
+   public HomeActivity() {
+      this.themeManager$delegate = LazyKt.lazy((Function0)null.INSTANCE);
+   }
+}
+
+```
 
 ---
 
@@ -118,7 +166,7 @@ class HomeActivity : AppCompatActivity(),
 
 Note:
 
--  
+- 
 
 ---
 
