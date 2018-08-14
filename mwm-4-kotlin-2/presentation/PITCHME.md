@@ -2,7 +2,7 @@
 
 #### <span style="text-transform: none">Kotlin - 2</span>
 
-<span style="color:gray; font-size:0.6em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.6em;">1.2.51</span>
+<span style="color:gray; font-size:0.6em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.6em;">1.2.60</span>
 <br/>
 <span style="color:gray; font-size:0.5em;">17-08-2018</span>
 <br/><br/>
