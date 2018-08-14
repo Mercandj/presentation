@@ -100,6 +100,30 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
 
+```kotlin
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private val themeManager: ThemeManager by lazy(LazyThreadSafetyMode.NONE) {
+        MainApplication.getAppComponent().provideThemeManager()
+    }
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+		userAction = HomeActivityPresenter(this, themeManager)		
+    }
+}
+```
+
+Note:
+
+- lazy is thread safe by default to avoid that the lambda gets computed more than once
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
 ```java
 /**
  * Represents a value with lazy initialization.
@@ -127,9 +151,43 @@ public interface Lazy<out T> {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
 
 ```java
+private class SynchronizedLazyImpl<out T>(initializer: () -> T, lock: Any? = null) : Lazy<T>, Serializable {
+    private var initializer: (() -> T)? = initializer
+    @Volatile private var _value: Any? = UNINITIALIZED_VALUE
+    private val lock = lock ?: this
+    override val value: T
+        get() {
+            val _v1 = _value
+            if (_v1 !== UNINITIALIZED_VALUE) {
+                @Suppress("UNCHECKED_CAST")
+                return _v1 as T
+            }
+            return synchronized(lock) {
+                val _v2 = _value
+                if (_v2 !== UNINITIALIZED_VALUE) {
+                    @Suppress("UNCHECKED_CAST") (_v2 as T)
+                } else {
+                    val typedValue = initializer!!()
+                    _value = typedValue
+                    initializer = null
+                    typedValue
+                }
+            }
+        }
+    override fun isInitialized(): Boolean = _value !== UNINITIALIZED_VALUE
+    override fun toString(): String = if (isInitialized()) value.toString() else "Lazy value not initialized yet."
+    private fun writeReplace(): Any = InitializedLazyImpl(value)
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```java
 public final class HomeActivity extends AppCompatActivity {
-   static final KProperty[] $$delegatedProperties = new KProperty[]{(KProperty)Reflection.property1(new PropertyReference1Impl(Reflection.getOrCreateKotlinClass(HomeActivity.class), "themeManager", "getThemeManager()Lcom/mwm/demo/theme/ThemeManager;"))};
    private final Lazy themeManager$delegate;
+   static final KProperty[] $$delegatedProperties = new KProperty[]{(KProperty)Reflection.property1(new PropertyReference1Impl(Reflection.getOrCreateKotlinClass(HomeActivity.class), "themeManager", "getThemeManager()Lcom/mwm/demo/theme/ThemeManager;"))};
 
    private final ThemeManager getThemeManager() {
       Lazy var1 = this.themeManager$delegate;
