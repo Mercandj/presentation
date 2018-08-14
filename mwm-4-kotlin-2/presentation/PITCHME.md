@@ -29,17 +29,114 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Example</span> <span style="text-transform: none; font-size:0.8em;"> Hello</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
 
 ```kotlin
-class Example {
-    private lateinit var lateField: String
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private var themeManager: ThemeManager? = null
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+		themeManager = MainApplication.getAppComponent().provideThemeManager()
+		userAction = HomeActivityPresenter(this, themeManager!!)
+    }
 }
 ```
 
-```java
-public final void example() {
-   if (lateField == null) { lateField = "42"; }
+Note:
+
+- `var` "problem" is `!!`, need to check nullity each time
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private val themeManager = MainApplication.getAppComponent().provideThemeManager()
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+		userAction = HomeActivityPresenter(this, themeManager)		
+    }
+}
+```
+
+Note:
+
+- `val` better than `var`
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private val themeManager: ThemeManager by lazy {
+        MainApplication.getAppComponent().provideThemeManager()
+    }
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+		userAction = HomeActivityPresenter(this, themeManager)		
+    }
+}
+```
+
+Note:
+
+-  
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private val themeManagerLazy = lazy {
+        MainApplication.getAppComponent().provideThemeManager()
+    }
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+		userAction = HomeActivityPresenter(this, themeManagerLazy)		
+    }
+}
+```
+
+Note:
+
+-  
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class HomeActivityPresenter(
+        private val screen: HomeActivityContract.Screen,
+        private val themeManagerLazy: Lazy<ThemeManager>
+) : HomeActivityContract.UserAction {
+
+    override fun start() {
+        updateTheme()
+    }
+
+    private fun updateTheme(theme = themeManagerLazy.value.getTheme()) {
+        // ...
+    }
 }
 ```
 
@@ -53,6 +150,123 @@ Note:
 
 Note:
 
-- 
+- Bind R.id with the object ref
 
 ---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> var</span>
+
+```kotlin
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private var homeView: HomeView?
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+        homeView = findViewById(R.id.activity_home_home_view)
+    }
+
+    private fun navigateToSettings() {
+        homeView!!.navigateToSettings()
+    }
+}
+```
+
+Note:
+
+- Not great
+- 2 lines to add view (declaration + affectation)
+- Nullity check
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> lateinit var</span>
+
+```kotlin
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private lateinit var homeView: HomeView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+        homeView = findViewById(R.id.activity_home_home_view)
+    }
+
+    private fun navigateToSettings() {
+        homeView.navigateToSettings()
+    }
+}
+```
+
+Note:
+
+- Not great
+- 2 lines to add view (declaration + affectation)
+- No nullity check
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+```kotlin
+class HomeActivity : AppCompatActivity(),
+        HomeActivityContract.Screen {
+
+    private val homeView: HomeView by bind(R.id.activity_home_home_view)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+    }
+
+    private fun navigateToSettings() {
+        homeView.navigateToSettings()
+    }
+}
+```
+
+Note:
+
+-  
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+```kotlin
+// medium.com/@quiro91
+private fun <T : View> Activity.bind(@IdRes res: Int): Lazy<T> {
+    @Suppress("UNCHECKED_CAST")
+    return lazy(LazyThreadSafetyMode.NONE) { findViewById<T>(res) }
+}
+```
+
+Note:
+
+- https://medium.com/@quiro91/improving-findviewbyid-with-kotlin-4cf2f8f779bb
+- Exist the same things for the view but in View affectation could in a lot of time be done in the constructor
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+```kotlin
+class HomeView : @JvmOverloads constructor(
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
+
+    private val view = View.inflate(context, R.layout.view_home, this)
+    private val title: Text²View = view.findViewById(R.id.view_home_title)
+}
+```
+
+Note:
+
+-  
+
+---
+
