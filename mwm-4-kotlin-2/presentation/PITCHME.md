@@ -321,7 +321,7 @@ Note:
 ```kotlin
 class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
 
-    private var homeView: HomeView?
+    private var homeView: HomeView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
