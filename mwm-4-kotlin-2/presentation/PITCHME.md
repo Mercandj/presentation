@@ -410,7 +410,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
         setContentView(R.layout.activity_home)
     }
 
-    private fun navigateToSettings() {
+    override fun navigateToSettings() {
         homeView.navigateToSettings()
     }
 
