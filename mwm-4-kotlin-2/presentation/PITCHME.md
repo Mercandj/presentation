@@ -235,7 +235,7 @@ class HomeActivityPresenter(
         private val downloadManagerLazy: Lazy<DownloadManager>
 ) : HomeActivityContract.UserAction {
 
-    private fun onButtonClicked() {
+    override fun onButtonClicked() {
         downloadManagerLazy.value.download()
     }
 }
