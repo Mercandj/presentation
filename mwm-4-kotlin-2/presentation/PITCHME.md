@@ -18,10 +18,176 @@ Note:
 - Version of kotlin is important, all result could change in next / previous version
 - Find the presentation and source [here](https://github.com/Mercandj/presentation)
 
-
 ---
 
 ### Lazy
+
+Note:
+
+- Feature that lazy create object at access time
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+private val downloadManagerInternal = DownloadModule().createDownloadManager(context)
+```
+
+Note:
+
+- Instead of that
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+private val downloadManagerInternal by lazy {
+    DownloadModule().createDownloadManager(context)
+}
+```
+
+Note:
+
+- Create a DownloadManager only once at the downloadManagerInternal access
+- Next slide will show where this feature could be useful
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class ApplicationGraph(context: Context) {
+
+    private val downloadManagerInternal = DownloadModule().createDownloadManager(context)
+
+    companion object {
+
+        @JvmStatic
+        @SuppressLint("StaticFieldLeak")
+        private var graph: ApplicationGraph? = null
+
+        @JvmStatic
+        fun initialize(context: Context) {
+            if (graph == null) { graph = ApplicationGraph(context.applicationContext) }
+        }
+
+        @JvmStatic
+        fun getDownloadManager() = graph!!.downloadManagerInternal
+    }
+}
+```
+
+Note:
+
+- Here download manager created at init() call
+- We want to lazy create the manage at the getter first call
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class ApplicationGraph(context: Context) {
+
+    private val downloadManagerInternal by lazy {
+        DownloadModule().createDownloadManager(context)
+    }
+
+    companion object {
+
+        @JvmStatic
+        @SuppressLint("StaticFieldLeak")
+        private var graph: ApplicationGraph? = null
+
+        @JvmStatic
+        fun initialize(context: Context) {
+            if (graph == null) { graph = ApplicationGraph(context.applicationContext) }
+        }
+
+        @JvmStatic
+        fun getDownloadManager() = graph!!.downloadManagerInternal
+    }
+}
+```
+
+Note:
+
+- Create a DownloadManager only once at the downloadManagerInternal access
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+private val downloadModuleInternal by lazy {
+    DownloadModule()
+}
+
+private val downloadManagerInternal by lazy {
+    downloadModuleInternal.createDownloadManager(context)
+}
+
+private val downloadStorageInternal by lazy {
+    downloadModuleInternal.createDownloadStorage(context)
+}
+```
+
+Note:
+
+- lazy is thread safe by default to avoid that the lambda gets computed more than once
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class HomeActivity : AppCompatActivity() {
+
+    private val downloadManager by lazy(LazyThreadSafetyMode.NONE) { 
+        ApplicationGraph.getDownloadManager()
+    }
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+        findViewById<View>(R.id.activity_home_button).setOnClickListener {
+            downloadManager.download()
+        }	
+    }
+}
+```
+
+Note:
+
+- Avoid synchronized
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+```kotlin
+class ApplicationGraph(context: Context) {
+
+    private val downloadManagerLazyInternal = lazy { DownloadModule().createDownloadManager(context) }
+
+    companion object {
+
+        @JvmStatic
+        @SuppressLint("StaticFieldLeak")
+        private var graph: ApplicationGraph? = null
+
+        @JvmStatic
+        fun initialize(context: Context) {
+            if (graph == null) { graph = ApplicationGraph(context.applicationContext) }
+        }
+
+        @JvmStatic
+        fun getDownloadManagerLazy() = graph!!.downloadManagerLazyInternal
+    }
+}
+```
 
 Note:
 
@@ -32,93 +198,49 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
 
 ```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
+class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
 
-    private var themeManager: ThemeManager? = null
+    private userAction = createUserAction()
 
-	override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-		themeManager = MainApplication.getAppComponent().provideThemeManager()
-		userAction = HomeActivityPresenter(this, themeManager!!)
+        findViewById<View>(R.id.activity_home_button).setOnClickListener {
+            userAction.onButtonClicked()
+        }   
+    }
+
+    private fun createUserAction() : HomeActivityContract.UserAction {
+        val downloadManagerLazy = ApplicationGraph.getDownloadManagerLazy()
+        return HomeActivityPresenter(this, downloadManagerLazy)    
     }
 }
 ```
 
 Note:
 
-- `var` "problem" is `!!`, need to check nullity each time
+- 
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
 
 ```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
+class HomeActivityPresenter(
+        private val screen: HomeActivityContract.Screen,
+        private val downloadManagerLazy: Lazy<DownloadManager>
+) : HomeActivityContract.UserAction {
 
-    private val themeManager = MainApplication.getAppComponent().provideThemeManager()
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-		userAction = HomeActivityPresenter(this, themeManager)		
+    private fun onButtonClicked() {
+        downloadManagerLazy.value.download()
     }
 }
 ```
 
 Note:
 
-- `val` better than `var`
+-  
 
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
-
-```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
-
-    private val themeManager: ThemeManager by lazy {
-        MainApplication.getAppComponent().provideThemeManager()
-    }
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-		userAction = HomeActivityPresenter(this, themeManager)		
-    }
-}
-```
-
-Note:
-
-- lazy is thread safe by default to avoid that the lambda gets computed more than once
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
-
-```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
-
-    private val themeManager: ThemeManager by lazy(LazyThreadSafetyMode.NONE) {
-        MainApplication.getAppComponent().provideThemeManager()
-    }
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-		userAction = HomeActivityPresenter(this, themeManager)		
-    }
-}
-```
-
-Note:
-
-- lazy is thread safe by default to avoid that the lambda gets computed more than once
 
 ---
 
@@ -182,75 +304,6 @@ private class SynchronizedLazyImpl<out T>(initializer: () -> T, lock: Any? = nul
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
-
-```java
-public final class HomeActivity extends AppCompatActivity {
-   private final Lazy themeManager$delegate;
-   static final KProperty[] $$delegatedProperties = new KProperty[]{(KProperty)Reflection.property1(new PropertyReference1Impl(Reflection.getOrCreateKotlinClass(HomeActivity.class), "themeManager", "getThemeManager()Lcom/mwm/demo/theme/ThemeManager;"))};
-
-   private final ThemeManager getThemeManager() {
-      Lazy var1 = this.themeManager$delegate;
-      KProperty var3 = $$delegatedProperties[0];
-      return (ThemeManager) var1.getValue();
-   }
-
-   public HomeActivity() {
-      this.themeManager$delegate = LazyKt.lazy((Function0)null.INSTANCE);
-   }
-}
-
-```
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
-
-```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
-
-    private val themeManagerLazy = lazy {
-        MainApplication.getAppComponent().provideThemeManager()
-    }
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-		userAction = HomeActivityPresenter(this, themeManagerLazy)		
-    }
-}
-```
-
-Note:
-
-- 
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
-
-```kotlin
-class HomeActivityPresenter(
-        private val screen: HomeActivityContract.Screen,
-        private val themeManagerLazy: Lazy<ThemeManager>
-) : HomeActivityContract.UserAction {
-
-    override fun start() {
-        updateTheme()
-    }
-
-    private fun updateTheme(theme = themeManagerLazy.value.getTheme()) {
-        // ...
-    }
-}
-```
-
-Note:
-
--  
-
----
 
 ### Bind
 
@@ -263,8 +316,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> var</span>
 
 ```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
+class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
 
     private var homeView: HomeView?
 
@@ -291,8 +343,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> lateinit var</span>
 
 ```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
+class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
 
     private lateinit var homeView: HomeView
 
@@ -331,8 +382,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
 
 ```kotlin
-class HomeActivity : AppCompatActivity(),
-        HomeActivityContract.Screen {
+class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
 
     private val homeView: HomeView by bind(R.id.activity_home_home_view)
 
@@ -356,8 +406,23 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
 
 ```kotlin
-// medium.com/@quiro91
-private fun <T : View> Activity.bind(@IdRes res: Int): Lazy<T> {
+private fun <T : View> bind(@IdRes res: Int): Lazy<T> {
+    @Suppress("UNCHECKED_CAST")
+    return lazy(LazyThreadSafetyMode.NONE) { findViewById<T>(res) }
+}
+```
+
+Note:
+
+- https://medium.com/@quiro91/improving-findviewbyid-with-kotlin-4cf2f8f779bb
+- Exist the same things for the view but in View affectation could in a lot of time be done in the constructor
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+```kotlin
+fun <T : View> Activity.bind(@IdRes res: Int): Lazy<T> {
     @Suppress("UNCHECKED_CAST")
     return lazy(LazyThreadSafetyMode.NONE) { findViewById<T>(res) }
 }
@@ -378,7 +443,7 @@ class HomeView : @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val view = View.inflate(context, R.layout.view_home, this)
-    private val title: Text²View = view.findViewById(R.id.view_home_title)
+    private val title: TextView = view.findViewById(R.id.view_home_title)
 }
 ```
 
@@ -387,4 +452,7 @@ Note:
 -  
 
 ---
+
+
+
 
