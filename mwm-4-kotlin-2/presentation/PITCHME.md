@@ -170,7 +170,9 @@ Note:
 ```kotlin
 class ApplicationGraph(context: Context) {
 
-    private val downloadManagerLazyInternal = lazy { DownloadModule().createDownloadManager(context) }
+    private val downloadManagerLazyInternal = lazy { 
+        DownloadModule().createDownloadManager(context)
+    }
 
     companion object {
 
@@ -191,7 +193,9 @@ class ApplicationGraph(context: Context) {
 
 Note:
 
-- 
+- No more `by lazy` here, instead `= lazy`
+- Return is `Lazy<T>`
+- `getDownloadManagerLazy(): Lazy<DownloadManager>`
 
 ---
 
@@ -210,7 +214,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
         }   
     }
 
-    private fun createUserAction() : HomeActivityContract.UserAction {
+    private fun createUserAction(): HomeActivityContract.UserAction {
         val downloadManagerLazy = ApplicationGraph.getDownloadManagerLazy()
         return HomeActivityPresenter(this, downloadManagerLazy)    
     }
@@ -240,7 +244,6 @@ class HomeActivityPresenter(
 Note:
 
 -  
-
 
 ---
 
@@ -326,7 +329,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
         homeView = findViewById(R.id.activity_home_home_view)
     }
 
-    private fun navigateToSettings() {
+    override fun navigateToSettings() {
         homeView!!.navigateToSettings()
     }
 }
@@ -353,7 +356,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
         homeView = findViewById(R.id.activity_home_home_view)
     }
 
-    private fun navigateToSettings() {
+    override fun navigateToSettings() {
         homeView.navigateToSettings()
     }
 }
@@ -382,30 +385,6 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
 
 ```kotlin
-class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
-
-    private val homeView: HomeView by bind(R.id.activity_home_home_view)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-    }
-
-    private fun navigateToSettings() {
-        homeView.navigateToSettings()
-    }
-}
-```
-
-Note:
-
--  
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
-
-```kotlin
 private fun <T : View> bind(@IdRes res: Int): Lazy<T> {
     @Suppress("UNCHECKED_CAST")
     return lazy(LazyThreadSafetyMode.NONE) { findViewById<T>(res) }
@@ -422,6 +401,35 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
 
 ```kotlin
+class HomeActivity : AppCompatActivity(), HomeActivityContract.Screen {
+
+    private val homeView: HomeView by bind(R.id.activity_home_home_view)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+    }
+
+    private fun navigateToSettings() {
+        homeView.navigateToSettings()
+    }
+
+    private fun <T : View> bind(@IdRes res: Int): Lazy<T> {
+        @Suppress("UNCHECKED_CAST")
+        return lazy(LazyThreadSafetyMode.NONE) { findViewById<T>(res) }
+    }
+}
+```
+
+Note:
+
+-  
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+```kotlin
 fun <T : View> Activity.bind(@IdRes res: Int): Lazy<T> {
     @Suppress("UNCHECKED_CAST")
     return lazy(LazyThreadSafetyMode.NONE) { findViewById<T>(res) }
@@ -430,8 +438,7 @@ fun <T : View> Activity.bind(@IdRes res: Int): Lazy<T> {
 
 Note:
 
-- https://medium.com/@quiro91/improving-findviewbyid-with-kotlin-4cf2f8f779bb
-- Exist the same things for the view but in View affectation could in a lot of time be done in the constructor
+- Extension function of `Activity` -> to-discuss
 
 ---
 
