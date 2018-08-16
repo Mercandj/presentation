@@ -144,12 +144,10 @@ fun Activity.hideKeyboard(): Boolean {
 
 ```kotlin
 class HomeActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
-
         fab.setOnClickListener {
             it.snack("Snack message") {
                 action("Action") { toast("Action clicked") }
