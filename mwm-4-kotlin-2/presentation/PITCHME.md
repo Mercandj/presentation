@@ -20,6 +20,65 @@ Note:
 
 ---
 
+### Equality
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Equality</span> <span style="text-transform: none; font-size:0.8em;"> with string</span>
+
+```kotlin
+a == b
+```
+
+```kotlin
+a?.equals(b) ?: (b === null)
+```
+
+Note:
+
+- if `a == null`, check is b is null
+- Means you can compare strings with `==`
+
+---
+
+### Collection
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;"> filtering</span>
+
+```kotlin
+val users = api.getUsers()
+val activeUsersNames = items.filter { 
+    it.active
+}
+adapter.setUsers(activeUsers)
+```
+
+---
+
+### Extension function
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
+
+```kotlin
+fun Activity.hideKeyboard(): Boolean {
+    val view = currentFocus
+    view?.let {
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) 
+                as InputMethodManager
+        return inputMethodManager.hideSoftInputFromWindow(view.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+    return false
+}
+```
+
+---
+
+
 ### Lazy
 
 Note:
@@ -460,6 +519,40 @@ Note:
 
 ---
 
+### Coroutines
+
+Note:
+
+- Replace Threads, AsyncTasks...
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Coroutines</span> <span style="text-transform: none; font-size:0.8em;"> deps</span>
+
+
+```gradle
+implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Coroutines</span> <span style="text-transform: none; font-size:0.8em;"> use</span>
+
+
+```kotlin
+override fun requestPlaylists(playlistIds: List<String>) {
+    launch(CommonPool) {
+        val playlistsResult = playlistManager.getPlaylistsSync(playlistIds)
+        launch(UI) {
+            notifyListeners(playlistsResult)
+        }
+    }
+}
+```
+
+---
+
 ### Kotlin 1.3-m1
 
 ---
@@ -488,5 +581,13 @@ interface DownloadManager {
     }
 }
 ```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Sources</span>
+
+- https://medium.com/@quiro91/improving-findviewbyid-with-kotlin-4cf2f8f779bb
+- https://blog.jetbrains.com/kotlin/2018/07/see-whats-coming-in-kotlin-1-3-m1
+- https://savvyapps.com/blog/kotlin-tips-android-development
 
 
