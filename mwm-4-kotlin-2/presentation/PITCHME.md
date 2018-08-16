@@ -127,7 +127,7 @@ currentUser?.let {
 fun Activity.hideKeyboard(): Boolean {
     val view = currentFocus
     view?.let {
-        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) 
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE)
                 as InputMethodManager
         return inputMethodManager.hideSoftInputFromWindow(view.windowToken,
                 InputMethodManager.HIDE_NOT_ALWAYS)
@@ -138,9 +138,7 @@ fun Activity.hideKeyboard(): Boolean {
 
 ---
 
-
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
-
 
 ```kotlin
 class HomeActivity : AppCompatActivity() {
