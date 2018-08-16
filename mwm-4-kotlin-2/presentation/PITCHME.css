@@ -8,6 +8,11 @@
     line-height: 21px !important;
 }
 
+.lang-gradle {
+    font-size: 0.68em !important;
+    line-height: 21px !important;
+}
+
 .reveal p {
     margin: 7px 0 !important;
     line-height: 0.7 !important;
