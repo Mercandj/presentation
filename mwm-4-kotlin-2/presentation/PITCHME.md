@@ -636,6 +636,8 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Operator</span> <span style="text-transform: none; font-size:0.8em;"> overloading</span>
 
+<br/>
+
 ```kotlin
 operator fun ViewGroup.get(pos: Int): View = getChildAt(pos)
 ```
@@ -647,6 +649,8 @@ val view = viewGroup[2]
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Operator</span> <span style="text-transform: none; font-size:0.8em;"> overloading</span>
+
+<br/>
 
 ```kotlin
 val ViewGroup.views: List<View>
