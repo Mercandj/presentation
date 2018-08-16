@@ -26,6 +26,8 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Equality</span>
 
+<br/>
+
 ```kotlin
 a == b
 ```
@@ -56,6 +58,8 @@ fun equals(str1: String?, str2: String?) = str1 == str2
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;"> filtering</span>
+
+<br/>
 
 ```kotlin
 val users = api.getUsers()
@@ -133,6 +137,8 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
 
+<br/>
+
 ```kotlin
 private val downloadManagerInternal = DownloadModule().createDownloadManager(context)
 ```
@@ -144,6 +150,8 @@ Note:
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lazy</span> <span style="text-transform: none; font-size:0.8em;"> field</span>
+
+<br/>
 
 ```kotlin
 private val downloadManagerInternal by lazy {
@@ -475,6 +483,8 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
 
+<br/>
+
 ```kotlin
 private val homeView: HomeView by bind(R.id.activity_home_home_view)
 ```
@@ -486,6 +496,8 @@ Note:
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+<br/>
 
 ```kotlin
 private fun <T : View> bind(@IdRes res: Int): Lazy<T> {
@@ -532,6 +544,8 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
 
+<br/>
+
 ```kotlin
 fun <T : View> Activity.bind(@IdRes res: Int): Lazy<T> {
     @Suppress("UNCHECKED_CAST")
@@ -546,6 +560,8 @@ Note:
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Bind</span> <span style="text-transform: none; font-size:0.8em;"> val</span>
+
+<br/>
 
 ```kotlin
 class HomeView : @JvmOverloads constructor(
@@ -573,10 +589,11 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Coroutines</span> <span style="text-transform: none; font-size:0.8em;"> deps</span>
 
+<br/>
 
 ```gradle
-implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5"
+implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.22.5"
 ```
 
 ---
@@ -602,6 +619,8 @@ override fun requestPlaylists(playlistIds: List<String>) {
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin 1.3-m1</span> <span style="text-transform: none; font-size:0.8em;"> when</span>
+
+<br/>
 
 ```kotlin
 when (val response = executeRequest()) {
