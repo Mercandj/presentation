@@ -1,6 +1,6 @@
 ![Logo](mwm-3-kotlin-1/presentation/logo-1.png)
 
-#### <span style="text-transform: none">Kotlin - 2</span>
+#### <span style="text-transform: none">Kotlin - 2/2</span>
 
 <span style="color:gray; font-size:0.6em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.6em;">1.2.60</span>
 <br/>
@@ -460,6 +460,33 @@ Note:
 
 ---
 
+### Kotlin 1.3-m1
 
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin 1.3-m1</span> <span style="text-transform: none; font-size:0.8em;"> when</span>
+
+```kotlin
+when (val response = executeRequest()) {
+    is Success -> response.body
+    is HttpError -> throw HttpException(response.status)
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Kotlin 1.3-m1</span> <span style="text-transform: none; font-size:0.8em;"> interface</span>
+
+```kotlin
+interface DownloadManager {
+    companion object {
+        @JvmField
+        private val instance = DownloadManagerImpl()
+
+        @JvmStatic
+        fun getInstance(): DownloadManager = instance
+    }
+}
+```
 
 
