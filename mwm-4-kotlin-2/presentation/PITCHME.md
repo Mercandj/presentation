@@ -66,6 +66,36 @@ adapter.setUsers(activeUsers)
 
 ---
 
+### Nullity with let
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;"> with let</span>
+
+Java
+
+```java
+if (currentUser != null) {
+    titleTextView.setText(currentUser.name)
+    subtitleTextView.setText(currentUser.description)
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;"> with let</span>
+
+Koltin
+
+```kotlin
+currentUser?.let {
+    titleTextView.text = it.name
+    subtitleTextView.text = it.description
+}
+```
+
+---
+
 ### Extension function
 
 ---
