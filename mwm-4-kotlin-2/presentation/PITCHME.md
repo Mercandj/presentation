@@ -164,18 +164,13 @@ class HomeActivity : AppCompatActivity() {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
 
 ```kotlin
-inline fun View.snack(@IntegerRes messageRes: Int, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
-    snack(resources.getString(messageRes), length, f)
-}
-
-inline fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
+inline fun View.snack(
+       message: String,
+       length: Int = Snackbar.LENGTH_LONG,
+       f: Snackbar.() -> Unit) {
     val snack = Snackbar.make(this, message, length)
     snack.f()
     snack.show()
-}
-
-fun Snackbar.action(@IntegerRes actionRes: Int, color: Int? = null, listener: (View) -> Unit) {
-    action(view.resources.getString(actionRes), color, listener)
 }
 
 fun Snackbar.action(action: String, color: Int? = null, listener: (View) -> Unit) {
