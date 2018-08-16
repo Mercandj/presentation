@@ -24,7 +24,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Equality</span> <span style="text-transform: none; font-size:0.8em;"> with string</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Equality</span>
 
 ```kotlin
 a == b
@@ -38,6 +38,15 @@ Note:
 
 - if `a == null`, check is b is null
 - Means you can compare strings with `==`
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Equality</span> <span style="text-transform: none; font-size:0.8em;"> with string</span>
+
+
+```kotlin
+fun equals(str1: String?, str2: String?) = str1 == str2
+```
 
 ---
 
