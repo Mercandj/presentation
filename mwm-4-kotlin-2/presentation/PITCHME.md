@@ -71,6 +71,18 @@ adapter.setUsers(activeUsers)
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Traversing</span> <span style="text-transform: none; font-size:0.8em;"> map/list</span>
+
+<br/>
+
+```kotlin
+for ((k, v) in map) {
+    println(“$k -> $v”)
+}
+```
+
+---
+
 ### Nullity with let
 
 ---
@@ -121,6 +133,54 @@ fun Activity.hideKeyboard(): Boolean {
                 InputMethodManager.HIDE_NOT_ALWAYS)
     }
     return false
+}
+```
+
+---
+
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
+
+
+```kotlin
+class HomeActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+        setSupportActionBar(toolbar)
+
+        fab.setOnClickListener {
+            it.snack("Snack message") {
+                action("Action") { toast("Action clicked") }
+            }
+        }
+    }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
+
+```kotlin
+inline fun View.snack(@IntegerRes messageRes: Int, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
+    snack(resources.getString(messageRes), length, f)
+}
+
+inline fun View.snack(message: String, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
+    val snack = Snackbar.make(this, message, length)
+    snack.f()
+    snack.show()
+}
+
+fun Snackbar.action(@IntegerRes actionRes: Int, color: Int? = null, listener: (View) -> Unit) {
+    action(view.resources.getString(actionRes), color, listener)
+}
+
+fun Snackbar.action(action: String, color: Int? = null, listener: (View) -> Unit) {
+    setAction(action, listener)
+    color?.let { setActionTextColor(color) }
 }
 ```
 
@@ -576,6 +636,35 @@ class HomeView : @JvmOverloads constructor(
 Note:
 
 -  
+
+---
+
+### Operator overloading
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Operator</span> <span style="text-transform: none; font-size:0.8em;"> overloading</span>
+
+```kotlin
+operator fun ViewGroup.get(pos: Int): View = getChildAt(pos)
+```
+
+```kotlin
+val view = viewGroup[2]
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Operator</span> <span style="text-transform: none; font-size:0.8em;"> overloading</span>
+
+```kotlin
+val ViewGroup.views: List<View>
+    get() = (0 until childCount).map { getChildAt(it) }
+```
+
+```kotlin
+val views = viewGroup.views
+```
 
 ---
 
