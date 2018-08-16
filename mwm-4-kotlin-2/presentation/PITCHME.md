@@ -43,6 +43,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Equality</span> <span style="text-transform: none; font-size:0.8em;"> with string</span>
 
+<br/>
 
 ```kotlin
 fun equals(str1: String?, str2: String?) = str1 == str2
@@ -72,6 +73,8 @@ adapter.setUsers(activeUsers)
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;"> with let</span>
 
+<br/>
+
 Java
 
 ```java
@@ -84,6 +87,8 @@ if (currentUser != null) {
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Nullity</span> <span style="text-transform: none; font-size:0.8em;"> with let</span>
+
+<br/>
 
 Koltin
 
