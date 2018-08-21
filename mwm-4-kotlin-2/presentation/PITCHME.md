@@ -20,6 +20,36 @@ Note:
 
 ---
 
+### Let's rock again with Elvis !
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">If my reference is null, do...</span>
+
+```kotlin
+val length = if (b != null) b.length else -1
+```
+
+No ternary operator in Kotlin.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Elvis operator `?:`</span>
+
+```kotlin
+val l = b?.length ?: -1
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Throw with Elvis operator</span>
+
+```kotlin
+val l = b?.length ?: throw IllegalArgumentException("b should not be null")
+```
+
+---
+
 ### Equality
 
 ---
