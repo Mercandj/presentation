@@ -87,7 +87,7 @@ fun equals(str1: String?, str2: String?) = str1 == str2
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Create a list</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create a list</span>
 
 ```kotlin
 fun createList(){
@@ -103,7 +103,7 @@ public inline fun <T> List(size: Int, init: (index: Int) -> T): List<T> = Mutabl
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Create a list</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create a list</span>
 
 ```kotlin
 fun createList(){
@@ -114,7 +114,7 @@ fun createList(){
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Add element to a list</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Add element to a list</span>
 
 ```kotlin
 fun addElement(){
@@ -127,7 +127,7 @@ List is mutable !
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Mutable list</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Mutable list</span>
 
 ```kotlin
 fun addElement(){
@@ -139,7 +139,7 @@ fun addElement(){
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Arraylist</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Arraylist</span>
 
 ```kotlin
 fun createArrayList(){
@@ -151,7 +151,7 @@ fun createArrayList(){
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Map and Set</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Map and Set</span> 
 
 ```kotlin
 fun createCollections(){
