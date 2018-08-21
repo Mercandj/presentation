@@ -740,6 +740,40 @@ Note:
 
 ---
 
+### Delegates.observable
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Delegates</span> <span style="text-transform: none; font-size:0.8em;"> observable</span>
+
+```kotlin
+var nbTimeVariableChanged = 0
+var observableData: String by Delegates.observable("default value") { property, oldValue, newValue ->
+	nbTimeVariableChanged++
+}
+print("nb times variable value changed : $nbTimeVariableChanged") // print 0
+observableData = "new value"
+print("nb times variable value changed : $nbTimeVariableChanged") // print 1
+```
+
+---
+
+### Delegates.vetoable
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Delegates</span> <span style="text-transform: none; font-size:0.8em;"> vetoable</span>
+
+```kotlin
+var vetoableData: Int by Delegates.vetoable(0){property, oldValue, newValue ->
+	newValue > 0
+}
+```
+
+Invalidate new value if it doesn't respect condition.
+
+---
+
 ### Operator overloading
 
 ---
