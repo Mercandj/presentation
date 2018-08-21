@@ -87,6 +87,86 @@ fun equals(str1: String?, str2: String?) = str1 == str2
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Create a list</span>
+
+```kotlin
+fun createList(){
+	val list = List<Int>() // don't compile !
+}
+```
+
+Because List constructor is :
+
+```kotlin
+public inline fun <T> List(size: Int, init: (index: Int) -> T): List<T> = MutableList(size, init)
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Create a list</span>
+
+```kotlin
+fun createList(){
+	val list = listOf<Int>()
+	val listWithValues = listOf(1, 2, 3)
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Add element to a list</span>
+
+```kotlin
+fun addElement(){
+	val list = listOf<Int>()
+	list.add(1) // don't compile !
+}
+```
+
+List is mutable !
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Mutable list</span>
+
+```kotlin
+fun addElement(){
+	val mutableList = mutableListOf<Int>()
+	mutableList.add(1)
+	val mutablelistWithValues = mutableListOf(1, 2, 3)
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Arraylist</span>
+
+```kotlin
+fun createArrayList(){
+	val mutablelistWithValues = arrayListOf(1, 2, 3)
+}
+```
+
+`mutableListOf` and `arrayListOf` return an ArrayList.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;">Map and Set</span>
+
+```kotlin
+fun createCollections(){
+	val map = mapOf("a" to 1, "b" to 2)
+	val mutableMap = mutableMapOf("a" to 1, "b" to 2)
+	
+	val set = setOf<Int>()
+	val mutableSet = mutableSetOf<Int>()
+}
+```
+
+`mutableListOf` and `arrayListOf` return an ArrayList.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Collection</span> <span style="text-transform: none; font-size:0.8em;"> filtering</span>
 
 <br/>
