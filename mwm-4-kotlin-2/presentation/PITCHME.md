@@ -34,7 +34,7 @@ No ternary operator in Kotlin.
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Elvis operator `?:`</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Elvis operator</span><span style="text-transform: none; font-size:0.8em;"> ?:</span>
 
 ```kotlin
 val l = b?.length ?: -1
@@ -42,7 +42,7 @@ val l = b?.length ?: -1
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Throw with Elvis operator</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Throw with</span><span style="text-transform: none; font-size:0.8em;"> ?:</span>
 
 ```kotlin
 val l = b?.length ?: throw IllegalArgumentException("b should not be null")
@@ -62,7 +62,7 @@ public inline fun <T, R: Comparable<R>> Collection<T>.maxBy(selector: (T) -> R):
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">What is this parameter ?</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">What is that ?</span>
 
 ```kotlin
 selector: (T) -> R)
@@ -93,7 +93,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Write Lambda</span> <span style="text-transform: none; font-size:0.8em;"> easily</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> easily</span>
 
 ```Java
 val longestBook = library.maxBy({
@@ -107,7 +107,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Write Lambda</span> <span style="text-transform: none; font-size:0.8em;"> easily</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> more easily</span>
 
 ```Java
 val longestBook = library.maxBy({
@@ -122,7 +122,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Write Lambda</span> <span style="text-transform: none; font-size:0.8em;"> easily</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> even more easily</span>
 
 ```Java
 val longestBook = library.maxBy{ it.pageCount }
@@ -143,7 +143,7 @@ fun highOrderFun(aLambda: () -> Unit) {
 	b()
 }
 ```
-Equivalent
+Equivalent in Java :
 ```java
 public void highOrderFun(Function aLambda) {
 	a()
@@ -174,7 +174,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inline</span> <span style="text-transform: none; font-size:0.8em;"> to save us</span>
 
 ```kotlin
-inline fun highOrderFun(aLambda: () -> Unit)
+inline fun highOrderFun(aLambda: () -> Unit){...}
 fun callingFunction() {
   higherOrderFunction{ print("lambda logic") }
 }
@@ -235,40 +235,35 @@ fun equals(str1: String?, str2: String?) = str1 == str2
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create a list</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create</span><span style="text-transform: none; font-size:0.8em;"> a list</span>
 
 ```kotlin
-fun createList() {
-	val list = List<Int>() // don't compile !
-}
+val list = List<Int>() // don't compile !
 ```
 
 Because List constructor is :
 
 ```kotlin
-public inline fun <T> List(size: Int, init: (index: Int) -> T): List<T> = MutableList(size, init)
+public inline fun <T> List(size: Int, init: (index: Int) -> T): List<T>
+						= MutableList(size, init)
 ```
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create a list</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create</span><span style="text-transform: none; font-size:0.8em;"> a list</span>
 
 ```kotlin
-fun createList() {
-	val list = listOf<Int>()
-	val listWithValues = listOf(1, 2, 3)
-}
+val list = listOf<Int>()
+val listWithValues = listOf(1, 2, 3)
 ```
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Add element to a list</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Add element</span><span style="text-transform: none; font-size:0.8em;"> to a list</span>
 
 ```kotlin
-fun addElement() {
-	val list = listOf<Int>()
-	list.add(1) // don't compile !
-}
+val list = listOf<Int>()
+list.add(1) // don't compile !
 ```
 
 List is mutable !
@@ -278,11 +273,9 @@ List is mutable !
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Mutable list</span>
 
 ```kotlin
-fun addElement() {
-	val mutableList = mutableListOf<Int>()
-	mutableList.add(1)
-	val mutablelistWithValues = mutableListOf(1, 2, 3)
-}
+val mutableList = mutableListOf<Int>()
+mutableList.add(1)
+val mutablelistWithValues = mutableListOf(1, 2, 3)
 ```
 
 ---
@@ -290,9 +283,8 @@ fun addElement() {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Arraylist</span>
 
 ```kotlin
-fun createArrayList() {
-	val mutablelistWithValues = arrayListOf(1, 2, 3)
-}
+val arrayList = arrayListOf(1, 2, 3)
+val arrayList2 = ArrayList<Int>()
 ```
 
 `mutableListOf` and `arrayListOf` return an ArrayList.
@@ -302,16 +294,12 @@ fun createArrayList() {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Map and Set</span> 
 
 ```kotlin
-fun createCollections() {
-	val map = mapOf("a" to 1, "b" to 2)
-	val mutableMap = mutableMapOf("a" to 1, "b" to 2)
+val map = mapOf("a" to 1, "b" to 2)
+val mutableMap = mutableMapOf("a" to 1, "b" to 2)
 	
-	val set = setOf<Int>()
-	val mutableSet = mutableSetOf<Int>()
-}
+val set = setOf<Int>()
+val mutableSet = mutableSetOf<Int>()
 ```
-
-`mutableListOf` and `arrayListOf` return an ArrayList.
 
 ---
 
@@ -903,8 +891,9 @@ Note:
 
 ```kotlin
 var nbTimeVariableChanged = 0
-var observableData: String by Delegates.observable("default value") { property, oldValue, newValue ->
-	nbTimeVariableChanged++
+var observableData: String by Delegates.observable("default value") {
+	property, oldValue, newValue ->
+		nbTimeVariableChanged++
 }
 print("nb times variable value changed : $nbTimeVariableChanged") // print 0
 observableData = "new value"
