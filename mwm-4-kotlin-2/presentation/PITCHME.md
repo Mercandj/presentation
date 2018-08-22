@@ -137,7 +137,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Mutiples returns</span> <span style="text-transform: none; font-size:0.8em;"> in a lambda</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Several returns</span> <span style="text-transform: none; font-size:0.8em;"> in a lambda</span>
 
 ```kotlin
 val result = lambda@ { stopEarly: Boolean ->
