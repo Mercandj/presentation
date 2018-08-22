@@ -71,15 +71,17 @@ selector: (T) -> R)
 
 Note:
 
-- `selector: (T) -> R` is called a lambda. It's a function taking a parameter T and return a parameter R.
+- `selector: (T) -> R` is called a function type. It's a function taking a parameter T and return a parameter R.
 - Kotlin function are "first class function". We can put it in a variable, send it to a function or have a function returning a function.
-- https://medium.com/google-developers/kotlin-demystified-understanding-shorthand-lamba-syntax-74724028dcc5
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">How to call </span> <span style="text-transform: none; font-size:0.8em;"> maxBy</span>
+```kotlin
+public inline fun <T, R: Comparable<R>> Collection<T>.maxBy(selector: (T) -> R): T?
+```
 
-```Java
+```kotlin
 class BookSelector: Function1<Book, Int> {
 	override fun invoke(book: Book):Int{
 		return book.pageCount
@@ -90,6 +92,7 @@ val longestBook = library.maxBy(BookSelector())
 
 Note:
 
+- https://medium.com/google-developers/kotlin-demystified-understanding-shorthand-lamba-syntax-74724028dcc5
 - There are several FunctionN interfaces use to generate lambda up to Function22 (for 22 parameters).
 
 ---
@@ -132,6 +135,17 @@ val longestBook = library.maxBy{ it.pageCount }
 Note:
 
 - When lambda is the last parameter, even if there are several, we can move lambda out bracket.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Several returns</span> <span style="text-transform: none; font-size:0.8em;"> in a lambda</span>
+
+```kotlin
+val result = lambda@ { stopEarly: Boolean ->
+   if (stopEarly) return@lambda "stopped early"
+   "normally stopped"
+}
+```
 
 ---
 
@@ -1088,5 +1102,6 @@ interface DownloadManager {
 - https://medium.com/@quiro91/improving-findviewbyid-with-kotlin-4cf2f8f779bb
 - https://blog.jetbrains.com/kotlin/2018/07/see-whats-coming-in-kotlin-1-3-m1
 - https://savvyapps.com/blog/kotlin-tips-android-development
+- https://medium.com/google-developers/kotlin-demystified-understanding-shorthand-lamba-syntax-74724028dcc5
 
 
