@@ -17,6 +17,7 @@ Note:
 
 - Version of kotlin is important, all result could change in next / previous version
 - Find the presentation and source [here](https://github.com/Mercandj/presentation)
+- Next kotlin version already here -> **1.2.61**
 
 ---
 
@@ -216,6 +217,7 @@ a?.equals(b) ?: (b === null)
 
 Note:
 
+- Implementation given by the documentation
 - if `a == null`, check is b is null
 - Means you can compare strings with `==`
 
@@ -228,6 +230,10 @@ Note:
 ```kotlin
 fun equals(str1: String?, str2: String?) = str1 == str2
 ```
+
+Note:
+
+- String comparison without nullity check
 
 ---
 
@@ -361,6 +367,10 @@ currentUser?.let {
 }
 ```
 
+Note:
+
+- Assure note mutable **it**
+
 ---
 
 ### Extension function
@@ -372,6 +382,11 @@ currentUser?.let {
 ```kotlin
 activity.hideKeyboard()
 ```
+
+Note:
+
+- The goal is to add function to an exiting class you don't have access to
+
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
