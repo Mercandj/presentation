@@ -990,6 +990,41 @@ override fun requestPlaylists(playlistIds: List<String>) {
 
 ---
 
+### Unit tests with mockito
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Tests</span> <span style="text-transform: none; font-size:0.8em;"> with Mockito</span>
+
+```kotlin
+@Test
+fun onAttachedRegisterOnMetadataListener() {
+    // Given
+    val presenter = createInstanceToTest()
+
+    // When
+    presenter.onAttached()
+
+    // Then
+    Mockito.verify(videoManager)!!.registerOnMetadataListener(Mockito.any())
+}
+```
+
+`java.lang.IllegalStateException: Mockito.any() must not be null`
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Tests</span> <span style="text-transform: none; font-size:0.8em;"> with Mockito</span>
+
+```kotlin
+private inline fun <reified T : Any> any() = Mockito.any(T::class.java) ?: castNull()
+
+@Suppress("UNCHECKED_CAST")
+private fun <T> castNull(): T = null as T
+```
+
+---
+
 ### Kotlin 1.3-m1
 
 ---
