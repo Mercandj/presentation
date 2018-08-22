@@ -70,9 +70,8 @@ selector: (T) -> R)
 
 Note:
 
-- `selector: (T) -> R` is called a lambda. It's a function taking a parameter T and return a parameter R.
+- `selector: (T) -> R` is called a function type. It's a function taking a parameter T and return a parameter R.
 - Kotlin function are "first class function". We can put it in a variable, send it to a function or have a function returning a function.
-- https://medium.com/google-developers/kotlin-demystified-understanding-shorthand-lamba-syntax-74724028dcc5
 
 ---
 
@@ -92,6 +91,7 @@ val longestBook = library.maxBy(BookSelector())
 
 Note:
 
+- https://medium.com/google-developers/kotlin-demystified-understanding-shorthand-lamba-syntax-74724028dcc5
 - There are several FunctionN interfaces use to generate lambda up to Function22 (for 22 parameters).
 
 ---
@@ -1076,5 +1076,6 @@ interface DownloadManager {
 - https://medium.com/@quiro91/improving-findviewbyid-with-kotlin-4cf2f8f779bb
 - https://blog.jetbrains.com/kotlin/2018/07/see-whats-coming-in-kotlin-1-3-m1
 - https://savvyapps.com/blog/kotlin-tips-android-development
+- https://medium.com/google-developers/kotlin-demystified-understanding-shorthand-lamba-syntax-74724028dcc5
 
 
