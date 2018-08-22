@@ -137,6 +137,17 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Mutiples returns</span> <span style="text-transform: none; font-size:0.8em;"> in a lambda</span>
+
+```kotlin
+val result = lambda@ { stopEarly: Boolean ->
+   if (stopEarly) return@lambda "stopped early"
+   "normally stopped"
+}
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> overhead</span>
 
 ```Kotlin
