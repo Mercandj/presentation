@@ -77,8 +77,11 @@ Note:
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">How to call </span> <span style="text-transform: none; font-size:0.8em;"> maxBy</span>
+```kotlin
+public inline fun <T, R: Comparable<R>> Collection<T>.maxBy(selector: (T) -> R): T?
+```
 
-```Java
+```kotlin
 class BookSelector: Function1<Book, Int> {
 	override fun invoke(book: Book):Int{
 		return book.pageCount
