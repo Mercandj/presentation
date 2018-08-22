@@ -931,10 +931,6 @@ Invalidate new value if it doesn't respect condition.
 <br/>
 
 ```kotlin
-operator fun ViewGroup.get(pos: Int): View = getChildAt(pos)
-```
-
-```kotlin
 val view = viewGroup[2]
 ```
 
@@ -945,13 +941,31 @@ val view = viewGroup[2]
 <br/>
 
 ```kotlin
+operator fun ViewGroup.get(pos: Int): View = getChildAt(pos)
+```
+
+```kotlin
+val view = viewGroup[2]
+```
+
+---
+
+<br/>
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Operator</span> <span style="text-transform: none; font-size:0.8em;"> overloading</span>
+
+```kotlin
 val ViewGroup.views: List<View>
     get() = (0 until childCount).map { getChildAt(it) }
 ```
 
 ```kotlin
-val views = viewGroup.views
+val view = viewGroup.views[0]
 ```
+
+Note:
+
+- Use list operator
 
 ---
 
