@@ -382,6 +382,13 @@ currentUser?.let {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
 
 ```kotlin
+activity.hideKeyboard()
+```
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Extension</span> <span style="text-transform: none; font-size:0.8em;"> function</span>
+
+```kotlin
 fun Activity.hideKeyboard(): Boolean {
     val view = currentFocus
     view?.let {
