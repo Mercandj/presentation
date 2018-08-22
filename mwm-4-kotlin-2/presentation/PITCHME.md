@@ -50,6 +50,154 @@ val l = b?.length ?: throw IllegalArgumentException("b should not be null")
 
 ---
 
+### Lambda
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span>
+
+```kotlin
+public inline fun <T, R: Comparable<R>> Collection<T>.maxBy(selector: (T) -> R): T?
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">What is this parameter ?</span>
+
+```kotlin
+selector: (T) -> R)
+```
+
+Note:
+
+- `selector: (T) -> R` is called a lambda. It's a function taking a parameter T and return a parameter R.
+- Kotlin function are "first class function". We can put it in a variable, send it to a function or have a function returning a function.
+- https://medium.com/google-developers/kotlin-demystified-understanding-shorthand-lamba-syntax-74724028dcc5
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">How to call </span> <span style="text-transform: none; font-size:0.8em;"> maxBy</span>
+
+```Java
+class BookSelector: Function1<Book, Int>{
+	override fun invoke(book: Book):Int{
+		return book.pageCount
+	}
+}
+val longestBook = library.maxBy(BookSelector())
+```
+
+Note:
+
+- There are several FunctionN interfaces use to generate lambda up to Function22 (for 22 parameters).
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Write Lambda</span> <span style="text-transform: none; font-size:0.8em;"> easily</span>
+
+```Java
+val longestBook = library.maxBy({
+    book -> book.pageCount
+})
+```
+
+Note:
+
+- It's the result of the last expression which is return. Don't use "return"
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Write Lambda</span> <span style="text-transform: none; font-size:0.8em;"> easily</span>
+
+```Java
+val longestBook = library.maxBy({
+    it.pageCount
+})
+```
+
+Note:
+
+- Only one parameter, "it" is the implicit name of the parameter.
+- We can remove the "->"
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Write Lambda</span> <span style="text-transform: none; font-size:0.8em;"> easily</span>
+
+```Java
+val longestBook = library.maxBy{ it.pageCount }
+```
+
+Note:
+
+- When lambda is the last parameter, even if there are several, we can move lambda out bracket.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> overhead</span>
+
+```Kotlin
+fun highOrderFun(aLambda: () -> Unit){
+	a()
+	aLambda()
+	b()
+}
+```
+Equivalent
+```java
+public void highOrderFun(Function aLambda){
+	a()
+	aLambda.invoke()
+	b()
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> overhead</span>
+
+```java
+public void callingFunction(){
+	highOrderFun(new Function(){
+		@Override
+		public void invoke(){...}
+	});
+}
+```
+
+Note:
+
+- If we call "callingFunction" in a loop, we will create an object each time the function is called.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inline</span> <span style="text-transform: none; font-size:0.8em;"> to save us</span>
+
+```kotlin
+inline fun highOrderFun(aLambda: () -> Unit)
+fun callingFunction() {
+  higherOrderFunction{ print("lambda logic") }
+}
+```
+Equivalent to :
+```java
+public void callingFunction() {
+  a()
+  System.out.print("lambda logic")
+  b()
+}
+```
+
+Note:
+
+- Like in C++.
+- The code of "highOrderFun" is replace where it's called.
+- More code but better performances.
+- Can't access to private variables / methods.
+- We can by using "internal" visibility and @PublishedApi annotation.
+
+---
+
 ### Equality
 
 ---
