@@ -4,7 +4,7 @@
 
 <span style="color:gray; font-size:0.6em;">Kotlin </span> <span style="color: #00B8D4; font-size:0.6em;">1.2.60</span>
 <br/>
-<span style="color:gray; font-size:0.5em;">17-08-2018</span>
+<span style="color:gray; font-size:0.5em;">22-08-2018</span>
 <br/><br/>
 <span style="color:gray; font-size:0.6em;">Github </span> <span style="color: #00B8D4; font-size:0.5em;">Mercandj/presentation</span>
 <br/>
@@ -20,7 +20,7 @@ Note:
 
 ---
 
-### Let's rock again with Elvis !
+### Let's rock again with Elvis!
 
 ---
 
@@ -79,7 +79,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">How to call </span> <span style="text-transform: none; font-size:0.8em;"> maxBy</span>
 
 ```Java
-class BookSelector: Function1<Book, Int>{
+class BookSelector: Function1<Book, Int> {
 	override fun invoke(book: Book):Int{
 		return book.pageCount
 	}
@@ -137,7 +137,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> overhead</span>
 
 ```Kotlin
-fun highOrderFun(aLambda: () -> Unit){
+fun highOrderFun(aLambda: () -> Unit) {
 	a()
 	aLambda()
 	b()
@@ -145,7 +145,7 @@ fun highOrderFun(aLambda: () -> Unit){
 ```
 Equivalent
 ```java
-public void highOrderFun(Function aLambda){
+public void highOrderFun(Function aLambda) {
 	a()
 	aLambda.invoke()
 	b()
@@ -157,8 +157,8 @@ public void highOrderFun(Function aLambda){
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Lambda</span> <span style="text-transform: none; font-size:0.8em;"> overhead</span>
 
 ```java
-public void callingFunction(){
-	highOrderFun(new Function(){
+public void callingFunction() {
+	highOrderFun(new Function() {
 		@Override
 		public void invoke(){...}
 	});
@@ -238,7 +238,7 @@ fun equals(str1: String?, str2: String?) = str1 == str2
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create a list</span>
 
 ```kotlin
-fun createList(){
+fun createList() {
 	val list = List<Int>() // don't compile !
 }
 ```
@@ -254,7 +254,7 @@ public inline fun <T> List(size: Int, init: (index: Int) -> T): List<T> = Mutabl
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Create a list</span>
 
 ```kotlin
-fun createList(){
+fun createList() {
 	val list = listOf<Int>()
 	val listWithValues = listOf(1, 2, 3)
 }
@@ -265,7 +265,7 @@ fun createList(){
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Add element to a list</span>
 
 ```kotlin
-fun addElement(){
+fun addElement() {
 	val list = listOf<Int>()
 	list.add(1) // don't compile !
 }
@@ -278,7 +278,7 @@ List is mutable !
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Mutable list</span>
 
 ```kotlin
-fun addElement(){
+fun addElement() {
 	val mutableList = mutableListOf<Int>()
 	mutableList.add(1)
 	val mutablelistWithValues = mutableListOf(1, 2, 3)
@@ -290,7 +290,7 @@ fun addElement(){
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Arraylist</span>
 
 ```kotlin
-fun createArrayList(){
+fun createArrayList() {
 	val mutablelistWithValues = arrayListOf(1, 2, 3)
 }
 ```
@@ -302,7 +302,7 @@ fun createArrayList(){
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Map and Set</span> 
 
 ```kotlin
-fun createCollections(){
+fun createCollections() {
 	val map = mapOf("a" to 1, "b" to 2)
 	val mutableMap = mutableMapOf("a" to 1, "b" to 2)
 	
