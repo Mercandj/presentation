@@ -160,7 +160,7 @@ public void highOrderFun(Function aLambda) {
 public void callingFunction() {
 	highOrderFun(new Function() {
 		@Override
-		public void invoke(){...}
+		public void invoke() {...}
 	});
 }
 ```
