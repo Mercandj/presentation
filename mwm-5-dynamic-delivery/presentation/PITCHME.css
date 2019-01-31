@@ -1,0 +1,29 @@
+.lang-kotlin {
+    font-size: 0.68em !important;
+    line-height: 21px !important;
+}
+
+.lang-java {
+    font-size: 0.68em !important;
+    line-height: 21px !important;
+}
+
+.lang-gradle {
+    font-size: 0.68em !important;
+    line-height: 21px !important;
+}
+
+.reveal p {
+    margin: 7px 0 !important;
+    line-height: 0.7 !important;
+    font-size: 0.7em !important;
+}
+
+.reveal ul {
+    margin: 1em 1em 1em 2em !important;
+    font-size: 0.76em !important;
+ }
+
+.reveal pre code {
+	max-height: 600px;
+}
