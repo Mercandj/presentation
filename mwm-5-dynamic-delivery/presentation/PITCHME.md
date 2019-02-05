@@ -25,10 +25,13 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module gradle</span>
 
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">BundleTool</span>
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Generate APKs from App Bundle with BundleTool</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Generate APKs from App Bundle</span>
 
 ```
 bundletool build-apks
@@ -40,11 +43,13 @@ bundletool build-apks
 --key-pass=pass:PASSWORD
 ```
 
-This generate an APK set archive `.apks`
+This generates an APK set archive `.apks`
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Generate APKs from App Bundle with BundleTool</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Generate APKs from App Bundle</span>
+
+`--connected-device` option
 
 ```
 bundletool build-apks
@@ -57,11 +62,11 @@ bundletool build-apks
 --connected-device
 ```
 
-Only generate a set of APKs according to the configuration of the connected devide.
+Generate an APKs set according to the configuration of the connected devide.
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install an application from a set of APKs with BundleTool</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install an application from a set of APKs</span>
 
 ```
 bundletool install-apks
@@ -70,7 +75,7 @@ bundletool install-apks
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Other features of BundleTool</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Other features</span>
 
 - Build app bundle from device specification file
 - Generate device specification file from connected device
