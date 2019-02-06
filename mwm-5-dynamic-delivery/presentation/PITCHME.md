@@ -33,26 +33,31 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Look into an AAB file</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/android-app-bundle.gif)
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/aab-format.png)
 
 Note:
 
+- Each part represents a different module of the app.
+- Dynamic feature module name is given the name specified by the split attribute in the module's manifest.
 - BUNDLE-METADATA/: contains metadata files such ss proguard mappings and the list of all DEX files. These files are not packaged into the APK.
-- Module Protocol Buffer(.pb): BundleConfig.pb contains metadata such as which version of the build tools has been used
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Look into an AAB file</span>
-
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/android-app-bundle-details.gif)
-
-Note:
-
 - dex/: contains dex files for this module.
 - res/, lib/ and assets/: identical to those in a typical APK.
 - manifest/: contains androidManifest.xml file.
 - root/: contains other files present to the root of an APK.
+- Module Protocol Buffer(.pb): BundleConfig.pb contains metadata such as which version of the build tools has been used
 - resources.pb, native.pb: describe the code and resources in each module
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inside edjing Free app bundle</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/android-app-bundle.png)
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inside edjing Free app bundle</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/android-app-bundle-details.png)
 
 ---
 
