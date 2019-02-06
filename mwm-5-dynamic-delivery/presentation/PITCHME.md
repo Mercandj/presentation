@@ -318,6 +318,13 @@ if (!manager.installedModules.contains(name)) {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">User consent</span><span style="text-transform: none; font-size:0.8em;"> to download the module</span>
+
+- If a module, or a list of modules need to be downloaded, during a certain period of time, are heavier than 10MB, the user's consent must be requested.
+- For defer installations, the limit is 100MB.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install request</span><span style="text-transform: none; font-size:0.8em;"> listener</span>
 
 <br/>
