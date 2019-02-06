@@ -141,6 +141,100 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic Feature</span>
+
+---
+
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Goal</span>
+
+- Runtime module download
+- Reduce base APK size
+- Remove feature from the disk
+
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+<br/>
+
+```
+apply plugin: 'com.android.dynamic-feature'
+```
+
+```
+dependencies {
+    implementation project(':app')
+    api "com.google.android.play:core:1.3.6"
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> Manifest</span>
+
+<br/>
+
+```xml
+<dist:module
+    dist:instant="false"
+    dist:onDemand="true"
+    dist:title="@string/title_app_search_dynamic">
+
+    <dist:fusing dist:include="true" />
+
+</dist:module>
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+<br/>
+
+```
+android {
+   // ...
+   dynamicFeatures = [":app_search_dynamic"]
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> API</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> SplitInstallManager</span>
+
+<br/>
+
+```kotlin
+val splitInstallManager = SplitInstallManagerFactory.create(context)
+```
+
+```java
+public interface SplitInstallManager {
+    Task<Integer> startInstall(SplitInstallRequest request);
+    Task<Void> cancelInstall(int sessionId);
+    Task<SplitInstallSessionState> getSessionState(int sessionId);
+    Task<List<SplitInstallSessionState>> getSessionStates();
+    Task<Void> deferredUninstall(List<String> featureModuleNames);
+    Task<Void> deferredInstall(List<String> featureModuleNames);
+    Set<String> getInstalledModules();
+
+    void registerListener(SplitInstallStateUpdatedListener listener);
+    void unregisterListener(SplitInstallStateUpdatedListener listener);
+}
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Codelab</span>
 
 ---
