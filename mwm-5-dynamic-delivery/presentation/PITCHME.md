@@ -267,10 +267,6 @@ Note:
 
 <br/>
 
-```kotlin
-val splitInstallManager = SplitInstallManagerFactory.create(context)
-```
-
 ```java
 public interface SplitInstallManager {
     Task<Integer> startInstall(SplitInstallRequest request);
@@ -283,6 +279,28 @@ public interface SplitInstallManager {
 
     void registerListener(SplitInstallStateUpdatedListener listener);
     void unregisterListener(SplitInstallStateUpdatedListener listener);
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Download</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
+
+<br/>
+
+```kotlin
+val manager = SplitInstallManagerFactory.create(context)
+val name = context.getString(R.string.title_app_search_dynamic)
+
+// check if we already have the module
+if (!manager.installedModules.contains(name)) {
+	// Create request to install a feature module by name.
+	val request = SplitInstallRequest.newBuilder()
+		.addModule(name)
+		.build()
+
+	// Load and install the requested feature module.
+	manager.startInstall(request)
 }
 ```
 
