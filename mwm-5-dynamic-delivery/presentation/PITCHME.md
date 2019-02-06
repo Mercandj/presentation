@@ -241,6 +241,24 @@ dependencies {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> Manifest</span>
+
+<br/>
+
+```xml
+dist:title="@string/title_app_search_dynamic"
+```
+
+- `title_app_search_dynamic` should be defined in the base module.
+- Is used to identify and download the module from the Play Store.
+- Use in the consent dialog to describe the module.
+
+Note:
+
+- The dynamic module title can be translated.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> API</span>
 
 ---
