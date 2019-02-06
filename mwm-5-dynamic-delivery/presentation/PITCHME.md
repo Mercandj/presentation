@@ -61,6 +61,34 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Configure App Bundle for your application</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Configure App Bundle for your application</span>
+
+```
+android{
+	...
+	bundle {
+		language {
+			enableSplit = true
+		}
+		density {
+			enableSplit = true
+		}
+		abi {
+			enableSplit = true
+		}
+	}
+	...
+}
+```
+
+Add this code to ``build.gradle`` of your application.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">BundleTool</span>
 
 ---
