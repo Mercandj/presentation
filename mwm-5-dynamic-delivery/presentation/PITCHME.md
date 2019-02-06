@@ -16,7 +16,37 @@
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">The Android App Bundle format</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+
+- Reduce the quantity of data to download.
+- Reduce the app weight on the disk.
+
+Note:
+
+- Only download usefull features.
+- Reduce the weight to not appear at the top of the list of heavier apps, to avoid to be uninstall
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+
+- Increase app size limit to 500MB.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+
+- Pre-Lollipop devices download an optimized APK.
+- Pre-Lollipop devices  don't manage multiples APKs.
+- Optimized APK contains all available languages.
+
+Note:
+
+- Downloaded APK has only ABI and dimen resources for the target.
 
 ---
 
