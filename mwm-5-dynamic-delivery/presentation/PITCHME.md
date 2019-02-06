@@ -189,6 +189,37 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+<br/>
+
+```
+android {
+   // ...
+   dynamicFeatures = [":app_search_dynamic"]
+}
+```
+```
+dependencies {
+    api "com.google.android.play:core:1.3.6"
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+```
+dependencies {
+	implementation project(":app_search_dynamic") <-- TO REMOVE
+    api "com.google.android.play:core:1.3.6"
+}
+```
+
+In case of the transformation of a module into a dynamic module, we must remove in the base module the dependency to the dynamic module.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
 
 <br/>
@@ -200,7 +231,6 @@ apply plugin: 'com.android.dynamic-feature'
 ```
 dependencies {
     implementation project(':app')
-    api "com.google.android.play:core:1.3.6"
 }
 ```
 
@@ -219,19 +249,6 @@ dependencies {
     <dist:fusing dist:include="true" />
 
 </dist:module>
-```
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
-
-<br/>
-
-```
-android {
-   // ...
-   dynamicFeatures = [":app_search_dynamic"]
-}
 ```
 
 ---
