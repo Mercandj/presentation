@@ -281,18 +281,18 @@ Note:
 
 <br/>
 
-```java
-public interface SplitInstallManager {
-    Task<Integer> startInstall(SplitInstallRequest request);
-    Task<Void> cancelInstall(int sessionId);
-    Task<SplitInstallSessionState> getSessionState(int sessionId);
-    Task<List<SplitInstallSessionState>> getSessionStates();
-    Task<Void> deferredUninstall(List<String> featureModuleNames);
-    Task<Void> deferredInstall(List<String> featureModuleNames);
-    Set<String> getInstalledModules();
+```kotlin
+interface SplitInstallManager {
+    fun startInstall(request: SplitInstallRequest): Task<Int>
+    fun cancelInstall(sessionId: Int): Task<Void>
+    fun getSessionState(): Task<List<SplitInstallSessionState>>
+    fun getSessionState(sessionId: Int): Task<SplitInstallSessionState>
+    fun deferredUninstall(featureModuleNames: List<String>): Task<Void>
+    fun deferredInstall(featureModuleNames: List<String>): Task<Void>
+    fun installedModules(): Set<String>
 
-    void registerListener(SplitInstallStateUpdatedListener listener);
-    void unregisterListener(SplitInstallStateUpdatedListener listener);
+    fun registerListener(listener: SplitInstallStateUpdatedListener)
+    fun unregisterListener(listener: SplitInstallStateUpdatedListener)
 }
 ```
 
