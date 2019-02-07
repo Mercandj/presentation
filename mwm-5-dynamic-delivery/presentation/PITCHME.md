@@ -418,6 +418,19 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Uninstall</span><span style="text-transform: none; font-size:0.8em;"> dynamic module</span>
+
+- The uninstallation is not immediate.
+- The device decides when it will remove the module.
+
+```kotlin
+SplitInstallManager.deferredUninstall(List<String> moduleNames)
+```
+
+- We can remove useless dynamic module (ex: Onboarding).
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Codelab</span>
 
 ---
