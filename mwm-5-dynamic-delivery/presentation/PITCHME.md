@@ -134,7 +134,7 @@ bundletool build-apks
 --output=edjingFree.apks
 --ks=/path/to/keystore.jks
 --ks-pass=pass:PASSWORD
---ks-key-alias=androidreleasekey
+--ks-key-alias=ALIAS
 --key-pass=pass:PASSWORD
 ```
 
@@ -152,7 +152,7 @@ bundletool build-apks
 --output=edjingFree.apks
 --ks=/path/to/keystore.jks
 --ks-pass=pass:PASSWORD
---ks-key-alias=androidreleasekey
+--ks-key-alias=ALIAS
 --key-pass=pass:PASSWORD
 --connected-device
 ```
