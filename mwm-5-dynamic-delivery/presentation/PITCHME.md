@@ -187,17 +187,11 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
 
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
-
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/tuto-1.png)
+---?image=mwm-5-dynamic-delivery/presentation/tuto-1.png&size=auto 80%
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
-
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/tuto-2.png)
+---?image=mwm-5-dynamic-delivery/presentation/tuto-2.png&size=auto 80%
 
 ---
 
@@ -492,7 +486,7 @@ override fun startSearch() {
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span><span style="text-transform: none; font-size:0.8em;"> Debug</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/run-debug.png)
+---?image=mwm-5-dynamic-delivery/presentation/run-debug.png&size=auto 80%
 
 ---
 
@@ -503,7 +497,6 @@ override fun startSearch() {
 https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
 
 ---
-
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Open sources</span><span style="text-transform: none; font-size:0.8em;"> examples</span>
 
