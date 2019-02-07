@@ -18,6 +18,24 @@
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
 
+- New format to `upload` application.
+- Contains code and all resources.
+- Play Store generates APKS from this file.
+- According device spec, it will only download required APKs.
+
+---
+
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">edjingFree APKs</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/edjingfree-apks-pixel-en-ko.png)
+
+Generate APKs for a Pixel phone with english and korean languages.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+
 - Reduce the quantity of data to download.
 - Reduce the app weight on the disk.
 
