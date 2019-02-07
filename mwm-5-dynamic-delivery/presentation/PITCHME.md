@@ -469,7 +469,8 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 ```xml
 <application
     ...
-    android:name="com.google.android.play.core.splitcompat.SplitCompatApplication">
+    android:name="com.google.android.play.core.splitcompat
+    	.SplitCompatApplication">
 </application>
 ```
 
