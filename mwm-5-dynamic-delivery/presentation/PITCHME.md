@@ -189,6 +189,18 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/tuto-1.png)
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/tuto-2.png)
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
 
 <br/>
@@ -343,24 +355,42 @@ interface SplitInstallManager {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Download</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
 
 <br/>
 
 ```kotlin
-val manager = SplitInstallManagerFactory.create(context)
+val splitInstallManager = SplitInstallManagerFactory.create(context)
 val name = context.getString(R.string.title_app_search_dynamic)
 
 // check if we already have the module
-if (!manager.installedModules.contains(name)) {
+if (!splitInstallManager.installedModules.contains(name)) {
 	// Create request to install a feature module by name.
 	val request = SplitInstallRequest.newBuilder()
 		.addModule(name)
 		.build()
 
 	// Load and install the requested feature module.
-	manager.startInstall(request)
+	splitInstallManager.startInstall(request)
 }
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
+
+<br/>
+
+```kotlin
+splitInstallManager.startInstall(request)
+     // When the platform accepts your request to download
+     // an on demand module, it binds it to the following session ID.
+     // You use this ID to track further status updates for the request.
+     .addOnSuccessListener {
+         // From here the install started and splitInstallManager 
+         // could be called with the install session id.
+         this.sessionId = it
+     }
 ```
 
 ---
@@ -387,6 +417,16 @@ private val listener = SplitInstallStateUpdatedListener { state ->
     }
 }
 manager.registerListener(listener)
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Deferred</span><span style="text-transform: none; font-size:0.8em;"> install</span>
+
+<br/>
+
+```kotlin
+splitInstallManager.deferredInstall(Arrays.asList(featureModuleName))
 ```
 
 ---
@@ -431,14 +471,53 @@ SplitInstallManager.deferredUninstall(List<String> moduleNames)
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Start</span><span style="text-transform: none; font-size:0.8em;"> "dynamic" activity</span>
+
+<br/>
+
+```kotlin
+override fun startSearch() {
+    val intent = Intent()
+    if (context !is Activity) {
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+    }
+    intent.setClassName(
+        "com.mwm.android.apps.sample",
+        "com.mwm.android.apps.sample.search_dynamic.SearchActivity"
+    ).also { context.startActivity(it) }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span><span style="text-transform: none; font-size:0.8em;"> Debug</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/run-debug.png)
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Codelab</span>
+
+<br/>
+
+https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
+
+---
+
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Open sources</span><span style="text-transform: none; font-size:0.8em;"> examples</span>
+
+<br/>
+
+- [Plaid](https://github.com/nickbutcher/plaid)
+- [FileSpace](https://github.com/Mercandj/file-android)
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Sources</span>
 
+<br/>
+
 - https://developer.android.com/studio/command-line/bundletool
 - https://github.com/google/bundletool
-
-https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
 
