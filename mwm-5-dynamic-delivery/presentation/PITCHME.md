@@ -459,6 +459,25 @@ SplitInstallManager.deferredUninstall(List<String> moduleNames)
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Start</span><span style="text-transform: none; font-size:0.8em;"> "dynamic" activity</span>
+
+<br/>
+
+```kotlin
+override fun startSearch() {
+    val intent = Intent()
+    if (context !is Activity) {
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+    }
+    intent.setClassName(
+        "com.mwm.android.apps.sample",
+        "com.mwm.android.apps.sample.search_dynamic.SearchActivity"
+    ).also { context.startActivity(it) }
+}
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Codelab</span>
 
 ---
