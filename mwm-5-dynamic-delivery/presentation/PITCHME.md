@@ -542,6 +542,20 @@ override fun startSearch() {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Load native library</span><span style="text-transform: none; font-size:0.8em;"> in dynamic module</span>
+
+```kotlin
+System.loadLibrary("search-feature-native-lib")
+```
+
+It won't work for a library inside dynamic module. Instead use:
+
+```kotlin
+SplitInstallHelper.loadLibrary(context, "search-feature-native-lib")
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span><span style="text-transform: none; font-size:0.8em;"> Debug</span>
 
 ---?image=mwm-5-dynamic-delivery/presentation/run-debug.png&size=auto 80%
