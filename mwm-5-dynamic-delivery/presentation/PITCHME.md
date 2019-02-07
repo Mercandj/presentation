@@ -189,8 +189,6 @@ Note:
 
 ---?image=mwm-5-dynamic-delivery/presentation/tuto-1.png&size=auto 80%
 
----
-
 ---?image=mwm-5-dynamic-delivery/presentation/tuto-2.png&size=auto 80%
 
 ---
