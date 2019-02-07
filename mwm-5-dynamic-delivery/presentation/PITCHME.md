@@ -28,24 +28,6 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
-
-- Increase app size limit to 500MB.
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
-
-- Pre-Lollipop devices download an optimized APK.
-- Pre-Lollipop devices  don't manage multiples APKs.
-- Optimized APK contains all available languages.
-
-Note:
-
-- Downloaded APK has only ABI and dimen resources for the target.
-
----
-
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Look into an AAB file</span>
 
 ![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/aab-format.png)
@@ -101,6 +83,24 @@ android{
 ```
 
 Add this code to ``build.gradle`` of your application.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+
+- Pre-Lollipop devices download an optimized APK.
+- Pre-Lollipop devices  don't manage multiples APKs.
+- Optimized APK contains all available languages.
+
+Note:
+
+- Downloaded APK has only ABI and dimen resources for the target.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+
+- Increase app size limit to 500MB.
 
 ---
 
