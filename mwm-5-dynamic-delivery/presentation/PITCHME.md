@@ -273,6 +273,51 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> Manifest</span>
+
+<br/>
+
+```xml
+dist:onDemand="true"
+```
+
+- Set the module available for on-demand download.
+- If set to false, module is downloaded when user download the app.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> Manifest</span>
+
+<br/>
+
+```xml
+<dist:fusing dist:include="true" />
+```
+
+- True to set the module available to device running Android 4.4 and lower.
+- Option only available if `onDemand="true"`.
+
+Note:
+
+- enable on-demandd and disable fusing will avoid devices that don't support downloading and installing split APKs.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> Manifest</span>
+
+<br/>
+
+```xml
+<application
+android:hasCode="false">
+...
+</application>
+```
+
+- When module has no code, we need to indicate it to avoid runtime error.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> API</span>
 
 ---
