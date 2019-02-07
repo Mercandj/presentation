@@ -494,6 +494,24 @@ override fun attachBaseContext(base: Context) {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Link module resources</span><span style="text-transform: none; font-size:0.8em;"> to base resources</span>
+
+Call `SplitCompat.install(this)`
+
+```kotlin
+class SearchActivity : AppCompatActivity() {
+	...
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.install(this)
+    }
+}
+```
+
+Installing the "module" in the app context.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Conflict</span><span style="text-transform: none; font-size:0.8em;"> with shrinkResources</span>
 
 ```
@@ -514,24 +532,6 @@ Otherwise, this error will occurred:
 ```
 Resource shrinker cannot be used for multi-apk applications
 ```
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Link module resources</span><span style="text-transform: none; font-size:0.8em;"> to base resources</span>
-
-Call `SplitCompat.install(this)` in `attachBaseContext(Context)`
-
-```kotlin
-class SearchActivity : AppCompatActivity() {
-	...
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(newBase)
-        SplitCompat.install(this)
-    }
-}
-```
-
-Installing the "module" in the app context.
 
 ---
 
