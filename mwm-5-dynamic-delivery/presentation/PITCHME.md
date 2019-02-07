@@ -189,6 +189,37 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+<br/>
+
+```
+android {
+   // ...
+   dynamicFeatures = [":app_search_dynamic"]
+}
+```
+```
+dependencies {
+    api "com.google.android.play:core:1.3.6"
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+```
+dependencies {
+	implementation project(":app_search_dynamic") <-- TO REMOVE
+    api "com.google.android.play:core:1.3.6"
+}
+```
+
+In case of the transformation of a module into a dynamic module, we must remove in the base module the dependency to the dynamic module.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
 
 <br/>
@@ -200,7 +231,6 @@ apply plugin: 'com.android.dynamic-feature'
 ```
 dependencies {
     implementation project(':app')
-    api "com.google.android.play:core:1.3.6"
 }
 ```
 
@@ -223,16 +253,21 @@ dependencies {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> Manifest</span>
 
 <br/>
 
+```xml
+dist:title="@string/title_app_search_dynamic"
 ```
-android {
-   // ...
-   dynamicFeatures = [":app_search_dynamic"]
-}
-```
+
+- `title_app_search_dynamic` should be defined in the base module.
+- Is used to identify and download the module from the Play Store.
+- Use in the consent dialog to describe the module.
+
+Note:
+
+- The dynamic module title can be translated.
 
 ---
 
@@ -243,10 +278,6 @@ android {
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> SplitInstallManager</span>
 
 <br/>
-
-```kotlin
-val splitInstallManager = SplitInstallManagerFactory.create(context)
-```
 
 ```java
 public interface SplitInstallManager {
@@ -260,6 +291,79 @@ public interface SplitInstallManager {
 
     void registerListener(SplitInstallStateUpdatedListener listener);
     void unregisterListener(SplitInstallStateUpdatedListener listener);
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Download</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
+
+<br/>
+
+```kotlin
+val manager = SplitInstallManagerFactory.create(context)
+val name = context.getString(R.string.title_app_search_dynamic)
+
+// check if we already have the module
+if (!manager.installedModules.contains(name)) {
+	// Create request to install a feature module by name.
+	val request = SplitInstallRequest.newBuilder()
+		.addModule(name)
+		.build()
+
+	// Load and install the requested feature module.
+	manager.startInstall(request)
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">User consent</span><span style="text-transform: none; font-size:0.8em;"> to download the module</span>
+
+- If a module, or a list of modules need to be downloaded, during a certain period of time, are heavier than 10MB, the user's consent must be requested.
+- For defer installations, the limit is 100MB.
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install request</span><span style="text-transform: none; font-size:0.8em;"> listener</span>
+
+<br/>
+
+```kotlin
+private val listener = SplitInstallStateUpdatedListener { state ->
+    state.moduleNames().forEach { name ->
+        when (state.status()) {
+            SplitInstallSessionStatus.DOWNLOADING -> { ... }
+            SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
+                // This may occur when attempting to download a sufficiently large module.
+                startIntentSender(state.resolutionIntent()?.intentSender, null, 0, 0, 0)
+            }
+            SplitInstallSessionStatus.INSTALLED -> { ... }
+            SplitInstallSessionStatus.INSTALLING -> { ... }
+            SplitInstallSessionStatus.FAILED -> { ... }
+        }
+    }
+}
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install request</span><span style="text-transform: none; font-size:0.8em;"> status</span>
+
+<br/>
+
+```kotlin
+public @interface SplitInstallSessionStatus {
+    int UNKNOWN = 0;
+    int PENDING = 1;
+    int REQUIRES_USER_CONFIRMATION = 8;
+    int DOWNLOADING = 2;
+    int DOWNLOADED = 3;
+    int INSTALLING = 4;
+    int INSTALLED = 5;
+    int FAILED = 6;
+    int CANCELING = 9;
+    int CANCELED = 7;
 }
 ```
 
