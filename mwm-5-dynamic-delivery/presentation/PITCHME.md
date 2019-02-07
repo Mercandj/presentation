@@ -189,6 +189,18 @@ Note:
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/tuto-1.png)
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/tuto-2.png)
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
 
 <br/>
@@ -478,14 +490,34 @@ override fun startSearch() {
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span><span style="text-transform: none; font-size:0.8em;"> Debug</span>
+
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/run-debug.png)
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Codelab</span>
+
+<br/>
+
+https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
+
+---
+
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Open sources</span><span style="text-transform: none; font-size:0.8em;"> examples</span>
+
+<br/>
+
+- [Plaid](https://github.com/nickbutcher/plaid)
+- [FileSpace](https://github.com/Mercandj/file-android)
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Sources</span>
 
+<br/>
+
 - https://developer.android.com/studio/command-line/bundletool
 - https://github.com/google/bundletool
-
-https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
 
