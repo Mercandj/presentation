@@ -241,14 +241,16 @@ dependencies {
 <br/>
 
 ```xml
-<dist:module
-    dist:instant="false"
-    dist:onDemand="true"
-    dist:title="@string/title_app_search_dynamic">
+<manifest
+	...
+    xmlns:dist="http://schemas.android.com/apk/distribution">
 
-    <dist:fusing dist:include="true" />
-
-</dist:module>
+	<dist:module
+	    dist:onDemand="true"
+	    dist:title="@string/title_app_search_dynamic">
+	    <dist:fusing dist:include="true" />
+	</dist:module>
+</manifest>
 ```
 
 ---
