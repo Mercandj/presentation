@@ -211,12 +211,12 @@ dependencies {
 
 ```
 dependencies {
-	implementation project(":app_search_dynamic") <-- TO REMOVE
-    api "com.google.android.play:core:1.3.6"
+   implementation project(":app_search_dynamic") <- TO REMOVE
+   api "com.google.android.play:core:1.3.6"
 }
 ```
 
-In case of the transformation of a module into a dynamic module, we must remove in the base module the dependency to the dynamic module.
+Remove in the base module the dependency to the dynamic module.
 
 ---
 
