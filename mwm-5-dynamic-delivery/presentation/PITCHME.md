@@ -298,24 +298,52 @@ interface SplitInstallManager {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Download</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
 
 <br/>
 
 ```kotlin
-val manager = SplitInstallManagerFactory.create(context)
+val splitInstallManager = SplitInstallManagerFactory.create(context)
 val name = context.getString(R.string.title_app_search_dynamic)
 
 // check if we already have the module
-if (!manager.installedModules.contains(name)) {
+if (!splitInstallManager.installedModules.contains(name)) {
 	// Create request to install a feature module by name.
 	val request = SplitInstallRequest.newBuilder()
 		.addModule(name)
 		.build()
 
 	// Load and install the requested feature module.
-	manager.startInstall(request)
+	splitInstallManager.startInstall(request)
 }
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install</span><span style="text-transform: none; font-size:0.8em;"> a dynamic module</span>
+
+<br/>
+
+```kotlin
+splitInstallManager.startInstall(request)
+     // When the platform accepts your request to download
+     // an on demand module, it binds it to the following session ID.
+     // You use this ID to track further status updates for the request.
+     .addOnSuccessListener {
+         // From here the install started and splitInstallManager 
+         // could be called with the install session id.
+         this.sessionId = it
+     }
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Deferred</span><span style="text-transform: none; font-size:0.8em;"> install</span>
+
+<br/>
+
+```kotlin
+splitInstallManager.deferredInstall(Arrays.asList(featureModuleName))
 ```
 
 ---
