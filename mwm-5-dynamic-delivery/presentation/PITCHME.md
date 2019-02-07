@@ -490,6 +490,26 @@ Resource shrinker cannot be used for multi-apk applications
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to resources</span>
+
+```
+android {
+	...
+    buildTypes {
+        release {
+        	shrinkResources true
+        }
+    }
+}
+```
+```
+Resource shrinker cannot be used for multi-apk applications
+```
+
+Can enable `shrinkResources` in dynamic module.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Uninstall</span><span style="text-transform: none; font-size:0.8em;"> dynamic module</span>
 
 - The uninstallation is not immediate.
