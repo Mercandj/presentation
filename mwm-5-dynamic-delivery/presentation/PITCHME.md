@@ -473,6 +473,23 @@ Resource shrinker cannot be used for multi-apk applications
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Resources</span><span style="text-transform: none; font-size:0.8em;"> used in AndroidManifest</span>
+
+- `MyDynamicModuleActivity` and `MyTheme` are defined in a dynamic module.
+
+```xml
+<application>
+    <activity
+        android:name=".MyDynamicModuleActivity"
+        android:theme="@style/MyTheme" />
+</application>
+```
+
+- In the mergedManifest, the style is unknown !
+- Define empty resource in the base module.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Uninstall</span><span style="text-transform: none; font-size:0.8em;"> dynamic module</span>
 
 - The uninstallation is not immediate.
