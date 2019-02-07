@@ -450,6 +450,29 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Conflict</span><span style="text-transform: none; font-size:0.8em;"> with shrinkResources</span>
+
+```
+android {
+	...
+    buildTypes {
+        release {
+        	shrinkResources false
+        }
+    }
+}
+```
+
+Can't enable `shrinkResources` neither in a dynamic module nor a base module.
+
+Otherwise, this error will occurred:
+
+```
+Resource shrinker cannot be used for multi-apk applications
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Uninstall</span><span style="text-transform: none; font-size:0.8em;"> dynamic module</span>
 
 - The uninstallation is not immediate.
