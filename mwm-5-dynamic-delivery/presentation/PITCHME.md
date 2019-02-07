@@ -36,7 +36,7 @@ Note:
 
 - Each part represents a different module of the app.
 - Dynamic feature module name is given the name specified by the split attribute in the module's manifest.
-- BUNDLE-METADATA/: contains metadata files such ss proguard mappings and the list of all DEX files. These files are not packaged into the APK.
+- BUNDLE-METADATA/: contains metadata files such as proguard mappings and the list of all DEX files. These files are not packaged into the APK.
 - dex/: contains dex files for this module.
 - res/, lib/ and assets/: identical to those in a typical APK.
 - manifest/: contains androidManifest.xml file.
@@ -86,7 +86,7 @@ Add this code to ``build.gradle`` of your application.
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">How it works</span><span style="text-transform: none; font-size:0.8em;"> for old devices</span>
 
 - Pre-Lollipop devices download an optimized APK.
 - Pre-Lollipop devices  don't manage multiples APKs.
@@ -98,7 +98,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Application size</span><span style="text-transform: none; font-size:0.8em;"> limitation</span>
 
 - Increase app size limit to 500MB.
 
