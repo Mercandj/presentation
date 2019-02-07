@@ -12,10 +12,6 @@
 
 ---
 
-### Goal!
-
----
-
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
 
 ---
