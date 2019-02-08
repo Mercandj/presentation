@@ -326,11 +326,9 @@ android {
         versionCode rootProject.ext.appVersionCode
         versionName rootProject.ext.appVersionName
     }
-
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':app')
     implementation project(':file_api_android')
 }
@@ -341,7 +339,8 @@ repositories {
 ```
 
 @[1](Plugin)
-@[21](Base dependence)
+@[18](Base dependence)
+@[18](Other classic module that is not api by the app module)
 
 ---
 
