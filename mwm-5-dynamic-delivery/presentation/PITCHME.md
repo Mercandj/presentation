@@ -14,11 +14,11 @@
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android</span><span style="text-transform: none; font-size:0.8em;"> App Bundle</span>
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android</span><span style="text-transform: none; font-size:0.8em;"> App Bundle</span>
 
 - New format to `upload` application.
 - Contains code and all resources.
@@ -36,7 +36,7 @@ Generate APKs for a Pixel phone with english and korean languages.
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android App Bundle</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Android</span><span style="text-transform: none; font-size:0.8em;"> App Bundle</span>
 
 - Reduce the quantity of data to download.
 - Reduce the app weight on the disk.
