@@ -775,7 +775,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Clear</span><span style="text-transform: none; font-size:0.8em;"> app storage from settings</span>
 
-- Makes `splitInstallManager.installedModules.contains(searchgModuleName)` returning false
+- Makes `installedModules.contains(name)` returning false
 - Does not uninstall apk, the next `startInstall(request)` is almost synchronous
 
 ---
