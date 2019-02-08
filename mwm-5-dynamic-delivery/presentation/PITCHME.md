@@ -66,13 +66,13 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inside edjing Free app bundle</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/android-app-bundle.png)
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/edjing-free-app-bundle.png)
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inside edjing Free app bundle</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/android-app-bundle-details.png)
+![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/edjing-free-app-bundle-details.png)
 
 ---
 
