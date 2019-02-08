@@ -405,6 +405,24 @@ splitInstallManager.startInstall(request)
          // could be called with the install session id.
          this.sessionId = it
      }
+     .addOnCompleteListener {
+         this.sessionId = -1
+         this.startSearch()
+     }
+     .addOnFailureListener {
+         this.sessionId = -1
+         this.showErrorMessage()
+     }
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Deferred</span><span style="text-transform: none; font-size:0.8em;"> install</span>
+
+<br/>
+
+```kotlin
+splitInstallManager.deferredInstall(Arrays.asList(featureModuleName))
 ```
 
 ---
@@ -414,7 +432,7 @@ splitInstallManager.startInstall(request)
 <br/>
 
 ```kotlin
-private val listener = SplitInstallStateUpdatedListener { state ->
+val listener = SplitInstallStateUpdatedListener { state ->
     state.moduleNames().forEach { name ->
         when (state.status()) {
             SplitInstallSessionStatus.DOWNLOADING -> { ... }
@@ -435,12 +453,27 @@ manager.registerListener(listener)
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Deferred</span><span style="text-transform: none; font-size:0.8em;"> install</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Install request</span><span style="text-transform: none; font-size:0.8em;"> listener</span>
 
 <br/>
 
 ```kotlin
-splitInstallManager.deferredInstall(Arrays.asList(featureModuleName))
+val listener = SplitInstallStateUpdatedListener { state ->
+    state.moduleNames().forEach { name ->
+        when (state.status()) {
+            SplitInstallSessionStatus.DOWNLOADING -> { 
+                val bytesDownloaded = state.bytesDownloaded()
+                val totalBytesToDownload = state.totalBytesToDownload()
+                val percentDownloaded = if (totalBytesToDownload <= 0) {
+                    0f
+                } else {
+                    bytesDownloaded.toFloat() / totalBytesToDownload
+                }
+                notifyDownloading(percentDownloaded)
+            }
+        }
+    }
+}
 ```
 
 ---
