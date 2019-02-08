@@ -796,7 +796,7 @@ Note:
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Open </span><span style="text-transform: none; font-size:0.8em;"> question</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Open </span><span style="text-transform: none; font-size:0.8em;"> questions</span>
 
 - Cascade of dynamic modules?
 - Shrink resources for the base module?
