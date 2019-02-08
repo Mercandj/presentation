@@ -211,13 +211,13 @@ Note:
 
 <br/>
 
-```
+```groovy
 android {
    // ...
    dynamicFeatures = [":app_search_dynamic"]
 }
 ```
-```
+```groovy
 dependencies {
     api "com.google.android.play:core:1.3.6"
 }
@@ -227,7 +227,7 @@ dependencies {
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
 
-```
+```groovy
 dependencies {
    implementation project(":app_search_dynamic") <- TO REMOVE
    api "com.google.android.play:core:1.3.6"
@@ -279,14 +279,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(':file_api')
 }
 ```
 
-@[1](Plugin)
-@[31](Do not shrink)
-@[40](Api dependency used by the dynamic module)
+@[17-21](App bundle)
+@[26,31](Do not shrink)
+@[35](Dynamic features declaration)
+@[39](Api dependency used by the dynamic module)
 
 
 
@@ -491,7 +491,7 @@ splitInstallManager.startInstall(request)
      // an on demand module, it binds it to the following session ID.
      // You use this ID to track further status updates for the request.
      .addOnSuccessListener {
-         // From here the install started and splitInstallManager 
+         // From here the install started and splitInstallManager
          // could be called with the install session id.
          this.sessionId = it
      }
@@ -551,7 +551,7 @@ manager.registerListener(listener)
 val listener = SplitInstallStateUpdatedListener { state ->
     state.moduleNames().forEach { name ->
         when (state.status()) {
-            SplitInstallSessionStatus.DOWNLOADING -> { 
+            SplitInstallSessionStatus.DOWNLOADING -> {
                 val bytesDownloaded = state.bytesDownloaded()
                 val totalBytesToDownload = state.totalBytesToDownload()
                 val percentDownloaded = if (totalBytesToDownload <= 0) {
