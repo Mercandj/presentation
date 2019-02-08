@@ -9,6 +9,8 @@
 <span style="color:gray; font-size:0.4em;">Frédéric Torcheux. Github: </span> <span style="color: #00B8D4; font-size:0.4em;">bowserf</span>
 <br/>
 <span style="color:gray; font-size:0.4em;">Jonathan Mercandalli. Github: </span> <span style="color: #00B8D4; font-size:0.4em;">Mercandj</span>
+<br/>
+<span style="color:gray; font-size:0.3em;">Version "com.google.android.play:core:1.3.6"</span>
 
 ---
 
@@ -450,7 +452,7 @@ interface SplitInstallManager {
     fun getSessionState(sessionId: Int): Task<SplitInstallSessionState>
     fun deferredUninstall(featureModuleNames: List<String>): Task<Void>
     fun deferredInstall(featureModuleNames: List<String>): Task<Void>
-    fun installedModules(): Set<String>
+    fun getInstalledModules(): Set<String>
 
     fun registerListener(listener: SplitInstallStateUpdatedListener)
     fun unregisterListener(listener: SplitInstallStateUpdatedListener)
@@ -755,15 +757,55 @@ Resource shrinker cannot be used for multi-apk applications
 
 ---?image=mwm-5-dynamic-delivery/presentation/run-debug-1.png&size=auto 80%
 
+Note:
+
+- You can choose which dynamic features to include when deploying your app
+
 ---?image=mwm-5-dynamic-delivery/presentation/run-debug-2.png&size=auto 80%
+
+Note:
+
+- By default, Android Studio doesn’t use app bundles to deploy your app. It builds and pushes APKs to your device that are optimized for deployment speed, rather than APK size. To configure Android Studio to instead build and deploy APKs from an app bundle, modify your run/debug configuration and select the option to deploy APK from app bundle.
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Codelab</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Go</span><span style="text-transform: none; font-size:0.8em;"> further</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Clear</span><span style="text-transform: none; font-size:0.8em;"> app storage from settings</span>
+
+- Makes `splitInstallManager.installedModules.contains(searchgModuleName)` returning false
+- Does not uninstall apk, the next `startInstall(request)` is almost synchronous
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Code </span><span style="text-transform: none; font-size:0.8em;"> shrinking</span>
+
+- To enable code shrinking for entire project, you must do so from the base module’s build.gradle file
+- MinifyEnabled property in dynamic feature module build configurations is ignored
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Version</span>
+
+- Your base module and dynamic feature apks will share the same version code and version name
+- The base module version code and version name is the reference
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Open </span><span style="text-transform: none; font-size:0.8em;"> question</span>
+
+- Cascade of dynamic modules?
+- Shrink resources for the base module?
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Google</span><span style="text-transform: none; font-size:0.8em;"> Codelab</span>
 
 <br/>
 
-https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
+[On demand dynamic delivery](https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery)
 
 ---
 
