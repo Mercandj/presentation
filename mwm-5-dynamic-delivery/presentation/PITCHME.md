@@ -218,8 +218,7 @@ android {
    // ...
    dynamicFeatures = [":app_search_dynamic"]
 }
-```
-```groovy
+
 dependencies {
     api "com.google.android.play:core:1.3.6"
 }
@@ -228,6 +227,8 @@ dependencies {
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+<br/>
 
 ```groovy
 dependencies {
@@ -291,8 +292,6 @@ dependencies {
 @[39](Api dependency used by the dynamic module)
 
 
-
-
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
@@ -301,9 +300,7 @@ dependencies {
 
 ```groovy
 apply plugin: 'com.android.dynamic-feature'
-```
 
-```groovy
 dependencies {
     implementation project(':app')
 }
@@ -360,6 +357,7 @@ repositories {
         dist:title="@string/title_app_search_dynamic">
         <dist:fusing dist:include="true" />
     </dist:module>
+
 </manifest>
 ```
 
@@ -446,12 +444,14 @@ android:hasCode="false">
 
 ```kotlin
 interface SplitInstallManager {
+
     fun startInstall(request: SplitInstallRequest): Task<Int>
     fun cancelInstall(sessionId: Int): Task<Void>
+    fun deferredInstall(featureModuleNames: List<String>): Task<Void>
+    fun deferredUninstall(featureModuleNames: List<String>): Task<Void>
+
     fun getSessionState(): Task<List<SplitInstallSessionState>>
     fun getSessionState(sessionId: Int): Task<SplitInstallSessionState>
-    fun deferredUninstall(featureModuleNames: List<String>): Task<Void>
-    fun deferredInstall(featureModuleNames: List<String>): Task<Void>
     fun getInstalledModules(): Set<String>
 
     fun registerListener(listener: SplitInstallStateUpdatedListener)
@@ -514,7 +514,8 @@ splitInstallManager.startInstall(request)
 <br/>
 
 ```kotlin
-splitInstallManager.deferredInstall(Arrays.asList(featureModuleName))
+val featureModuleNames = Arrays.asList(featureModuleName)
+splitInstallManager.deferredInstall(featureModuleNames)
 ```
 
 ---
@@ -573,13 +574,14 @@ val listener = SplitInstallStateUpdatedListener { state ->
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Uninstall</span><span style="text-transform: none; font-size:0.8em;"> dynamic module</span>
 
 - The uninstallation is not immediate.
-- The device decides when it will remove the module.
+- Once called, the Play Store may uninstall these modules from the app.
 
 ```kotlin
-SplitInstallManager.deferredUninstall(List<String> moduleNames)
+val featureModuleNames = Arrays.asList(featureModuleName)
+splitInstallManager.deferredUninstall(featureModuleNames)
 ```
 
-- We can remove useless dynamic module (ex: Onboarding).
+- Useless dynamic module could be removed (ex: Onboarding).
 
 ---
 
