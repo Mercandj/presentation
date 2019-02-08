@@ -83,7 +83,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Configure App Bundle for your application</span>
 
 ```
-android{
+android {
     ...
     bundle {
         language {
@@ -615,7 +615,7 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to code and resources</span>
 
 ---
- 
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Enable</span><span style="text-transform: none; font-size:0.8em;"> the SplitCompat Library</span>
 
 ```xml
