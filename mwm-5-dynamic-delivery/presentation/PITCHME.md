@@ -437,6 +437,23 @@ splitInstallManager.deferredInstall(Arrays.asList(featureModuleName))
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Uninstall</span><span style="text-transform: none; font-size:0.8em;"> dynamic module</span>
+
+- The uninstallation is not immediate.
+- The device decides when it will remove the module.
+
+```kotlin
+SplitInstallManager.deferredUninstall(List<String> moduleNames)
+```
+
+- We can remove useless dynamic module (ex: Onboarding).
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">User consent</span><span style="text-transform: none; font-size:0.8em;"> to download module(s)</span>
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">User consent</span><span style="text-transform: none; font-size:0.8em;"> to download module(s)</span>
 
 - If a module, or a list of modules need to be downloaded, during a certain period of time, are heavier than 10MB, the user's consent must be requested.
@@ -464,7 +481,11 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to resources of a dynamic module</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to code and resources</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to code and resources</span>
 
 ```xml
 <application
@@ -476,7 +497,7 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to resources of a dynamic module</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to code and resources</span>
 
 ```kotlin
 class MyApplication: SplitCompatApplication() {
@@ -509,59 +530,6 @@ class SearchActivity : AppCompatActivity() {
 ```
 
 Installing the "module" in the app context.
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Conflict</span><span style="text-transform: none; font-size:0.8em;"> with shrinkResources</span>
-
-```
-android {
-	...
-    buildTypes {
-        release {
-        	shrinkResources false
-        }
-    }
-}
-```
-
-Can't enable `shrinkResources` neither in a dynamic module nor a base module.
-
-Otherwise, this error will occurred:
-
-```
-Resource shrinker cannot be used for multi-apk applications
-```
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Resources</span><span style="text-transform: none; font-size:0.8em;"> used in AndroidManifest</span>
-
-- `MyDynamicModuleActivity` and `MyTheme` are defined in a dynamic module.
-
-```xml
-<application>
-    <activity
-        android:name=".MyDynamicModuleActivity"
-        android:theme="@style/MyTheme" />
-</application>
-```
-
-- In the mergedManifest, the style is unknown !
-- Define empty resource in the base module.
-
----
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Uninstall</span><span style="text-transform: none; font-size:0.8em;"> dynamic module</span>
-
-- The uninstallation is not immediate.
-- The device decides when it will remove the module.
-
-```kotlin
-SplitInstallManager.deferredUninstall(List<String> moduleNames)
-```
-
-- We can remove useless dynamic module (ex: Onboarding).
 
 ---
 
@@ -598,6 +566,50 @@ SplitInstallHelper.loadLibrary(context, "search-feature-native-lib")
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Problem</span><span style="text-transform: none; font-size:0.8em;"> with resources</span>
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Conflict</span><span style="text-transform: none; font-size:0.8em;"> with shrinkResources</span>
+
+```
+android {
+    ...
+    buildTypes {
+        release {
+            shrinkResources false
+        }
+    }
+}
+```
+
+Can't enable `shrinkResources` neither in a dynamic module nor a base module.
+
+Otherwise, this error will occurred:
+
+```
+Resource shrinker cannot be used for multi-apk applications
+```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Resources</span><span style="text-transform: none; font-size:0.8em;"> used in AndroidManifest</span>
+
+- `MyDynamicModuleActivity` and `MyTheme` are defined in a dynamic module.
+
+```xml
+<application>
+    <activity
+        android:name=".MyDynamicModuleActivity"
+        android:theme="@style/MyTheme" />
+</application>
+```
+
+- In the mergedManifest, the style is unknown !
+- Define empty resource in the base module.
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span><span style="text-transform: none; font-size:0.8em;"> Debug</span>
 
 ---?image=mwm-5-dynamic-delivery/presentation/run-debug.png&size=auto 80%
@@ -625,6 +637,9 @@ https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
 
 <br/>
 
-- https://developer.android.com/studio/command-line/bundletool
-- https://github.com/google/bundletool
+- [About Android App Bundles](https://developer.android.com/guide/app-bundle/)
+- [Dynamic delivery](https://developer.android.com/studio/projects/dynamic-delivery)
+- [Play Core library](https://developer.android.com/guide/app-bundle/playcore)
+- [BundleTool doc](https://developer.android.com/studio/command-line/bundletool)
+- [Download BundleTool](https://github.com/google/bundletool)
 
