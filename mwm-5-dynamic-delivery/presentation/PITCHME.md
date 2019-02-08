@@ -242,15 +242,54 @@ Remove in the base module the dependency to the dynamic module.
 
 <br/>
 
-```
+```groovy
 apply plugin: 'com.android.dynamic-feature'
 ```
 
-```
+```groovy
 dependencies {
     implementation project(':app')
 }
 ```
+
+---
+
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+```groovy
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.appVersionCode
+        versionName rootProject.ext.appVersionName
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':app')
+    implementation project(':file_api_android')
+}
+
+repositories {
+    mavenCentral()
+}
+```
+
+@[1-3] @[24-25]
 
 ---
 
