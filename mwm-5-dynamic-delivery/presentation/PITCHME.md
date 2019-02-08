@@ -278,7 +278,10 @@ dependencies {
 <br/>
 
 ```xml
-dist:title="@string/title_app_search_dynamic"
+<dist:module
+    ...
+    dist:title="@string/title_app_search_dynamic">
+</dist:module>
 ```
 
 - `title_app_search_dynamic` should be defined in the base module.
@@ -296,7 +299,10 @@ Note:
 <br/>
 
 ```xml
-dist:onDemand="true"
+<dist:module
+    ...
+    dist:onDemand="true">
+</dist:module>
 ```
 
 - Set the module available for on-demand download.
@@ -309,7 +315,9 @@ dist:onDemand="true"
 <br/>
 
 ```xml
-<dist:fusing dist:include="true" />
+<dist:module ...>
+    <dist:fusing dist:include="true" />
+</dist:module>
 ```
 
 - True to set the module available to device running Android 4.4 and lower.
