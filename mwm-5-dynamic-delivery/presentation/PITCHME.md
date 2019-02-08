@@ -84,19 +84,19 @@ Note:
 
 ```
 android{
-	...
-	bundle {
-		language {
-			enableSplit = true
-		}
-		density {
-			enableSplit = true
-		}
-		abi {
-			enableSplit = true
-		}
-	}
-	...
+    ...
+    bundle {
+        language {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+    ...
 }
 ```
 
@@ -238,6 +238,61 @@ Remove in the base module the dependency to the dynamic module.
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Base module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
+
+```groovy
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.appVersionCode
+        versionName rootProject.ext.appVersionName
+    }
+
+    bundle {
+        density.enableSplit = true
+        abi.enableSplit = true
+        language.enableSplit = false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources false
+            multiDexEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            shrinkResources false
+        }
+    }
+
+    dynamicFeatures = [":app_search_dynamic"]
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':file_api')
+}
+```
+
+@[1](Plugin)
+@[31](Do not shrink)
+@[40](Api dependency used by the dynamic module)
+
+
+
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic module</span><span style="text-transform: none; font-size:0.8em;"> build.gradle</span>
 
 <br/>
@@ -272,10 +327,6 @@ android {
         versionName rootProject.ext.appVersionName
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
@@ -289,7 +340,8 @@ repositories {
 }
 ```
 
-@[1] @[25]
+@[1](Plugin)
+@[21](Base dependence)
 
 ---
 
@@ -299,14 +351,14 @@ repositories {
 
 ```xml
 <manifest
-	...
+    ...
     xmlns:dist="http://schemas.android.com/apk/distribution">
 
-	<dist:module
-	    dist:onDemand="true"
-	    dist:title="@string/title_app_search_dynamic">
-	    <dist:fusing dist:include="true" />
-	</dist:module>
+    <dist:module
+        dist:onDemand="true"
+        dist:title="@string/title_app_search_dynamic">
+        <dist:fusing dist:include="true" />
+    </dist:module>
 </manifest>
 ```
 
@@ -418,13 +470,13 @@ val name = context.getString(R.string.title_app_search_dynamic)
 
 // check if we already have the module
 if (!splitInstallManager.installedModules.contains(name)) {
-	// Create request to install a feature module by name.
-	val request = SplitInstallRequest.newBuilder()
-		.addModule(name)
-		.build()
+    // Create request to install a feature module by name.
+    val request = SplitInstallRequest.newBuilder()
+        .addModule(name)
+        .build()
 
-	// Load and install the requested feature module.
-	splitInstallManager.startInstall(request)
+    // Load and install the requested feature module.
+    splitInstallManager.startInstall(request)
 }
 ```
 
@@ -549,7 +601,7 @@ SplitInstallManager.deferredUninstall(List<String> moduleNames)
 private val listener = SplitInstallStateUpdatedListener { state ->
     state.moduleNames().forEach { name ->
         when (state.status()) {
-        	...
+            ...
             SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
                 // This may occur when attempting to download a sufficiently large module.
                 startIntentSender(state.resolutionIntent()?.intentSender, null, 0, 0, 0)
@@ -571,7 +623,7 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 <application
     ...
     android:name="com.google.android.play.core.splitcompat
-    	.SplitCompatApplication">
+        .SplitCompatApplication">
 </application>
 ```
 
@@ -601,7 +653,7 @@ Call `SplitCompat.install(this)`
 
 ```kotlin
 class SearchActivity : AppCompatActivity() {
-	...
+    ...
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(newBase)
         SplitCompat.install(this)
@@ -735,4 +787,3 @@ https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery
 - [Play Core library](https://developer.android.com/guide/app-bundle/playcore)
 - [BundleTool doc](https://developer.android.com/studio/command-line/bundletool)
 - [Download BundleTool](https://github.com/google/bundletool)
-
