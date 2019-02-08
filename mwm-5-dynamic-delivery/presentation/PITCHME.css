@@ -27,3 +27,7 @@
 .reveal pre code {
 	max-height: 600px;
 }
+
+.hljs {
+    background: #060606 !important;
+}
