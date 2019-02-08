@@ -664,7 +664,9 @@ Resource shrinker cannot be used for multi-apk applications
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span><span style="text-transform: none; font-size:0.8em;"> Debug</span>
 
----?image=mwm-5-dynamic-delivery/presentation/run-debug.png&size=auto 80%
+---?image=mwm-5-dynamic-delivery/presentation/run-debug-1.png&size=auto 80%
+
+---?image=mwm-5-dynamic-delivery/presentation/run-debug-2.png&size=auto 80%
 
 ---
 
