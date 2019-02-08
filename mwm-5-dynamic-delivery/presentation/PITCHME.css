@@ -3,6 +3,11 @@
     line-height: 21px !important;
 }
 
+.lang-groovy {
+    font-size: 0.68em !important;
+    line-height: 21px !important;
+}
+
 .lang-java {
     font-size: 0.68em !important;
     line-height: 21px !important;
@@ -25,7 +30,7 @@
  }
 
 .reveal pre code {
-	max-height: 550px !important;
+	max-height: 480px !important;
 }
 
 .hljs {

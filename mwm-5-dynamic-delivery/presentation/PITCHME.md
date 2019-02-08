@@ -340,7 +340,7 @@ repositories {
 
 @[1](Plugin)
 @[18](Base dependence)
-@[18](Other classic module that is not api by the app module)
+@[19](Other classic module that is not api by the app module)
 
 ---
 
