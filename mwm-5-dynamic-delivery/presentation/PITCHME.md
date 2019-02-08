@@ -541,6 +541,17 @@ Installing the "module" in the app context.
 
 ---
 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Update</span><span style="text-transform: none; font-size:0.8em;"> base context</span>
+
+- Context created at app launch doesn't contain the content of the new module.
+- We need to create a new one.
+
+```kotlin
+val newContext = context.createPackageContext(context.getPackageName(), 0)
+```
+
+---
+
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Start</span><span style="text-transform: none; font-size:0.8em;"> "dynamic" activity</span>
 
 <br/>
