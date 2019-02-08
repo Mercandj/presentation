@@ -615,8 +615,8 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to code and resources</span>
 
 ---
-
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to code and resources</span>
+ 
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Enable</span><span style="text-transform: none; font-size:0.8em;"> the SplitCompat Library</span>
 
 ```xml
 <application
@@ -628,7 +628,7 @@ private val listener = SplitInstallStateUpdatedListener { state ->
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Access</span><span style="text-transform: none; font-size:0.8em;"> to code and resources</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Enable</span><span style="text-transform: none; font-size:0.8em;"> the SplitCompat Library</span>
 
 ```kotlin
 class MyApplication: SplitCompatApplication() {
@@ -646,9 +646,10 @@ override fun attachBaseContext(base: Context) {
 
 ---
 
-### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Link module resources</span><span style="text-transform: none; font-size:0.8em;"> to base resources</span>
+### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Enable</span><span style="text-transform: none; font-size:0.8em;"> the SplitCompat Library</span>
 
-Call `SplitCompat.install(this)`
+
+Call `SplitCompat.install(this)` in activities of a dynamic module
 
 ```kotlin
 class SearchActivity : AppCompatActivity() {
@@ -659,8 +660,6 @@ class SearchActivity : AppCompatActivity() {
     }
 }
 ```
-
-Installing the "module" in the app context.
 
 ---
 
@@ -725,7 +724,7 @@ android {
 }
 ```
 
-Can't enable `shrinkResources` neither in a dynamic module nor a base module.
+Do not enable `shrinkResources` for a dynamic module or base module.
 
 Otherwise, this error will occurred:
 
