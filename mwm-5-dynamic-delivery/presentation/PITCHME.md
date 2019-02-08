@@ -450,9 +450,9 @@ interface SplitInstallManager {
     fun deferredInstall(featureModuleNames: List<String>): Task<Void>
     fun deferredUninstall(featureModuleNames: List<String>): Task<Void>
 
+    fun getInstalledModules(): Set<String>
     fun getSessionState(): Task<List<SplitInstallSessionState>>
     fun getSessionState(sessionId: Int): Task<SplitInstallSessionState>
-    fun getInstalledModules(): Set<String>
 
     fun registerListener(listener: SplitInstallStateUpdatedListener)
     fun unregisterListener(listener: SplitInstallStateUpdatedListener)
