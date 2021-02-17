@@ -7,3 +7,4 @@
 * MWM 5 - Dynamic delivery [presentation](https://gitpitch.com/Mercandj/presentation?p=mwm-5-dynamic-delivery/presentation#/1) and [presentation with speaker notes](https://gitpitch.com/Mercandj/presentation?p=mwm-5-dynamic-delivery/presentation&n=true)
 * MWM 6 - Kotlin Multiplatform 1 [presentation](https://gitpitch.com/Mercandj/presentation?p=mwm-6-kotlin-multiplatform-1/presentation#/1) and [presentation with speaker notes](https://gitpitch.com/Mercandj/presentation?p=mwm-6-kotlin-multiplatform-1/presentation&n=true)
 * MWM 7 - Modularization [presentation](https://gitpitch.com/Mercandj/presentation?p=mwm-7-modularization#/1) and [presentation with speaker notes](https://gitpitch.com/Mercandj/presentation?p=mwm-7-modularization&n=true)
+* MWM 8 - Modularization [presentation](https://gitpitch.com/Mercandj/presentation?p=mwm-8-team-android-presentation#/1) 
