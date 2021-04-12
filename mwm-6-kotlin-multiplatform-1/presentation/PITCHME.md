@@ -1,4 +1,4 @@
-![Logo](mwm-6-kotlin-multiplatform-1/presentation/logo_1.png)
+![Logo](logo_1.png)
 
 <br/>
 <br/>
@@ -24,11 +24,11 @@ Note:
 
 ---
 
-![Logo](mwm-6-kotlin-multiplatform-1/presentation/ios_android_fix.jpg)
+![Logo](ios_android_fix.jpg)
 
 ---
 
-![Logo](mwm-6-kotlin-multiplatform-1/presentation/ios_android.jpg)
+![Logo](ios_android.jpg)
 
 ---
 
@@ -197,7 +197,7 @@ xcodebuild -create-xcframework \
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">DEMO</span>
 
-![Logo](mwm-6-kotlin-multiplatform-1/presentation/ios_android.jpg)
+![Logo](ios_android.jpg)
 
 ---
 

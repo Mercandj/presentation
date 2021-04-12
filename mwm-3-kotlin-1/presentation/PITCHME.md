@@ -1,4 +1,4 @@
-![Logo](mwm-3-kotlin-1/presentation/logo-1.png)
+![Logo](logo-1.png)
 
 #### <span style="text-transform: none">Kotlin - 1/2</span>
 
@@ -74,7 +74,7 @@ Note:
 ### <span style="color: #00B8D4; text-transform: none;">Kotlin</span> <span style="text-transform: none;">methods</span>
 
 <p style="height:11em;">
-![Logo](mwm-3-kotlin-1/presentation/logo-2-kotlin-methods-1-2-51.png)
+![Logo](logo-2-kotlin-methods-1-2-51.png)
 </p>
 
 <span style="color:gray; font-size:0.4em;">Kotlin 1.2.51 (demo app) - com.getkeepsafe.dexcount</span>
@@ -128,7 +128,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">size</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-3-kotlin-size.png)
+![Logo](logo-3-kotlin-size.png)
 
 ---
 
@@ -146,7 +146,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-4-decompiler.png)
+![Logo](logo-4-decompiler.png)
 
 Note:
 
@@ -156,7 +156,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none">Kotlin</span> <span style="text-transform: none">decompiler</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-5-decompiler.png)
+![Logo](logo-5-decompiler.png)
 
 Note:
 
@@ -628,7 +628,7 @@ static <T extends Throwable> T sanitizeStackTrace(T throwable, String classNameT
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Variable</span> <span style="text-transform: none; font-size:0.8em;">shadowing</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-6-variable-shadowing.png)
+![Logo](logo-6-variable-shadowing.png)
 
 ```kotlin
 class VariableShadowingDemo(
@@ -1318,7 +1318,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Destructuring</span> <span style="text-transform: none; font-size:0.8em;">variable</span>
 
-![Logo](mwm-3-kotlin-1/presentation/logo-7-destructuring.png)
+![Logo](logo-7-destructuring.png)
 
 `.val` autocompletion
 
@@ -1690,7 +1690,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Scope</span> <span style="text-transform: none; font-size:0.8em;">function summary</span>
 
-![Logo](mwm-3-kotlin-1/presentation/scope_function.png)
+![Logo](scope_function.png)
 
 ---
 

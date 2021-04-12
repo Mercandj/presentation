@@ -1,6 +1,6 @@
-![Logo](mwm-5-dynamic-delivery/presentation/logo-1.gif)
+![Logo](logo-1.gif)
 
-#### <span style="text-transform: none">App bundle and Dynamic delivery</span>
+# <span style="text-transform: none">App bundle and Dynamic delivery</span>
 
 <span style="color:gray; font-size:0.6em;">Android </span> <span style="color: #00B8D4; font-size:0.6em;">module</span>
 <br/>
@@ -30,7 +30,7 @@
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">edjingFree APKs</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/edjingfree-apks-pixel-en-ko.png)
+![Inside edjing Free app bundle](edjingfree-apks-pixel-en-ko.png)
 
 Generate APKs for a Pixel phone with english and korean languages.
 
@@ -50,7 +50,7 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Look into an AAB file</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/aab-format.png)
+![Inside edjing Free app bundle](aab-format.png)
 
 Note:
 
@@ -68,13 +68,13 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inside edjing Free app bundle</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/edjing-free-app-bundle.png)
+![Inside edjing Free app bundle](edjing-free-app-bundle.png)
 
 ---
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Inside edjing Free app bundle</span>
 
-![Inside edjing Free app bundle](mwm-5-dynamic-delivery/presentation/edjing-free-app-bundle-details.png)
+![Inside edjing Free app bundle](edjing-free-app-bundle-details.png)
 
 ---
 
@@ -203,9 +203,9 @@ Note:
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Dynamic feature</span><span style="text-transform: none; font-size:0.8em;"> Setup</span>
 
----?image=mwm-5-dynamic-delivery/presentation/tuto-1.png&size=auto 80%
+![image](tuto-1.png)
 
----?image=mwm-5-dynamic-delivery/presentation/tuto-2.png&size=auto 80%
+![image](tuto-2.png)
 
 ---
 
@@ -757,13 +757,13 @@ Resource shrinker cannot be used for multi-apk applications
 
 ### <span style="color: #00B8D4; text-transform: none; font-size:0.8em;">Run</span><span style="text-transform: none; font-size:0.8em;"> Debug</span>
 
----?image=mwm-5-dynamic-delivery/presentation/run-debug-1.png&size=auto 80%
+![image](run-debug-1.png)
 
 Note:
 
 - You can choose which dynamic features to include when deploying your app
 
----?image=mwm-5-dynamic-delivery/presentation/run-debug-2.png&size=auto 80%
+![image](run-debug-2.png)
 
 Note:
 

@@ -1,4 +1,4 @@
-![Logo](mwm-3-kotlin-1/presentation/logo-1.png)
+![Logo](logo-1.png)
 
 #### <span style="text-transform: none">Kotlin - 2/2</span>
 

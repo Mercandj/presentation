@@ -1,4 +1,4 @@
-![Logo](mwm-1-picture-in-picture/picture-in-picture-logo.png )
+![Logo](picture-in-picture-logo.png)
 
 #### Picture in picture
 <span style="color:gray">Android 8.0</span>
@@ -69,7 +69,7 @@ override fun onPictureInPictureModeChanged(
 
 ### Demo
 
-![Video](https://www.youtube.com/embed/HRJFT3urgGI)
+[Video](https://www.youtube.com/embed/HRJFT3urgGI)
 
 <span style="color:gray; font-size:0.5em;">Source: github.com/googlesamples/android-PictureInPicture</span>
 </br>

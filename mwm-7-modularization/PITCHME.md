@@ -1,4 +1,4 @@
-![Logo](mwm-7-modularization/logo_1.jpg)
+![Logo](logo_1.jpg)
 
 <span style="color:gray; font-size:0.8em;">Discussion on </span>
 

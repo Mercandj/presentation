@@ -1,4 +1,4 @@
-![Logo](mwm-2-room/room-2.png )
+![Logo](room-2.png )
 
 #### <span style="text-transform: none">Android Arch - Room</span>
 
